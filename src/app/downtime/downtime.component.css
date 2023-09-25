@@ -1,0 +1,148 @@
+.container{
+  width: auto;
+  height: 785px;
+  /* border: red 2px solid; */
+
+  position: relative;
+}
+
+
+/* 设置表格容器样式 */
+.table-container {
+    max-height: 400px; /* 设置最大高度，根据需要进行调整 */
+    width: 80%; /* 调整表格容器的宽度 */
+    background-color: none;
+    /* border: red 2px solid; */
+    
+   
+   overflow-y: auto; /* 启用垂直滚动条 */
+   margin: 20px auto; /* 居中放置表格，可以根据需要调整 */
+   margin-top: 70px;
+   
+   color: white; /* 字体颜色 */
+   font-size: 15px; /* 字体大小，根据需要进行调整 */
+   font-weight: bold; /* 可以添加其他样式，如边框、文字颜色等 */
+  }
+  
+  /* 表格样式 */
+  table {
+    
+    width: auto;
+    height: 200px;
+    /* border: red 2px solid; */
+    border-collapse: collapse;
+    background: transparent; /* 背景透明 */
+    
+    border-bottom: 1px solid white; /* 底部边框样式 */
+    border-left: none; /* 移除左边框 */
+    border-right: none; /* 移除右边框 */
+    border-top: none; /* 移除顶部边框 */
+    
+  }
+  
+  /* 表头样式 */
+  th {
+   
+    text-align: left;
+    padding: 10px;
+    border: 1px solid white; 
+    border-bottom: 1px solid white; /* 底部边框样式 */
+    border-left: none; /* 移除左边框 */
+    border-right: none; /* 移除右边框 */
+    border-top: none; /* 移除顶部边框 */
+  }
+  
+  /* 表格行样式 */
+  tr { height: 10px;
+    border-bottom: 1px solid white; /* 底部边框样式 */
+    border-left: none; /* 移除左边框 */
+    border-right: none; /* 移除右边框 */
+    border-top: none; /* 移除顶部边框 */
+    
+  }
+  
+
+  
+  /* 单元格样式 */
+  td {
+    width: 130px;
+    padding: 1px;
+    
+    text-align: left; /* 文字靠左 */
+    border: 1px solid white; /* 添加黑色实线内边框 */
+    border-bottom: 1px solid white; /* 底部边框样式 */
+    border-left: none; /* 移除左边框 */
+    border-right: none; /* 移除右边框 */
+    border-top: none; /* 移除顶部边框 */
+    
+  }
+  
+  /* 选择第4到第13列并设置宽度和边框 */
+td:nth-child(n+4):nth-child(-n+13),
+th:nth-child(n+4):nth-child(-n+13) {
+  width: 100px; /* 设置宽度为100px，根据需要调整 */
+  border-left: 1px solid white; /* 添加右边框 */
+  text-align: center;
+}
+
+
+
+  .image {
+    max-height: 80px; /* 设置最大高度，根据需要进行调整 */
+}
+
+.vertical-line {
+  width: 1px; /* 竖线的宽度 */
+  height: 77%; /* 竖线的高度，这里设置为与父元素高度相同 */
+  background-color: rgb(32, 147, 205); /* 竖线的颜色 */
+
+  position: absolute; /* 使竖线脱离文档流，可以放在指定位置 */
+  left: 984px; /* 竖线距离左侧的位置，可以根据需要调整 */
+  top: 160px; /* 竖线距离顶部的位置，可以根据需要调整 */
+}
+
+.blue-circle {
+  width: 25px; /* 圆圈的宽度 */
+  height: 25px; /* 圆圈的高度，确保宽度和高度相等以使它成为一个圆 */
+  background-color: none; /* 圆圈的颜色 */
+  border-radius: 50%; /* 使用border-radius将元素变成圆形 */
+  border: 2px solid rgb(32, 147, 205);
+  
+  position: absolute; /* 使圆圈脱离文档流，可以放在指定位置 */
+  left: 970px; /* 圆圈距离左侧的位置，可以根据需要调整 */
+  top: 132px; /* 圆圈距离顶部的位置，可以根据需要调整 */
+  
+  z-index: 6;
+  
+}
+
+
+.green-rectangle {
+  
+  height: 60px; /* 长方形的高度 */
+  background-color: rgb(47, 198, 105); /* 长方形的颜色 */
+  border-radius: 10px; /* 设置圆角 */
+
+  display: flex;
+  justify-content: center; /* 文本水平居中 */
+  align-items: center; /* 文本垂直居中 */
+
+  position: absolute; /* 使长方形脱离文档流，可以放在指定位置 */
+  
+ 
+  color: black; /* 文本颜色 */
+  font-size: 16px; /* 字体大小 */
+  z-index: 999; /* 可能需要调整z-index，确保它在其他元素前面 */
+}
+
+.gray-rectangle {
+  width: 200px; /* 长方形的宽度 */
+  height: 600px; /* 长方形的高度 */
+  background-color: rgba(128, 128, 128, 0.5); /* 灰色半透明背景色 */
+  position: absolute; /* 使长方形脱离文档流，可以放在指定位置 */
+  z-index: 998; /* 可能需要调整z-index，确保它在其他元素前面 */
+}
+  
+
+  
+

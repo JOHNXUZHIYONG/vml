@@ -1,0 +1,214 @@
+.container{
+  width: auto;
+  height: 785px;
+  /* border: red 2px solid; */
+
+  position: relative;
+}
+
+.gray-rectangle {
+    width: 750px;
+    height: 580px;
+    /* border: red 2px solid; */
+    background-color: rgba(128, 128, 128, 0.2);
+
+    
+    position: absolute;
+    left: 80px;
+    top: 160px;
+
+    z-index: 2;
+
+}
+
+.title {
+    
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+
+    margin-bottom: 0px;
+    margin-left: 10px;
+
+    text-align: left;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    
+
+}
+
+.last {
+    padding: 1px;
+    margin-top: 0px;
+
+    text-align: right;
+    color: white;
+    font-size: 15px;
+}
+
+.green-rectangle {
+    
+    width: 650px;    
+    height: 480px;
+    /* border: red 2px solid; */
+    background-color: rgba(1, 9, 0, 0.433);
+    
+    position: absolute;
+    left: 35px;
+    top: 60px;
+
+    margin: 10px;
+    z-index: 3;
+    
+    
+}
+
+.chart {
+    position: absolute;
+    top:0px;
+    left: 10px;
+    /* border: red 2px solid; */
+
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+
+    z-index: 10;
+    color: white;
+    flex-basis: calc(33.33% - 20px);
+}
+
+/* 修改图表的整体字体颜色 */
+.chart ngx-charts-line-chart {
+    color: rgb(250, 244, 244); /* 设置整体字体颜色 */
+  }
+  
+  /* 修改 X 轴和 Y 轴标签的字体颜色 */
+  .chart ngx-charts-x-axis, .chart ngx-charts-y-axis {
+    fill: blue; /* 设置轴标签字体颜色 */
+  }
+  
+  /* 修改图例项的字体颜色 */
+  .chart ngx-charts-legend-entry {
+    color: green; /* 设置图例项字体颜色 */
+  }
+  ngx-charts-line-chart .line-series path.line {
+    stroke: rgb(254, 249, 249);
+  }
+
+
+.t_container {
+
+    width: 820px;
+    height: 580px;
+    /* border: red 2px solid; */
+   
+    /* background-color: rgba(128, 128, 128, 0.2); */
+    
+    position: absolute;
+    left: 880px;
+    top: 160px;
+
+    z-index: 2;
+
+
+}
+
+/* 设置表格容器样式 */
+.table_container {
+    
+    width: 95%; /* 调整表格容器的宽度 */
+    height: 500px; /* 设置最大高度，根据需要进行调整 */
+    /* border: red 2px solid; */
+    
+
+   margin: 10px auto; /* 居中放置表格，可以根据需要调整 */
+   margin-top: 20px;
+
+   background-color: none;
+    color: white; /* 字体颜色 */
+   font-size: 20px; /* 字体大小，根据需要进行调整 */
+   font-weight: bold; /* 可以添加其他样式，如边框、文字颜色等 */
+   
+   overflow-y: auto; /* 启用垂直滚动条 */
+  }
+  
+  /* 表格样式 */
+  table {
+    
+    width: auto;
+    height: 500px;
+    border-collapse: collapse;
+    background: transparent; /* 背景透明 */
+     /* 底部边框样式 */
+    border-left: none; /* 移除左边框 */
+    border-right: none; /* 移除右边框 */
+    border-top: none; /* 移除顶部边框 */
+    
+  }
+  
+  /* 表头样式 */
+  th {
+   
+    text-align: center;
+    padding: 10px;
+    border: 1px solid white; 
+    border-bottom: none; /* 底部边框样式 */
+    border-left: none; /* 移除左边框 */
+    border-right: none; /* 移除右边框 */
+    border-top: none; /* 移除顶部边框 */
+  }
+  
+  /* 表格行样式 */
+  tr { height: 10px;
+    border-bottom: none; /* 底部边框样式 */
+    border-left: none; /* 移除左边框 */
+    border-right: none; /* 移除右边框 */
+    border-top: none; /* 移除顶部边框 */
+    
+  }
+
+
+  
+  /* 单元格样式 */
+  td {
+    padding: 1px;
+    border: 1px solid white; /* 添加黑色实线内边框 */
+    text-align: center; /* 文字靠左 */
+    width: 150px;
+    border-bottom: 1px solid white; /* 底部边框样式 */
+    border-left: none; /* 移除左边框 */
+    border-right: none; /* 移除右边框 */
+    border-top: none; /* 移除顶部边框 */
+    color: aqua;
+    
+  }
+  /* 第一列样式 */
+td:first-child {
+    width: 250px; /* 设置第一列宽度为200px */
+    font-size: 18px;
+    text-align: left; /* 文字靠左 */
+    color: white;
+    
+}
+
+  
+.s_gray {
+
+    width: 780px;
+    height: 50px;
+    background-color: rgba(128, 128, 128, 0.35);
+    /* border: red 2px solid; */
+   
+    position: absolute;
+    left: 900px;
+    top: 275px;
+    border-bottom: 3px solid white;
+    
+    z-index: 999;
+
+};
+
+
+

@@ -1,0 +1,77 @@
+<div class="container">
+<div class="header-container">
+    ENTERPRISE
+</div>
+<p class="dashboard_name">RESOURCE HEALTH</p>
+
+<div class="rectangle-container">
+    <div class="gray-rectangle" >
+        <h2 class="title">OVERALL EQPT EFFECTIVENESS</h2>
+        <h3 class="last">Last Updated: {{currentDateTime}}</h3>
+        <div class="green-rectangle" >
+            <div class="chart">
+                <ngx-charts-line-chart
+                
+                  [view]="[600, 400]"
+                  [customColors]="customColors"
+                  [results]="lineChartData"
+                  [xAxis]="showXAxis"
+                  [yAxis]="showYAxis"
+                  
+                  [legend]="showLegend"
+                  [showXAxisLabel]="showXAxisLabel"
+                  [showYAxisLabel]="showYAxisLabel"
+                  [xAxisLabel]="xAxisLabel"
+                  [yAxisLabel]="yAxisLabel"
+                  
+                  
+                  
+                ></ngx-charts-line-chart>
+                
+              </div>
+        </div>
+ </div>
+    
+</div>
+
+<div class="t_container">
+  <h1 class="title">MACHINE HEALTH BREAKDOWN</h1>
+  <table class="table_container">
+    <thead>
+      <tr class="table">
+        <th>Machine</th>
+        <th>OEE</th>
+        <th>Availability</th>
+        <th>Performance</th>
+        <th>Quality</th>
+
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="firsr_row">
+        <td>{{machines_overall.name}}</td>
+        <td [ngStyle]="{ 'color': machines_overall.oee < '80%' ? 'yellow' : machines_overall.oee > '90%' ? 'green' : 'aqua' }">{{ machines_overall.oee }}</td>
+        <td [ngStyle]="{ 'color': machines_overall.availability < '80%'? 'yellow' : machines_overall.availability > '90%' ? 'green' : 'aqua' }">{{ machines_overall.availability }}</td>
+        <td [ngStyle]="{ 'color': machines_overall.performance < '80%' ? 'yellow' : machines_overall.performance > '90%' ? 'green' : 'aqua' }">{{ machines_overall.performance }}</td>
+        <td [ngStyle]="{ 'color': machines_overall.quality < '80%' ? 'yellow' : machines_overall.quality > '90%' ? 'green' : 'aqua' }">{{ machines_overall.quality }}</td>
+        
+      </tr>
+      <!-- 使用*ngFor循环生成表格数据 -->
+      <tr *ngFor="let machine of machines">
+        
+        <td>{{ machine.name }}</td>
+        <td [ngStyle]="{ 'color': machine.oee < '80%' ? 'yellow' : machine.oee > '90%' ? 'green' : 'aqua' }">{{ machine.oee }}</td>
+        <td [ngStyle]="{ 'color': machine.availability < '80%'? 'yellow' : machine.availability > '90%' ? 'green' : 'aqua' }">{{ machine.availability }}</td>
+        <td [ngStyle]="{ 'color': machine.performance < '80%' ? 'yellow' : machine.performance > '90%' ? 'green' : 'aqua' }">{{ machine.performance }}</td>
+        <td [ngStyle]="{ 'color': machine.quality < '80%' ? 'yellow' : machine.quality > '90%' ? 'green' : 'aqua' }">{{ machine.quality }}</td>
+        
+        
+        
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+<div class="s_gray"></div>
+</div>

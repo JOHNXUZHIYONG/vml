@@ -1,0 +1,51 @@
+<div class="container">
+<div class="header-container">
+    SHOPFLOOR
+</div>
+<p class="dashboard_name">SCHEDULED DOWNTIME</p>
+
+<!-- downtime-dashboard.component.html -->
+<table class="table-container">
+    <thead>
+      <tr class="date">
+        <th>Image</th>
+        <th>Machine</th>
+        <th>Downtime</th>
+        <!-- <th *ngFor="let date of dates; let i = index" [ngStyle]="{ 'color': i === 4 ? 'rgb(32, 147, 205)' : 'white' }" >
+          {{ date | date:'d' }}
+        </th> -->
+        <th *ngFor="let date of dates; let i = index" > {{ date | date:'d' }} </th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 使用*ngFor循环生成表格数据 -->
+      <tr *ngFor="let machine of machines">
+        <td><img class="image"   src="{{ machine.image }}" alt="Machine"></td>
+        <td>{{ machine.name }}</td>
+        <td>{{ machine.downtime }}</td>
+        <td *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"></td>
+        
+        
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="vertical-line"></div>
+  <div class="blue-circle"></div>
+  <div class="rectangle-container">
+    <div *ngFor="let position of bar_positions" class="green-rectangle" 
+    [style.left.px]="position.left" [style.top.px]="position.top" [style.width.px]="position.width">
+    {{ position.text }}</div>
+  </div>
+
+  <div class="rectangle-container">
+    <div *ngFor="let grayRectanglePosition of grayRectanglePositions" class="gray-rectangle" [style.left.px]="grayRectanglePosition.left" [style.top.px]="grayRectanglePosition.top">
+      <!-- 灰色半透明长方形中的内容 -->
+    </div>
+  </div>
+
+</div>
+
+
+

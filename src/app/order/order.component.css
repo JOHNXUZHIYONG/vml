@@ -1,0 +1,157 @@
+.container{
+  width: auto;
+  height: 785px;
+  /* border: red 2px solid; */
+
+  position: relative;
+}
+
+
+  
+.t_container {
+
+    width: 1620px;
+    height: 600px;
+    /* border: red 2px solid; */
+    /* background-color: rgba(128, 128, 128, 0.2); */
+    
+    position: absolute;
+    left: 20px;
+    top: 120px;
+    
+    z-index: 2;
+    
+
+}
+
+/* 设置表格容器样式 */
+.table_container {
+    max-height: 280px; /* 设置最大高度，根据需要进行调整 */
+    width: 95%; /* 调整表格容器的宽度 */
+    /* border: red 2px solid; */
+    background-color: none;
+
+    
+   margin: 0px auto; /* 居中放置表格，可以根据需要调整 */
+   margin-top: 0px;
+
+   color: white; /* 字体颜色 */
+   font-size: 20px; /* 字体大小，根据需要进行调整 */
+   overflow-y: auto; /* 启用垂直滚动条 */
+   
+  }
+  
+  /* 表格样式 */
+  table {
+    
+    width: auto;
+    height: 500px;
+    border-collapse: none;
+    background: transparent; /* 背景透明 */
+     /* 底部边框样式 */
+    border-spacing: 5px;
+    border-color: 1px solid aqua;
+    
+  }
+  
+  /* 表头样式 */
+  th {
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid white; 
+    border-bottom: none; /* 底部边框样式 */
+    border-left: none; /* 移除左边框 */
+    border-right: none; /* 移除右边框 */
+    border-top: none; /* 移除顶部边框 */
+    
+  }
+  
+  /* 表格行样式 */
+  tr { height: 10px;
+
+    
+  }
+
+
+/* 设置偶数行的前三列的灰色背景 */
+table tr:nth-child(even) td:nth-child(-n+3) {
+    background-color: rgba(204, 196, 196, 0.3); /* 灰色背景色 */
+  }
+  
+/* 设置表格的第四列（除表头）的灰色背景 */
+table td:nth-child(4) {
+    background-color: rgba(215, 233, 214, 0.4); /* 灰色背景色 */
+    border-radius: 10px;
+  }
+
+  table th:nth-child(5) {
+
+    text-align: center;
+  }
+
+  
+  /* 单元格样式 */
+  td {
+    width: 21%;
+    border: 1px solid aqua;
+
+    margin: 5px;
+    padding: 1px;
+   
+    text-align: center; /* 文字靠左 */
+    color: white;
+    
+  }
+  /* 第一列样式 */
+td:last-child {
+    width: 50px; /* 设置第一列宽度为200px */
+    border: none;
+    background-color: transparent;
+
+    font-size: 18px;
+    text-align: center; /* 文字靠左 */
+    color: white;
+   
+    
+}
+
+
+  
+  .image {
+    width: 400px; /* 设置图像的宽度 */
+    height: auto; /* 设置图像的高度 */
+
+    position: absolute;
+    top: 690px; /* 设置图像距离容器顶部的距离 */
+    left: 650px; /* 设置图像距离容器左侧的距离 */
+   
+}
+
+
+
+/* .gray-rectangle {
+  width: 750px;
+  height: 580px;
+  border: red 2px solid;
+  background-color: rgba(128, 128, 128, 0.2);
+  
+  position: absolute;
+  left: 80px;
+  top: 160px;
+  z-index: 2;
+
+} */
+
+.circle {
+  width: 10px; /* 圆的宽度 */
+  height: 10px; /* 圆的高度 */
+
+  background-color: #3498db; /* 背景颜色 */
+  border-radius: 50%; /* 使元素呈现为圆形 */
+  margin: none; /* 居中显示 */
+  position: absolute;
+  right: 1px;
+}
+
+

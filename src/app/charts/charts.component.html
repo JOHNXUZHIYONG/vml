@@ -1,0 +1,59 @@
+<p>charts works!</p>
+<div>
+  <h1>Orders Dashboard</h1>
+  <div>
+    <label>
+      <input type="checkbox" [(ngModel)]="showPieChart" /> Show Pie Chart
+    </label>
+    <label>
+      <input type="checkbox" [(ngModel)]="showBarChart" /> Show Bar Chart
+    </label>
+    <label>
+      <input type="checkbox" [(ngModel)]="showLineChart" /> Show Line Chart
+    </label>
+  </div>
+  <div class="chart-container">
+    <div *ngIf="showPieChart" class="chart">
+      <!-- Add your pie chart component here -->
+      <ngx-charts-pie-chart
+        [view]="[500, 300]"
+        
+        [results]="pieChartData"
+        [legend]="pieShowLegend"
+        
+      ></ngx-charts-pie-chart>
+
+      <p>Pie Chart goes here</p>
+    </div>
+    <div *ngIf="showBarChart" class="chart">
+      <ngx-charts-bar-vertical
+        [view]="[500, 300]"
+        [results]="barChartData"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+      >
+      </ngx-charts-bar-vertical>
+      <p>Bar Chart goes here</p>
+    </div>
+    <div *ngIf="showLineChart" class="chart">
+      <ngx-charts-line-chart
+        [view]="[500, 300]"
+        
+        [results]="lineChartData"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+      ></ngx-charts-line-chart>
+      <p>Line Chart goes here</p>
+    </div>
+  </div>
+</div>

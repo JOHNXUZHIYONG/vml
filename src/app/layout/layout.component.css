@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+
+  .background-container {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(5, 73, 82); /* 或者您希望的颜色 */
+    width: 100%; /* 使容器充满整个页面宽度 */
+    height: 100%; /* 使容器充满整个视口高度 */
+    position: fixed; /* 使用固定定位 */
+    top: 0; /* 距离视口顶部距离为0 */
+    left: 0; /* 距离视口左侧距离为0 */
+    
+  }
+
+  .bod {
+
+    width: auto;
+    height: 600px;
+    border: red 2px solid;
+
+    display: flex;
+    flex-direction: column; /* 垂直布局 */
+    justify-content: center; /* 垂直居中 */
+    align-items: center; /* 居中 */
+ 
+    /* 帮助子元素相对这个父元素定位 */
+    position: relative;
+
+    /* 主体的通用设置 */
+    font-family: Arial, sans-serif;
+
+  }
+

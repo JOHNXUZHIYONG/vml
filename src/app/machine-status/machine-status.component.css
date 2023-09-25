@@ -1,0 +1,69 @@
+.container{
+  width: auto;
+  height: 785px;
+  /* border: red 2px solid; */
+
+  position: relative;
+}
+
+
+.hpl_image {
+    
+    width: 1100px; /* 图像宽度，根据需要进行调整 */
+    height: auto; /* 高度自适应，保持宽高比 */
+    /* border: red 2px solid; */
+
+    position: absolute; /* 使用固定定位 */
+    top: 100px; /* 距离页面顶部的距离，根据需要进行调整 */
+    right: 250px; /* 距离页面右侧的距离，根据需要进行调整 */
+
+    z-index: 10; /* 图层叠加顺序，根据需要进行调整 */
+  }
+
+  .traffic-lights-container {
+    
+    width: 1000px; /* 设置容器的宽度 */
+    height: 600px; /* 设置容器的高度 */
+    /* border: red 2px solid; */
+
+    left: 400px;
+    
+
+    position: relative;
+    z-index: 12;
+  }
+  
+  .traffic-light {
+    width: 50px; /* 设置灯的宽度 */
+    height: 80px; /* 设置灯的高度 */
+    /* border: red 2px solid; */
+
+    position: absolute;
+    left: 0px;
+
+    z-index: 12; /* 添加边框样式，可选 */
+  }
+  
+  .light-label {
+    position: absolute;
+    top: -30px; /* 调整标签在灯的上方的垂直位置 */
+    left: -55px; /* 如果需要水平调整，请更改left值 */
+    background-color: black; /* 设置标签背景颜色 */
+    padding: 2px 4px; /* 调整标签的内边距 */
+    font-size: 16px; /* 设置字体大小 */
+    font-weight: bold; /* 设置字体加粗 */
+    color: white;
+    width: 150px;
+    z-index: 11;
+    text-align: center;
+  }
+  
+  .hpl_name {
+
+    position: absolute; /* 或者 position: relative; */
+    bottom: 40px; /* 根据需要进行调整 */
+    left: 20px; /* 根据需要进行调整 */
+
+    color: white;
+    font-size: 30px;
+  }

@@ -1,0 +1,85 @@
+<div class="container">
+<div class="header-container">
+    ENTERPRISE
+</div>
+<p class="dashboard_name">ORDER TRACKING</p>
+
+
+<div class="t_container">
+    <!-- <h1 class="title">MACHINE HEALTH BREAKDOWN</h1> -->
+    <table class="table_container">
+      <thead>
+        <tr class="table">
+          <th>SALES ORDER NO.</th>
+          <th>CUSTOMER NAME</th>
+          <th>QUANTITY</th>
+          <th>LAST UPDATED</th>
+          <th>STATUS</th>
+  
+          
+        </tr>
+      </thead>
+      <tbody>
+        
+        <!-- 使用*ngFor循环生成表格数据 -->
+        <tr *ngFor="let order of sale_orders">
+          
+          <!-- <td>{{ machine.name }}</td>
+          <td [ngStyle]="{ 'color': machine.oee < '80%' ? 'yellow' : machine.oee > '90%' ? 'green' : 'aqua' }">{{ machine.oee }}</td>
+          <td [ngStyle]="{ 'color': machine.availability < '80%'? 'yellow' : machine.availability > '90%' ? 'green' : 'aqua' }">{{ machine.availability }}</td>
+          <td [ngStyle]="{ 'color': machine.performance < '80%' ? 'yellow' : machine.performance > '90%' ? 'green' : 'aqua' }">{{ machine.performance }}</td>
+          <td [ngStyle]="{ 'color': machine.quality < '80%' ? 'yellow' : machine.quality > '90%' ? 'green' : 'aqua' }">{{ machine.quality }}</td>
+           -->
+          <td>{{order.sale_order}}</td>
+          <td>{{order.customer_name}}</td>
+          <td>{{order.quantity}}</td>
+          <td>{{order.time}}</td>
+          <td [ngStyle]="{ 'color': order.status < '80%' ? 'green' : order.status > '90%' ? 'green' : 'aqua' }">{{order.status}}</td>
+          <!-- <td class="circle" [ngStyle]="{ 'color': order.status < '80%' ? 'yellow' : order.status > '90%' ? 'green' : 'aqua'}"></td> -->
+          
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table_container">
+        <thead>
+          <tr >
+            <th>WORK ORDER NO.</th>
+            <th>PROCESS</th>
+            <th>PRODUCT</th>
+            <th>LAST UPDATED</th>
+            <th></th>
+    
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+          <!-- 使用*ngFor循环生成表格数据 -->
+          <tr *ngFor="let order of work_orders">
+            
+            <!-- <td>{{ machine.name }}</td>
+            <td [ngStyle]="{ 'color': machine.oee < '80%' ? 'yellow' : machine.oee > '90%' ? 'green' : 'aqua' }">{{ machine.oee }}</td>
+            <td [ngStyle]="{ 'color': machine.availability < '80%'? 'yellow' : machine.availability > '90%' ? 'green' : 'aqua' }">{{ machine.availability }}</td>
+            <td [ngStyle]="{ 'color': machine.performance < '80%' ? 'yellow' : machine.performance > '90%' ? 'green' : 'aqua' }">{{ machine.performance }}</td>
+            <td [ngStyle]="{ 'color': machine.quality < '80%' ? 'yellow' : machine.quality > '90%' ? 'green' : 'aqua' }">{{ machine.quality }}</td>
+             -->
+            <td>{{order.work_order}}</td>
+            <td>{{order.process}}</td>
+            <td>{{order.product}}</td>
+            <td>{{order.time}}</td>
+            <td [ngStyle]="{ 'color': order.status < '80%' ? 'green' : order.status > '90%' ? 'green' : 'aqua' }">{{order.status}}</td>
+ 
+            
+          </tr>
+        </tbody>
+      </table>
+    
+  </div>
+
+  <div>
+    <img class="image" src="../../assets/image/process.png" alt="Process image">
+  </div>
+  
+  <!-- <div class="s_gray"></div> -->
+</div>
