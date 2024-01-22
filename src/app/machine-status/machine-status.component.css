@@ -7,18 +7,7 @@
 }
 
 
-.hpl_image {
-    
-    width: 1100px; /* 图像宽度，根据需要进行调整 */
-    height: auto; /* 高度自适应，保持宽高比 */
-    /* border: red 2px solid; */
 
-    position: absolute; /* 使用固定定位 */
-    top: 100px; /* 距离页面顶部的距离，根据需要进行调整 */
-    right: 250px; /* 距离页面右侧的距离，根据需要进行调整 */
-
-    z-index: 10; /* 图层叠加顺序，根据需要进行调整 */
-  }
 
   .traffic-lights-container {
     
@@ -31,6 +20,19 @@
 
     position: relative;
     z-index: 12;
+  }
+
+  .hpl_image {
+    
+    width: 1100px; /* 图像宽度，根据需要进行调整 */
+    height: auto; /* 高度自适应，保持宽高比 */
+    /* border: red 2px solid; */
+
+    position: absolute; /* 使用固定定位 */
+    top: 50px; /* 距离页面顶部的距离，根据需要进行调整 */
+    left: -40px; /* 距离页面右侧的距离，根据需要进行调整 */
+
+    z-index: 10; /* 图层叠加顺序，根据需要进行调整 */
   }
   
   .traffic-light {
@@ -67,3 +69,10 @@
     color: white;
     font-size: 30px;
   }
+
+  .haha{position: absolute; /* 或者 position: relative; */
+    bottom: 40px; /* 根据需要进行调整 */
+    left: 20px; /* 根据需要进行调整 */
+    
+    color: red;
+    font-size: 30px;}

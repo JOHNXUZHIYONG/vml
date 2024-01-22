@@ -12,7 +12,7 @@
     max-height: 400px; /* 设置最大高度，根据需要进行调整 */
     width: 80%; /* 调整表格容器的宽度 */
     background-color: none;
-    /* border: red 2px solid; */
+    border: red 2px solid;
     
    
    overflow-y: auto; /* 启用垂直滚动条 */
@@ -27,7 +27,7 @@
   /* 表格样式 */
   table {
     
-    width: auto;
+    width: 1000px;
     height: 200px;
     /* border: red 2px solid; */
     border-collapse: collapse;
@@ -97,7 +97,7 @@ th:nth-child(n+4):nth-child(-n+13) {
   background-color: rgb(32, 147, 205); /* 竖线的颜色 */
 
   position: absolute; /* 使竖线脱离文档流，可以放在指定位置 */
-  left: 984px; /* 竖线距离左侧的位置，可以根据需要调整 */
+  left: 57.5%; /* 竖线距离左侧的位置，可以根据需要调整 */
   top: 160px; /* 竖线距离顶部的位置，可以根据需要调整 */
 }
 
@@ -109,13 +109,17 @@ th:nth-child(n+4):nth-child(-n+13) {
   border: 2px solid rgb(32, 147, 205);
   
   position: absolute; /* 使圆圈脱离文档流，可以放在指定位置 */
-  left: 970px; /* 圆圈距离左侧的位置，可以根据需要调整 */
+  left: 56.8%; /* 圆圈距离左侧的位置，可以根据需要调整 */
   top: 132px; /* 圆圈距离顶部的位置，可以根据需要调整 */
   
   z-index: 6;
   
 }
 
+/* .rectangle-container {
+
+  position: relative;
+} */
 
 .green-rectangle {
   

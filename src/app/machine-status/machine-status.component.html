@@ -3,21 +3,27 @@
     SHOPFLOOR
 </div>
 <p class="dashboard_name">RESOURCE TRACKING</p>
-<img src="../../assets/image/hpl.png" alt="hpl_image" class="hpl_image">
+
 
 
   <div class="traffic-lights-container">
+    <img src="../../assets/image/hpl.png" alt="hpl_image" class="hpl_image">
     <div *ngFor="let light of lights" class="traffic-light" [style.top.px]="light.top" [style.left.px]="light.left">
         <div class="light-label" >{{light.label}}</div>
         <img *ngIf="light.status === 'red'" src="../../assets/image/Red_status.png" alt="Red Light">
-      <img *ngIf="light.status === 'yellow'" src="../../assets/image/Grey_status.png" alt="Gray Light">
-      <img *ngIf="light.status === 'green'" src="../../assets/image/Green status.png" alt="Green Light">
+        <img *ngIf="light.status === 'yellow'" src="../../assets/image/Grey_status.png" alt="Gray Light">
+        <img *ngIf="light.status === 'green'" src="../../assets/image/Green status.png" alt="Green Light">
       
     </div>
   </div>
   
-
+  <div *ngIf="data" class="haha">
+    <h2>time: {{ data[0].time }}</h2>
+    <h2> prog_name: {{ data[0].prog_name }}</h2>
+    <pre></pre>
+  </div>
 <h1 class="hpl_name">Next Generation Hyper-Personalisation Line 1</h1>
+
 
 </div>
 

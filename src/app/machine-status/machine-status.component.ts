@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DataService } from '../data.service';
+import { interval, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-machine-status',
@@ -6,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./machine-status.component.css']
 })
 export class MachineStatusComponent {
-
+//static mock data
   lights: { status: string, top: number, left: number, label: string }[] = [
     { status: 'green', top: 40, left: 250, label: 'Powder filling' },
     { status: 'yellow', top: 70, left: 570, label: 'Liquid filling' },
@@ -17,8 +19,46 @@ export class MachineStatusComponent {
     { status: 'green', top: 440, left: 700, label: 'Tote filling and transfer' }
   ];
   
+  
+//http to get real data
+  data: any;
+
+  constructor(private dataService: DataService) { }
+
+  ngOnInit() {
+    // 初始获取一次数据
+    this.getData();
+
+    // 每秒刷新一次数据
+    interval(1000).pipe(
+      switchMap(() => this.dataService.getData())
+    ).subscribe(
+      (result) => {
+        this.data = result;
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
+  }
+
+  getData() {
+    this.dataService.getData().subscribe(
+      (result) => {
+        this.data = result;
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
+  }
 
 
+
+
+
+
+//just for future use
   toggleTrafficLights() {
     for (let i = 0; i < this.lights.length; i++) {
       switch (this.lights[i].status) {

@@ -11,6 +11,7 @@ import { DowntimeComponent } from './downtime/downtime.component';
 import { OrderComponent } from './order/order.component';
 import { OeeComponent } from './oee/oee.component';
 import { LayoutComponent } from './layout/layout.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LayoutComponent } from './layout/layout.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    HttpClientModule,
 
   ],
   providers: [],
