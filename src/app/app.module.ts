@@ -12,6 +12,9 @@ import { OrderComponent } from './order/order.component';
 import { OeeComponent } from './oee/oee.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HaasComponent } from './haas/haas.component';
+import { Lt65Component } from './lt65/lt65.component';
+import { Ntx500Component } from './ntx500/ntx500.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
     DowntimeComponent,
     OrderComponent,
     OeeComponent,
-    LayoutComponent
+    LayoutComponent,
+    HaasComponent,
+    Lt65Component,
+    Ntx500Component
   ],
   imports: [
     BrowserModule,

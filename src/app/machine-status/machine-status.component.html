@@ -1,13 +1,75 @@
 <div class="container">
 <div class="header-container">
-    SHOPFLOOR
+    DMG MORI
 </div>
 <p class="dashboard_name">RESOURCE TRACKING</p>
+<div class="machines">
+  
+    <div class="rounded-rectangle">
+      <img src="../../assets/image/NTX500.webp" alt="NTX500" class="NTX500 pictures">
+      <p class="machine_name">NTX500</p>
+      <table class="table">
+        <tr>
+            <td>Program</td>
+            <td>Row 1, Cell 2</td>
+        </tr>
+        <tr>
+            <td>Machine Status</td>
+            <td>Row 2, Cell 2</td>
+        </tr>
+        <tr>
+            <td>Complete No.</td>
+            <td>Row 3, Cell 2</td>
+        </tr>
+    </table>
+    </div>
+
+    
+      <div class="rounded-rectangle">
+        <img src="../../assets/image/LT65.webp" alt="LT65" class="LT65 pictures">
+        <p class="machine_name">LT65</p>
+        <table class="table">
+          <tr>
+              <td>Program</td>
+              <td>Row 1, Cell 2</td>
+          </tr>
+          <tr>
+              <td>Machine Status</td>
+              <td>Row 2, Cell 2</td>
+          </tr>
+          <tr>
+              <td>Complete No.</td>
+              <td>Row 3, Cell 2</td>
+          </tr>
+      </table>
+      </div>
+
+  
+        <div class="rounded-rectangle">
+          <img src="../../assets/image/HAAS.png" alt="HAAS" class="HAAS pictures">
+          <p class="machine_name">HAAS</p>
+          <table class="table">
+            <tr>
+                <td>Program</td>
+                <td>{{data[0].prog_num}}</td>
+            </tr>
+            <tr>
+                <td>Machine Status</td>
+                <td>Row 2, Cell 2</td>
+            </tr>
+            <tr>
+                <td>Complete No.</td>
+                <td>Row 3, Cell 2</td>
+            </tr>
+        </table>
+        </div>
+      
 
 
+  </div>
 
   <div class="traffic-lights-container">
-    <img src="../../assets/image/hpl.png" alt="hpl_image" class="hpl_image">
+
     <div *ngFor="let light of lights" class="traffic-light" [style.top.px]="light.top" [style.left.px]="light.left">
         <div class="light-label" >{{light.label}}</div>
         <img *ngIf="light.status === 'red'" src="../../assets/image/Red_status.png" alt="Red Light">
@@ -20,9 +82,9 @@
   <div *ngIf="data" class="haha">
     <h2>time: {{ data[0].time }}</h2>
     <h2> prog_name: {{ data[0].prog_name }}</h2>
-    <pre></pre>
+    
   </div>
-<h1 class="hpl_name">Next Generation Hyper-Personalisation Line 1</h1>
+<!-- <h1 class="hpl_name">Next Generation Hyper-Personalisation Line 1</h1> -->
 
 
 </div>
