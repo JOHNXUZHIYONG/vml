@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+import { ChartData, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-charts',
@@ -9,87 +10,69 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 })
 export class ChartsComponent {
 
-  showPieChart = true;
-  showBarChart = true;
-  showLineChart = true;
 
-  orders: any[] = [];
-
-  constructor(private dataService: DataService) {}
-
-  ngOnInit(): void {
-    this.orders = this.dataService.getOrders();
-  }
-
-  view: number[] = [700, 400]; // 图表的尺寸
-  barChartData: any[] = [
-    // 图表数据
-    {
-      name: 'Product 1',
-      value: 25,
+  salesDataBar: ChartData<'bar'> = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    datasets: [
+      { label: 'Mobiles', data: [1000, 1200, 1050, 2000, 500] },
+      { label: 'Laptop', data: [200, 100, 400, 50, 90] },
+      { label: 'AC', data: [500, 400, 350, 450, 650] },
+      { label: 'Headset', data: [1200, 1500, 1020, 1600, 900] },
+    ],
+  };
+  chartOptionsBar: ChartOptions = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Monthly Sales Data',
+      },
     },
-    {
-      name: 'Product 2',
-      value: 50,
-    },
-    {
-      name: 'Product 3',
-      value: 75,
-    },
-    {
-      name: 'Product 4',
-      value: 100,
-    },
-  ];
-  showXAxis: boolean = true; // 是否显示X轴
-  showYAxis: boolean = true; // 是否显示Y轴
-  showLegend: boolean = true; // 是否显示图例
-  showXAxisLabel: boolean = true; // 是否显示X轴标签
-  showYAxisLabel: boolean = true; // 是否显示Y轴标签
-  xAxisLabel: string = 'Category'; // X轴标签
-  yAxisLabel: string = 'Value'; // Y轴标签
-
-
-
-  lineChartData: any[] = [
-    // 折线图数据
-    {
-      name: 'Series 1',
-      series: [
-        { name: 'Jan', value: 10 },
-        { name: 'Feb', value: 15 },
-        { name: 'Mar', value: 25 },
-        { name: 'Apr', value: 30 },
-        { name: 'May', value: 20 },
-      ],
-    },
-    {
-      name: 'Series 2',
-      series: [
-        { name: 'Jan', value: 5 },
-        { name: 'Feb', value: 8 },
-        { name: 'Mar', value: 12 },
-        { name: 'Apr', value: 18 },
-        { name: 'May', value: 25 },
-      ],
-    },
-  ];
-  lineColorScheme = {
-    domain: ['#000000', '#E44D25'], // 可以设置不同的颜色方案
   };
 
-  pieChartData: any[] = [
-    // 饼图数据
-    { name: 'Category 1', value: 25 },
-    { name: 'Category 2', value: 50 },
-    { name: 'Category 3', value: 75 },
-    { name: 'Category 4', value: 100 },
-  ];
-  pieColorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5'],
-  };
-  showLabels: boolean = true; // 是否显示扇区标签
-  pieShowLegend: boolean = true; // 是否显示图例
-  legendPosition: string = 'right'; // 图例的位置（'right' | 'below' | 'above'）
 
+
+
+  
+
+  salesDataLine: ChartData<'line'> = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    
+    datasets: [
+      { label: 'Mobiles', data: [1000, 1200, 1050, 2000, 500], tension: 0.5, borderColor: "green", backgroundColor:"lightgreen" },
+      { label: 'Laptop', data: [200, 100, 400, 50, 90], tension: 0.5 },
+      { label: 'AC', data: [500, 400, 350, 450, 650], tension: 0.5 },
+      { label: 'Headset', data: [1200, 1500, 1020, 1600, 900], tension: 0.5 },
+    ],
+    
+  };
+
+
+chartOptionsLine: ChartOptions = {
+  responsive: true,
+  maintainAspectRatio: false, // 禁用纵横比维持
+    aspectRatio: 2, // 设置宽高比例，只在 maintainAspectRatio 为 false 时生效
+    
+  plugins: {
+    title: {
+      display: true,
+      text: 'Monthly Sales Data',
+      // color: "red" 
+      
+    },
+    legend: {
+      // display: false, // 设置为 false 取消图例
+      position: "bottom"
+    },
+    tooltip: {
+      mode: 'index',
+      intersect: false,
+    },
+    
+  },
+};
 }
+
+
+
+

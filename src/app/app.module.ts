@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HaasComponent } from './haas/haas.component';
 import { Lt65Component } from './lt65/lt65.component';
 import { Ntx500Component } from './ntx500/ntx500.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { Ntx500Component } from './ntx500/ntx500.component';
     FormsModule,
     NgxChartsModule,
     HttpClientModule,
+    NgChartsModule,
 
   ],
   providers: [],

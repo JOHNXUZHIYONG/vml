@@ -139,3 +139,10 @@
     
     color: red;
     font-size: 30px;}
+
+    app-chart {
+      position: absolute; /* 设置绝对定位，以便相对于其父元素进行定位 */
+      z-index: 1000; /* 设置 z-index，可以根据需要调整具体的值 */
+      /* 其他样式属性 */
+      border: red;
+    }

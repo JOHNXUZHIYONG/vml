@@ -7,12 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
 
-  private apiUrl = 'http://localhost:1880/HAAS'; // 替换为你的API URL
+  private apiUrl = 'http://localhost:1880/HAAS';
+  private haasPowermeterUrl = 'http://localhost:1880/HAAS_powermeter'; // 替换为你的API URL
 
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
+  }
+
+  getHAASPowermeterData(): Observable<any> {
+    return this.http.get<any>(this.haasPowermeterUrl);
   }
 
   private orders = [

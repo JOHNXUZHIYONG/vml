@@ -1,7 +1,8 @@
 <div class="container">
-    <div class="header-container">
+    <div class="header-container" routerLink="/">
         DMG MORI
     </div>
+
     <p class="dashboard_name">HAAS VF-2-SE</p>
     <div class="machines">
 
@@ -32,8 +33,7 @@
                     <th>Unit</th>
                 </tr>
                 <tr>
-                    <td>Current Tool Number
-                    </td>
+                    <td>Current Tool Number</td>
                     <td>{{data[0].current_tool_number}}</td>
                     <td>m/min</td>
                 </tr>
@@ -45,7 +45,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Spindle Speed 
+                    <td>Spindle Speed
                     </td>
                     <td>{{data[0].spindle_speed}}</td>
                     <td>RPM
@@ -95,74 +95,32 @@
                     <td>{{data[0].prog_num}}</td>
                     <td></td>
                 </tr>
+                <tr>
+                    <td>LA</td>
+                    <td>{{haasPowermeterData[0].time}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>P_total</td>
+                    <td>{{haasPowermeterData[0].P_total}}</td>
+                    <td></td>
+                </tr>
 
             </table>
         </div>
 
         <div class="chart_container">
 
-                <!--                           
-                <div class="selection">
-                  <label>
-                    <input type="checkbox" [(ngModel)]="showPieChart" /> Show Pie Chart
-                  </label>
-                  <label>
-                    <input type="checkbox" [(ngModel)]="showBarChart" /> Show Bar Chart
-                  </label>
-                  <label>
-                    <input type="checkbox" [(ngModel)]="showLineChart" /> Show Line Chart
-                  </label>
-                </div> -->
-                 <p class="pie_chart_title chart_title">Machine Status Percentage</p>
-                  <div *ngIf="showPieChart" class="chart pie_chart">
-                    <!-- Add your pie chart component here -->
-                    <ngx-charts-pie-chart
-                      [view]="[300, 200]"
-                      
-                      [results]="pieChartData"
-                      [legend]="pieShowLegend"
-                      [customColors]="pieColorScheme"
-                      
-                      
-                     
-                      
-                    ></ngx-charts-pie-chart>
-              
-                    
-                  </div>
-                  <!-- <div *ngIf="showBarChart" class="chart bar_chart">
-                    <ngx-charts-bar-vertical
-                      [view]="[500, 300]"
-                      [results]="barChartData"
-                      [xAxis]="showXAxis"
-                      [yAxis]="showYAxis"
-                      [legend]="showLegend"
-                      [showXAxisLabel]="showXAxisLabel"
-                      [showYAxisLabel]="showYAxisLabel"
-                      [xAxisLabel]="xAxisLabel"
-                      [yAxisLabel]="yAxisLabel"
-                    >
-                    </ngx-charts-bar-vertical>
-                    <p>Bar Chart goes here</p>
-                  </div> -->
-                  <p class="line_chart_title chart_title">Spindle Speed</p>
-                  <div *ngIf="showLineChart" class="chart line_chart">
-                    <ngx-charts-line-chart
-                      [view]="[300, 200]"
-                      
-                      [results]="lineChartData"
-                      [xAxis]="showXAxis"
-                      [yAxis]="showYAxis"
-                      [legend]="showLegend"
-                      [showXAxisLabel]="showXAxisLabel"
-                      [showYAxisLabel]="showYAxisLabel"
-                      [xAxisLabel]="xAxisLabel"
-                      [yAxisLabel]="yAxisLabel"
-                    ></ngx-charts-line-chart>
-                    
-                  </div>
-               
-              
+
+            <p class="pie_chart_title chart_title">Machine Status Percentage</p>
+
+
+            <p class="line_chart_title chart_title">Spindle Speed</p>
+
+
+            <app-charts></app-charts>
+
+
 
         </div>
 
@@ -174,7 +132,3 @@
 
 
 </div>
-
-
-
-
