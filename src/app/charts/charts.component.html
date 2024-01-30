@@ -1,20 +1,19 @@
 
+<!-- chart.component.html -->
+<div class="chart">
+   <h2>{{ chartTitle }}</h2>
 
-<!-- <canvas baseChart 
-        [data]="salesDataBar" 
-        [type]="'bar'"
-        [options]="chartOptionsBar"
-      >
-      </canvas> -->
-     
-      <div class="haxi">
-     
-      <canvas
-   baseChart
-   [data]="salesDataLine"
-   [type]="'line'"
-   [options]="chartOptionsLine"
-   
->
-</canvas>
+   <ng-container *ngIf="chartType === 'line'">
+      <div>
+         <canvas baseChart [data]="dataLine" [type]="'line'" [options]="chartOptionsLine"></canvas>
+      </div>
+   </ng-container>
+
+   <ng-container *ngIf="chartType === 'bar'">
+      <div>
+         <canvas baseChart [data]="dataBar"  [type]="'bar'" [options]="chartOptionsBar"></canvas>
+      </div>
+   </ng-container>
+
+
 </div>

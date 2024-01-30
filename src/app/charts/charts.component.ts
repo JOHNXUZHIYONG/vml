@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DataService } from '../data.service';
 
 import { ChartData, ChartOptions } from 'chart.js';
@@ -8,42 +8,41 @@ import { ChartData, ChartOptions } from 'chart.js';
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css']
 })
-export class ChartsComponent {
+export class ChartsComponent implements OnChanges {
+  @Input() chartTitle: string = 'Line Chart'; // 折线图标题
+  @Input() chartData: any[] = []; // 折线图数据
+  @Input() chartType: 'line' | 'bar' = 'line';
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['chartData'] && this.chartData) {
+      // Assuming that your chartData has the same structure as the initial data
+      this.dataBar.datasets = this.chartData;
+      this.dataLine.datasets=this.chartData;
+    }
+  }
 
 
-  salesDataBar: ChartData<'bar'> = {
+  dataBar: ChartData<'bar'> = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-    datasets: [
-      { label: 'Mobiles', data: [1000, 1200, 1050, 2000, 500] },
-      { label: 'Laptop', data: [200, 100, 400, 50, 90] },
-      { label: 'AC', data: [500, 400, 350, 450, 650] },
-      { label: 'Headset', data: [1200, 1500, 1020, 1600, 900] },
-    ],
+    datasets: [],
   };
   chartOptionsBar: ChartOptions = {
     responsive: true,
+    
     plugins: {
       title: {
         display: true,
         text: 'Monthly Sales Data',
       },
     },
+    
   };
 
 
-
-
-  
-
-  salesDataLine: ChartData<'line'> = {
+  dataLine: ChartData<'line'> = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
     
-    datasets: [
-      { label: 'Mobiles', data: [1000, 1200, 1050, 2000, 500], tension: 0.5, borderColor: "green", backgroundColor:"lightgreen" },
-      { label: 'Laptop', data: [200, 100, 400, 50, 90], tension: 0.5 },
-      { label: 'AC', data: [500, 400, 350, 450, 650], tension: 0.5 },
-      { label: 'Headset', data: [1200, 1500, 1020, 1600, 900], tension: 0.5 },
-    ],
+    datasets: [],
     
   };
 
@@ -71,6 +70,8 @@ chartOptionsLine: ChartOptions = {
     
   },
 };
+
+
 }
 
 
