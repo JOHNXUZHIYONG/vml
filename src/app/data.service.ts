@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 export class DataService {
 
   private apiUrl = 'http://localhost:1880/HAAS';
-  private haasPowermeterUrl = 'http://localhost:1880/HAAS_powermeter'; // 替换为你的API URL
+  private haasPowermeterUrl = 'http://localhost:1880/HAAS_powermeter'; 
+  private LT65Url = 'http://localhost:1880/LT65';// 替换为你的API URL
 
   constructor(private http: HttpClient) { }
 
@@ -20,12 +21,19 @@ export class DataService {
     return this.http.get<any>(this.haasPowermeterUrl);
   }
 
+  getLT65Data(): Observable<any> {
+    return this.http.get<any>(this.LT65Url);
+  }
+
   getDefaultHAASPowermeterData(): any {
-    return [{"time": "12:00:00", "P_total": "p1", "number": "2"}];
+    return [{"time": "1/31/2024, 4:15:58 PM.599", "P_total": "0.4", "number": "2"},{"time": "1/31/2024, 4:15:58 PM.599", "P_total": "0.3", "number": "2"},
+    {"time": "1/31/2024, 4:15:58 PM.599", "P_total": "0.4", "number": "2"},{"time": "1/31/2024, 4:15:59 ", "P_total": "0.5", "number": "2"},{"time": "1/31/2024, 4:15:58 PM.599", "P_total": "0.4", "number": "2"},
+  ];
   }
 
   getDefaultHAASData(): any {
-    return [{"time": "12:00:00", "prog_num": "DMG001", "machine_status": "run", "complete_number": "1000", "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "total_tool_change": "5", "cool_level": "6"}];
+    return [{"time": "12:00:00", "prog_num": "DMG001", "machine_status": "run", "complete_number": "1000",
+     "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "total_tool_change": "5", "cool_level": "6"}];
   }
 
   private orders = [

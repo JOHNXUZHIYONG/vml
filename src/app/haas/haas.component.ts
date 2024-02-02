@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { catchError, interval, of, startWith, switchMap } from 'rxjs';
+import * as moment from 'moment';
 
+interface HaasPowermeterEntry {
+  time: string;
+  P_total: string;
+  // 其他可能的属性...
+}
 
 
 @Component({
@@ -10,28 +16,17 @@ import { catchError, interval, of, startWith, switchMap } from 'rxjs';
   styleUrls: ['./haas.component.css']
 })
 export class HaasComponent {
-  //static mock data
-  // lights: { status: string, top: number, left: number, label: string }[] = [
-  //   { status: 'green', top: 40, left: 250, label: 'Powder filling' },
-  //   { status: 'yellow', top: 70, left: 570, label: 'Liquid filling' },
-  //   { status: 'green', top: 300, left: 220, label: 'Label printer' },
-  //   { status: 'red', top: 330, left: 350, label: 'Pouch magazine' },
-  //   { status: 'green', top: 270, left: 680, label: 'Check weigher' },
-  //   { status: 'green', top: 200, left: 780, label: 'Pouch inspection' },
-  //   { status: 'green', top: 440, left: 700, label: 'Tote filling and transfer' }
-  // ];
-
 
   //http to get real data
   lineChartData: any[]=[
-    { label: 'Mobiles', data: [1000, 1200, 1050, 2000, 500], tension: 0.5, borderColor: "green", backgroundColor:"lightgreen" },
-    { label: 'Laptop', data: [200, 100, 400, 50, 90], tension: 0.5 },
-    { label: 'AC', data: [500, 400, 350, 450, 650], tension: 0.5 },
-    { label: 'Headset', data: [1200, 1500, 1020, 1600, 900], tension: 0.5 },
+    // { label: 'P_total', data: [1000, 1200, 1050, 2000, 5000] },
+
   ];
   data: any;
   orders: any[] = [];
   haasPowermeterData: any;
+  pTotalList: number[] = [];
+  pTotalTimeList: string[] = [];
 
   constructor(private dataService: DataService) { }
 
@@ -61,18 +56,50 @@ export class HaasComponent {
       switchMap(() => this.dataService.getHAASPowermeterData().pipe(
         catchError((error) => {
           console.error('Error fetching HAAS Powermeter data:', error);
+          throw error;  // 抛出错误，而不是返回默认值
           // 返回一个包含默认值的 Observable
-          return of(this.dataService.getDefaultHAASPowermeterData());
+          // return of(this.dataService.getDefaultHAASPowermeterData());
         })
       )),
       startWith(this.dataService.getDefaultHAASPowermeterData()) // 使用 startWith 发送默认值
     ).subscribe(
       (result) => {
-        this.haasPowermeterData = result;
-      }
-    );
-  }
+        if (result !== null) {
+          this.haasPowermeterData = result;
+    
+          // // 提取P_total的值用于pTotalList
+          this.pTotalList = this.haasPowermeterData.map((entry : HaasPowermeterEntry) => parseFloat(entry.P_total)).reverse();
+          console.log(this.pTotalList);
+          
+           // 使用 moment.js 解析并格式化时间字符串
+           this.pTotalTimeList = this.haasPowermeterData.map((entry: HaasPowermeterEntry) => {
+            const date = moment(entry.time, 'M/D/YYYY, h:mm:ss A.SSS');
+            if (date.isValid()) {
+              return date.format('HH:mm:ss'); // 格式化为24小时制的时分秒
+            } else {
+              return 'Invalid Date';
+            }
+          }).reverse();
 
+        
+          const chartData = [{
+            label: 'P_total',
+            data: this.pTotalList,
+            tension: 0.5,
+            borderColor: 'green',
+            backgroundColor: 'lightgreen',
+          }];
+    
+          // 仅在两个列表都有数据时更新 lineChartData
+          this.lineChartData = chartData;
+        }
+      },
+      (error) => {
+        // 在这里处理错误，可以根据实际需求进行处理，比如报错或者更新 UI 提示用户有错误发生
+        console.error('Error in HAAS Powermeter data subscription:', error);
+      }
+    );}
+    
   getData() {
     this.dataService.getData().subscribe(
       (result) => {
@@ -96,11 +123,20 @@ export class HaasComponent {
   }
 
 
+ 
 
 
 
-
-
+  //static mock data
+  // lights: { status: string, top: number, left: number, label: string }[] = [
+  //   { status: 'green', top: 40, left: 250, label: 'Powder filling' },
+  //   { status: 'yellow', top: 70, left: 570, label: 'Liquid filling' },
+  //   { status: 'green', top: 300, left: 220, label: 'Label printer' },
+  //   { status: 'red', top: 330, left: 350, label: 'Pouch magazine' },
+  //   { status: 'green', top: 270, left: 680, label: 'Check weigher' },
+  //   { status: 'green', top: 200, left: 780, label: 'Pouch inspection' },
+  //   { status: 'green', top: 440, left: 700, label: 'Tote filling and transfer' }
+  // ];
 
   //just for future use
   // toggleTrafficLights() {

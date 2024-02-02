@@ -29,22 +29,22 @@ export class Ntx500Component {
 
   ngOnInit() {
     // 初始获取一次数据
-    this.getData();
+    // this.getData();
     // this.getHAASPowermeterData();
     this.orders = this.dataService.getOrders();
 
 
     // 每秒刷新一次数据
-    interval(1000).pipe(
-      switchMap(() => this.dataService.getData())
-    ).subscribe(
-      (result) => {
-        this.data = result;
-      },
-      (error) => {
-        console.error('Error fetching data:', error);
-      }
-    );
+    // interval(1000).pipe(
+    //   switchMap(() => this.dataService.getData())
+    // ).subscribe(
+    //   (result) => {
+    //     this.data = result;
+    //   },
+    //   (error) => {
+    //     console.error('Error fetching data:', error);
+    //   }
+    // );
 
     // interval(1000).pipe(
     //   switchMap(() => this.dataService.getHAASPowermeterData())
@@ -58,16 +58,16 @@ export class Ntx500Component {
     // );
   }
 
-  getData() {
-    this.dataService.getData().subscribe(
-      (result) => {
-        this.data = result;
-      },
-      (error) => {
-        console.error('Error fetching data:', error);
-      }
-    );
-  }
+  // getData() {
+  //   this.dataService.getData().subscribe(
+  //     (result) => {
+  //       this.data = result;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   );
+  // }
 
   // getHAASPowermeterData() {
   //   this.dataService.getHAASPowermeterData().subscribe(

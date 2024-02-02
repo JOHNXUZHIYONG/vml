@@ -11,15 +11,15 @@
             <table class="table">
                 <tr>
                     <td>Program</td>
-                    <td>{{data[0].prog_num}}</td>
+                    <td>{{data[0].prog_name}}</td>
                 </tr>
                 <tr>
                     <td>Machine Status</td>
-                    <td>{{data[0].machine_status}}</td>
+                    <td>{{data[0].run_state}}</td>
                 </tr>
                 <tr>
                     <td>Complete No.</td>
-                    <td>{{data[0].complete_number}}</td>
+                    <td>{{data[0].time}}</td>
                 </tr>
             </table>
         </div>
@@ -32,79 +32,70 @@
                     <th>Unit</th>
                 </tr>
                 <tr>
-                    <td>Current Tool Number
+                    <td>prog_name
                     </td>
-                    <td>{{data[0].current_tool_number}}</td>
+                    <td>{{data[0].prog_name}}</td>
                     <td>m/min</td>
                 </tr>
                 <tr>
-                    <td>Spindle Load
+                    <td>run_state
                     </td>
-                    <td>{{data[0].spindle_load}}</td>
+                    <td>{{data[0].run_state}}</td>
                     <td>mm/min
                     </td>
                 </tr>
                 <tr>
-                    <td>Spindle Speed 
+                    <td>abort_state 
                     </td>
-                    <td>{{data[0].spindle_speed}}</td>
+                    <td>{{data[0].abort_state}}</td>
                     <td>RPM
                     </td>
                 </tr>
                 <tr>
-                    <td>Total Tool Change
+                    <td>ops_mode
                     </td>
-                    <td>{{data[0].total_tool_change}}</td>
+                    <td>{{data[0].ops_mode}}</td>
                     <td>RPM
                     </td>
                 </tr>
                 <tr>
                     <td>Cool Level (D)
                     </td>
-                    <td>{{data[0].cool_level}}</td>
+                    <td>{{data[0].ops_mode}}</td>
                     <td>mm
                     </td>
                 </tr>
                 <tr>
                     <td>Tolerances</td>
-                    <td>{{data[0].prog_num}}</td>
+                    <td>{{data[0].ops_mode}}</td>
                     <td>mm
                     </td>
                 </tr>
                 <tr>
                     <td>Surface Finish
                     </td>
-                    <td>{{data[0].prog_num}}</td>
+                    <td>{{data[0].ops_mode}}</td>
                     <td>micrometres
                     </td>
                 </tr>
                 <tr>
                     <td>Tool Path Strategy
                     </td>
-                    <td>{{data[0].prog_num}}</td>
+                    <td>{{data[0].ops_mode}}</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Coolant
                     </td>
-                    <td>{{data[0].prog_num}}</td>
+                    <td>{{data[0].ops_mode}}</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Program</td>
-                    <td>{{data[0].prog_num}}</td>
+                    <td>{{data[0].ops_mode}}</td>
                     <td></td>
                 </tr>
-                <!-- <tr>
-                    <td>LA</td>
-                    <td>{{haasPowermeterData[0].la}}</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>LB</td>
-                    <td>{{haasPowermeterData[0].lb}}</td>
-                    <td></td>
-                </tr> -->
+
 
             </table>
         </div>
@@ -126,63 +117,18 @@
                  <p class="pie_chart_title chart_title">Machine Status Percentage</p>
                   <div *ngIf="showPieChart" class="chart pie_chart">
                     <!-- Add your pie chart component here -->
-                    <ngx-charts-pie-chart
-                      [view]="[300, 200]"
-                      
-                      [results]="pieChartData"
-                      [legend]="pieShowLegend"
-                      [customColors]="pieColorScheme"
-                      
-                      
-                     
-                      
-                    ></ngx-charts-pie-chart>
+
               
                     
                   </div>
-                  <!-- <div *ngIf="showBarChart" class="chart bar_chart">
-                    <ngx-charts-bar-vertical
-                      [view]="[500, 300]"
-                      [results]="barChartData"
-                      [xAxis]="showXAxis"
-                      [yAxis]="showYAxis"
-                      [legend]="showLegend"
-                      [showXAxisLabel]="showXAxisLabel"
-                      [showYAxisLabel]="showYAxisLabel"
-                      [xAxisLabel]="xAxisLabel"
-                      [yAxisLabel]="yAxisLabel"
-                    >
-                    </ngx-charts-bar-vertical>
-                    <p>Bar Chart goes here</p>
-                  </div> -->
-                  <p class="line_chart_title chart_title">Spindle Speed</p>
-                  <div *ngIf="showLineChart" class="chart line_chart">
-                    <ngx-charts-line-chart
-                      [view]="[300, 200]"
-                      
-                      [results]="lineChartData"
-                      [xAxis]="showXAxis"
-                      [yAxis]="showYAxis"
-                      [legend]="showLegend"
-                      [showXAxisLabel]="showXAxisLabel"
-                      [showYAxisLabel]="showYAxisLabel"
-                      [xAxisLabel]="xAxisLabel"
-                      [yAxisLabel]="yAxisLabel"
-                    ></ngx-charts-line-chart>
+              
                     
-                  </div>
+            
                
               
 
         </div>
-
-
-
     </div>
-
-
-
-
 </div>
 
 

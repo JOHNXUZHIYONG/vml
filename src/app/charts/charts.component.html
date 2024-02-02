@@ -5,13 +5,14 @@
 
    <ng-container *ngIf="chartType === 'line'">
       <div>
-         <canvas baseChart [data]="dataLine" [type]="'line'" [options]="chartOptionsLine"></canvas>
+         <canvas baseChart [data]="dataLine" [type]="'line'" [options]="chartOptionsLine" [labels]="chartLabel"></canvas>
       </div>
+
    </ng-container>
 
    <ng-container *ngIf="chartType === 'bar'">
       <div>
-         <canvas baseChart [data]="dataBar"  [type]="'bar'" [options]="chartOptionsBar"></canvas>
+         <canvas baseChart [data]="dataBar"  [type]="'bar'" [options]="chartOptionsBar" [labels]="chartLabel"></canvas>
       </div>
    </ng-container>
 

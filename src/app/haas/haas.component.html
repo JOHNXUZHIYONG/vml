@@ -111,24 +111,13 @@
 
         <div class="chart_container">
 
-
             <p class="pie_chart_title chart_title">Machine Status Percentage</p>
-            <app-charts [chartTitle]="'Line Chart'" [chartType]="'line'" [chartData]="lineChartData"></app-charts>
+            <app-charts [chartTitle]="'Line Chart'" [chartType]="'line'" [chartData]="lineChartData"
+                [chartLabel]="pTotalTimeList" [pTotalTimeList]="pTotalTimeList"></app-charts>
 
             <p class="line_chart_title chart_title">Spindle Speed</p>
-            <app-charts [chartTitle]="'Bar Chart'" [chartType]="'bar'" [chartData]="lineChartData"></app-charts>
-
-            
-
-
+            <app-charts [chartTitle]="'Bar Chart'" [chartType]="'bar'" [chartData]="lineChartData" [chartLabel]="pTotalTimeList"></app-charts>
 
         </div>
-
-
-
     </div>
-
-
-
-
 </div>
