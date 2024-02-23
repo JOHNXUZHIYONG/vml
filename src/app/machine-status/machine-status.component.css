@@ -25,6 +25,20 @@
   position: relative;
 }
 
+.lights{
+  width:40px;
+  height: 50px;
+
+  position: absolute;
+  /* 使用固定定位 */
+  top: 10%;
+  /* 距离页面顶部的距离，根据需要进行调整 */
+  left: 50%;
+  /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
+  transform: translate(-50%, -50%);
+  /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
+}
+
   .pictures{
     width: 250px; /* 设置容器的宽度 */
     height: 150px; /* 设置容器的高度 */
@@ -139,10 +153,3 @@
     
     color: red;
     font-size: 30px;}
-
-    app-chart {
-      position: absolute; /* 设置绝对定位，以便相对于其父元素进行定位 */
-      z-index: 1000; /* 设置 z-index，可以根据需要调整具体的值 */
-      /* 其他样式属性 */
-      border: red;
-    }

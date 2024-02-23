@@ -47,6 +47,11 @@
 
   
         <div routerLink="/haas" class="rounded-rectangle" >
+          <div class="lights">
+            <img class="light"   *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Green status.png" alt="Yellow Light">
+            <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Grey_status.png" alt="Yellow Light">
+            <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Grey_status.png" alt="Yellow Light">
+        </div>
           <img src="../../assets/image/HAAS.png" alt="HAAS" class="HAAS pictures">
           <p class="machine_name">HAAS</p>
           <table class="table">
@@ -87,10 +92,6 @@
 
 
 </div>
-
-
-
-
 
   <!-- <div class="traffic-light" style="top: 20px; left: 20px;">
     <img *ngIf="lights[0].status === 'red'" src="assets/red-light.png" alt="Red Light">

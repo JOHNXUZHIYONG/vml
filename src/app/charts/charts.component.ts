@@ -13,7 +13,7 @@ export class ChartsComponent implements OnChanges {
   @Input() chartData: any[] = []; // 折线图数据
   @Input() chartLabel: any[] = []; // 折线图数据
   @Input() chartType: 'line' | 'bar' = 'line';
-  @Input() pTotalTimeList: any[] = [];;
+  @Input() pTotalTimeList: any[] = [];
 
 // 在ngOnChanges中调用这个方法
 ngOnChanges(changes: SimpleChanges): void {
@@ -25,11 +25,12 @@ ngOnChanges(changes: SimpleChanges): void {
 
   dataBar: ChartData<'bar'> = {
 
-    labels: ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Part 5'],
+    // labels: ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Part 5'],
+    labels: [],
     datasets: [
       // { label: 'Stop', data: [1000, 1200, 1050, 2000, 500] },
-      { label: 'Part Prodction Time /s', data: [110, 100, 120, 100, 90],     borderColor: 'blue',
-      backgroundColor: 'aqua',},
+      // { label: 'Part Prodction Time /s', data: [110, 100, 120, 100, 90],     borderColor: 'blue',
+      // backgroundColor: 'aqua',},
       // { label: 'AC', data: [500, 400, 350, 450, 650] },
       // { label: 'Run', data: [1200, 1500, 1020, 1600, 900] },
     ],
@@ -137,8 +138,8 @@ chartOptionsLine: ChartOptions = {
 private updateChartData(): void {
   if (this.chartLabel && this.chartData) {
     // 假设chartData的结构与初始数据相同
-    // this.dataBar.datasets = this.chartData;
-    // this.dataBar.labels = this.chartLabel;
+    this.dataBar.datasets = this.chartData;
+    this.dataBar.labels = this.chartLabel;
     this.dataLine.datasets = this.chartData;
     this.dataLine.labels = this.chartLabel;
   }

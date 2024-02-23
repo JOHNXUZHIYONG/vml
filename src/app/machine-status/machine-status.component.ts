@@ -60,22 +60,22 @@ export class MachineStatusComponent {
 
 
 //just for future use
-  // toggleTrafficLights() {
-  //   for (let i = 0; i < this.lights.length; i++) {
-  //     switch (this.lights[i].status) {
-  //       case 'red':
-  //         this.lights[i].status = 'yellow';
-  //         break;
-  //       case 'yellow':c
-  //         this.lights[i].status = 'green';
-  //         break;
-  //       case 'green':
-  //         this.lights[i].status = 'red';
-  //         break;
-  //       default:
-  //         this.lights[i].status = 'green';
-  //     }
-  //   }
-  // }
+  toggleTrafficLights() {
+    for (let i = 0; i < this.lights.length; i++) {
+      switch (this.lights[i].status) {
+        case 'red':
+          this.lights[i].status = 'yellow';
+          break;
+        case 'yellow':
+          this.lights[i].status = 'green';
+          break;
+        case 'green':
+          this.lights[i].status = 'red';
+          break;
+        default:
+          this.lights[i].status = 'green';
+      }
+    }
+  }
 
 }
