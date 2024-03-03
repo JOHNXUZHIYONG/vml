@@ -4,13 +4,18 @@
     </div>
 
     <p class="dashboard_name">HAAS VF-2-SE</p>
+    <div class="prog_nums">
+        <img class="prog_num" *ngIf="data[0].prog_num === 101 && data[0].machine_status.toString() !== ' ALARM ON'" src="assets/image/Green status.png" alt="Default Light">
+        <img class="prog_num"   *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Grey_status.png" alt="Yellow Light">
+        <img class="prog_num"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Purple.png" alt="Yellow Light">
+    </div>
     <div class="machines">
 
         <div class="rounded-rectangle">
             <div class="lights">
-                <img class="light"   *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Green status.png" alt="Yellow Light">
-                <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Grey_status.png" alt="Yellow Light">
-                <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Grey_status.png" alt="Yellow Light">
+                <img class="light" *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON'" src="assets/image/Green status.png" alt="Default Light">
+                <img class="light"   *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Grey_status.png" alt="Yellow Light">
+                <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Purple.png" alt="Yellow Light">
             </div>
             <img src="../../assets/image/HAAS.png" alt="HAAS" class="HAAS pictures">
             <p class="machine_name">HAAS</p>
@@ -24,8 +29,8 @@
                     <td>{{data[0].machine_status}}</td>
                 </tr>
                 <tr>
-                    <td>Complete No.</td>
-                    <td>{{data[0].complete_number}}</td>
+                    <td>Cycle Time</td>
+                    <td>{{data[0].pre_cycle_time}}</td>
                 </tr>
             </table>
         </div>
@@ -33,22 +38,24 @@
 
             <!-- <p class="pie_chart_title chart_title">Machine Status Percentage</p> -->
             <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData"
-                [chartLabel]="pTotalTimeList" [pTotalTimeList]="pTotalTimeList"></app-charts>
+                [chartLabel]="pTotalTimeList" ></app-charts>
 
             <!-- <p class="line_chart_title chart_title">Spindle Speed</p> -->
             <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"></app-charts>
 
         </div>
-       
+       <!-- <div>{{data|json}}</div> -->
         <!-- <div>
             {{partTimeData | json}}
-        </div> -->
-        <!-- <div>{{partList|json}}</div>
+        </div>
+        <div>{{partTimeList|json}}</div>
+        <div>{{partList|json}}</div>
         <div>{{pTotalTimeList |json}}</div>
         <div>{{barChartData|json}}</div>
-        <div>{{lineChartData|json}}</div> -->
-        
-
+        <div>{{lineChartData|json}}</div>
+        <div>{{haasPowermeterData[1]|json}}</div>
+        <div>            {{partTimeData | json}}        </div>
+        <div>{{partList|json}}</div> -->
         
         
         <div class="rounded-rectangle ">
@@ -77,58 +84,37 @@
                     <td>RPM
                     </td>
                 </tr>
+               
                 <tr>
-                    <td>Total Tool Change
+                    <td>Coolant Status
                     </td>
-                    <td>{{data[0].total_tool_change}}</td>
-                    <td>RPM
-                    </td>
+                    <td>{{data[0].coolant_status}}</td>
+                    <td></td>
                 </tr>
+                
                 <tr>
-                    <td>Cool Level (D)
-                    </td>
-                    <td>{{data[0].cool_level}}</td>
-                    <td>mm
-                    </td>
-                </tr>
-                <tr>
-                    <td>Tolerances</td>
-                    <td>{{data[0].prog_num}}</td>
-                    <td>mm
-                    </td>
-                </tr>
-                <tr>
-                    <td>Surface Finish
-                    </td>
-                    <td>{{data[0].prog_num}}</td>
-                    <td>micrometres
-                    </td>
-                </tr>
-                <tr>
-                    <td>Tool Path Strategy
-                    </td>
-                    <td>{{data[0].prog_num}}</td>
+                    <td>X</td>
+                    <td>{{data[0].x}}</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Coolant
-                    </td>
-                    <td>{{data[0].prog_num}}</td>
+                    <td>Y</td>
+                    <td>{{data[0].y}}</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Program</td>
-                    <td>{{data[0].prog_num}}</td>
+                    <td>Z</td>
+                    <td>{{data[0].z}}</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>LA</td>
-                    <td>{{haasPowermeterData[0].time}}</td>
+                    <td>Part Count</td>
+                    <td>{{data[0].part_count}}</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>P_total</td>
-                    <td>{{haasPowermeterData[0].P_total}}</td>
+                    <td>Power Consumption (Last 1 Hour) </td>
+                    <td>{{haasPowermeterData[1]}}</td>
                     <td></td>
                 </tr>
 

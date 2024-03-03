@@ -31,11 +31,9 @@
     position: relative;
 }
 
-.lights{
-    width:40px;
+.lights {
+    width: 40px;
     height: 50px;
-    
-    
 
     position: absolute;
     /* 使用固定定位 */
@@ -47,7 +45,15 @@
     /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
 }
 
-.pictures, .p1 {
+.light {
+    max-width: 100%;
+    /* 图像最大宽度为容器宽度 */
+    max-height: 100%;
+    /* 图像最大高度为容器高度 */
+}
+
+.pictures,
+.p1 {
     width: 250px;
     /* 设置容器的宽度 */
     height: 150px;
@@ -64,6 +70,7 @@
     transform: translate(-50%, -50%);
     /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
 }
+
 .p2 {
     position: absolute;
     /* 使用固定定位 */
@@ -132,21 +139,6 @@ th {
 }
 
 
-.table_container {
-
-    width: 300px;
-    /* 定义矩形宽度 */
-    height: 500px;
-    /* 定义矩形高度 */
-    /* background-color: #204339; */
-    /* 定义矩形背景颜色 */
-    border-radius: 30px;
-    /* 定义圆角半径 */
-    /* border: red 2px solid; */
-
-    position: relative;
-
-}
 
 .p_table {
     width: 280px;
@@ -163,20 +155,20 @@ th {
 .chart_container {
 
     width: 600px;
-    
+
     height: 550px;
-    
+
     background-color: #204339;
-    
+
     border-radius: 30px;
-   
+
     /* border: red 2px solid;  */
 
     position: relative;
 
 }
 
-.pie_chart_title{
+.pie_chart_title {
     color: #e4f5f5;
     position: absolute;
     top: 0%;
@@ -184,7 +176,7 @@ th {
     transform: translate(-50%, -50%);
 }
 
-.line_chart_title{
+.line_chart_title {
     color: #e4f5f5;
     position: absolute;
     top: 48%;
@@ -197,103 +189,31 @@ th {
 .chart {
     /* width: 80%;
     height: 40%; */
-    
+
     margin-right: 20px;
     margin-bottom: 20px;
-    
-    
 
-  }
 
-.bar_chart{
-   width: 85%;
-    
-    
+
+}
+
+.bar_chart {
+    width: 85%;
+
+
     position: absolute;
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+
 }
 
-.line_chart{
+.line_chart {
     /* border: rgb(11, 27, 176) 2px solid;  */
     width: 85%;
     position: absolute;
     top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+
 }
-
-
-
-.traffic-lights-container {
-
-    width: 1000px;
-    /* 设置容器的宽度 */
-    height: 600px;
-    /* 设置容器的高度 */
-    border: red 2px solid;
-
-    left: 400px;
-
-
-    position: relative;
-    z-index: 12;
-}
-
-
-
-.traffic-light {
-    width: 50px;
-    /* 设置灯的宽度 */
-    height: 80px;
-    /* 设置灯的高度 */
-    /* border: red 2px solid; */
-
-    position: absolute;
-    left: 0px;
-
-    z-index: 12;
-    /* 添加边框样式，可选 */
-}
-
-.light-label {
-    position: absolute;
-    top: -30px;
-    /* 调整标签在灯的上方的垂直位置 */
-    left: -55px;
-    /* 如果需要水平调整，请更改left值 */
-    background-color: black;
-    /* 设置标签背景颜色 */
-    padding: 2px 4px;
-    /* 调整标签的内边距 */
-    font-size: 16px;
-    /* 设置字体大小 */
-    font-weight: bold;
-    /* 设置字体加粗 */
-    color: white;
-    width: 150px;
-    z-index: 11;
-    text-align: center;
-}
-
-
-
-.haha {
-    position: absolute;
-    /* 或者 position: relative; */
-    bottom: 40px;
-    /* 根据需要进行调整 */
-    left: 20px;
-    /* 根据需要进行调整 */
-
-    color: red;
-    font-size: 30px;
-}
-
-
-
-
-

@@ -48,9 +48,10 @@
   
         <div routerLink="/haas" class="rounded-rectangle" >
           <div class="lights">
-            <img class="light"   *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Green status.png" alt="Yellow Light">
-            <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Grey_status.png" alt="Yellow Light">
-            <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Grey_status.png" alt="Yellow Light">
+            <img class="light" *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON'" src="assets/image/Green status.png" alt="Default Light">
+            <img class="light"   *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Grey_status.png" alt="Yellow Light">
+            <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Purple.png" alt="Yellow Light">
+            <!-- <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Grey_status.png" alt="Yellow Light"> -->
         </div>
           <img src="../../assets/image/HAAS.png" alt="HAAS" class="HAAS pictures">
           <p class="machine_name">HAAS</p>

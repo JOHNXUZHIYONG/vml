@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +11,33 @@ export class DataService {
   private partTime = 'http://localhost:1880/HAASP';
   private haasPowermeterUrl = 'http://localhost:1880/HAAS_powermeter'; 
   private LT65Url = 'http://localhost:1880/LT65';// 替换为你的API URL
+  private NTX500Url = 'http://localhost:1880/NTX500';
+
 
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+    return this.http.get<any>(this.apiUrl).pipe(
+      catchError(() => of([{"time": "12:00:00", "prog_num": "DMG001", "machine_status": "run", "complete_number": "1000",
+      "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "total_tool_change": "5", "cool_level": "6"}]))
+    );
   }
 
   getPartTimeData(): Observable<any> {
-    return this.http.get<any>(this.partTime);
+    return this.http.get<any>(this.partTime).pipe(
+      catchError(() => of([[1,2,3,4,5,6,7,8,9,10],[5,5,5,5,5,6,6,6,6,6]]))
+    );
   }
   
 
   getHAASPowermeterData(): Observable<any> {
-    return this.http.get<any>(this.haasPowermeterUrl);
+    return this.http.get<any>(this.haasPowermeterUrl).pipe(
+      catchError(() => of([[94.86,94.86,94.86,94.86,94.86,94.86,94.86,94.86,94.86,94.86,94.86,57.28],1100.69]))
+    );
+  }
+
+  getNTX500Data(): Observable<any> {
+    return this.http.get<any>(this.NTX500Url);
   }
 
   getLT65Data(): Observable<any> {
@@ -32,9 +45,7 @@ export class DataService {
   }
 
   getDefaultHAASPowermeterData(): any {
-    return [{"time": "1/31/2024, 4:15:24 PM.599", "P_total": "0.4", "number": "2"},{"time": "1/31/2024, 4:15:23 PM.599", "P_total": "0.3", "number": "2"},
-    {"time": "1/31/2024, 4:15:22 PM.599", "P_total": "0.4", "number": "2"},{"time": "1/31/2024, 4:15:21 PM.599", "P_total": "0.5", "number": "2"},{"time": "1/31/2024, 4:15:20 PM.599", "P_total": "0.4", "number": "2"},
-  ];
+    return [[94.86,94.86,94.86,94.86,94.86,94.86,94.86,94.86,94.86,94.86,94.86,57.27],1100.69];
   }
 
   getDefaultHAASData(): any {
@@ -47,15 +58,10 @@ export class DataService {
     { "part_number": 3598, "time": "2/21/2024, 4:33:07 PM.262" }, { "part_number": 3597, "time": "2/21/2024, 4:32:39 PM.57" }, { "part_number": 3596, "time": "2/21/2024, 4:32:09 PM.831" } ];
   }
 
-  private orders = [
-    { id: 1, amount: 100, date: new Date('2023-08-10') },
-    { id: 2, amount: 150, date: new Date('2023-08-12') },
-    // ... other orders
-  ];
-
-  getOrders(): any[] {
-    return this.orders;
+  getDefaultLT65Data(): any {
+    return [{"time":"2/23/2024, 4:43:26 PM","prog_name":"L001","run_state":"RUN","abort_state":"RUN","ops_mode":"M1"}];
   }
+
 
   
 }

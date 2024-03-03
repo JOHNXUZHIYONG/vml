@@ -38,6 +38,10 @@
   transform: translate(-50%, -50%);
   /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
 }
+.light {
+  max-width: 100%; /* 图像最大宽度为容器宽度 */
+  max-height: 100%; /* 图像最大高度为容器高度 */
+}
 
   .pictures{
     width: 250px; /* 设置容器的宽度 */

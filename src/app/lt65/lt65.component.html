@@ -6,25 +6,50 @@
     <div class="machines">
 
         <div class="rounded-rectangle">
+            <!-- <div class="lights">
+                <img class="light" *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON'" src="assets/image/Green status.png" alt="Default Light">
+                <img class="light"   *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Grey_status.png" alt="Yellow Light">
+                <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Purple.png" alt="Yellow Light">
+                
+            </div> -->
             <img src="../../assets/image/LT65.webp" alt="Lasertec 65" class="LT65 pictures">
             <p class="machine_name">Lasertec 65</p>
             <table class="table">
                 <tr>
                     <td>Program</td>
-                    <td>{{data[0].prog_name}}</td>
+                    <td>{{LT65Data[0].prog_name}}</td>
                 </tr>
                 <tr>
                     <td>Machine Status</td>
-                    <td>{{data[0].run_state}}</td>
+                    <td>{{LT65Data[0].run_state}}</td>
                 </tr>
                 <tr>
                     <td>Complete No.</td>
-                    <td>{{data[0].time}}</td>
+                    <td>{{LT65Data[0].time}}</td>
                 </tr>
             </table>
         </div>
+        <div class="chart_container">
 
-        <div class="table_container">
+            <!-- <p class="pie_chart_title chart_title">Machine Status Percentage</p> -->
+            <!-- <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData"
+                [chartLabel]="pTotalTimeList" [pTotalTimeList]="pTotalTimeList"></app-charts> -->
+
+            <!-- <p class="line_chart_title chart_title">Spindle Speed</p> -->
+            <!-- <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"></app-charts> -->
+
+        </div>
+        <!-- <div>{{LT65Data|json}}</div> -->
+        
+                <!-- <div>
+            {{partTimeData | json}}
+        </div> -->
+        <!-- <div>{{partTimeList|json}}</div>
+        <div>{{partList|json}}</div>
+        <div>{{pTotalTimeList |json}}</div>
+        <div>{{barChartData|json}}</div>
+        <div>{{lineChartData|json}}</div> -->
+        <div class="rounded-rectangle">
             <table class="table p_table">
                 <tr>
                     <th>Parameter</th>
@@ -34,65 +59,65 @@
                 <tr>
                     <td>prog_name
                     </td>
-                    <td>{{data[0].prog_name}}</td>
+                    <td>{{LT65Data[0].prog_name}}</td>
                     <td>m/min</td>
                 </tr>
                 <tr>
                     <td>run_state
                     </td>
-                    <td>{{data[0].run_state}}</td>
+                    <td>{{LT65Data[0].run_state}}</td>
                     <td>mm/min
                     </td>
                 </tr>
                 <tr>
                     <td>abort_state 
                     </td>
-                    <td>{{data[0].abort_state}}</td>
+                    <td>{{LT65Data[0].abort_state}}</td>
                     <td>RPM
                     </td>
                 </tr>
                 <tr>
                     <td>ops_mode
                     </td>
-                    <td>{{data[0].ops_mode}}</td>
+                    <td>{{LT65Data[0].ops_mode}}</td>
                     <td>RPM
                     </td>
                 </tr>
                 <tr>
                     <td>Cool Level (D)
                     </td>
-                    <td>{{data[0].ops_mode}}</td>
+                    <td>{{LT65Data[0].ops_mode}}</td>
                     <td>mm
                     </td>
                 </tr>
                 <tr>
                     <td>Tolerances</td>
-                    <td>{{data[0].ops_mode}}</td>
+                    <td>{{LT65Data[0].ops_mode}}</td>
                     <td>mm
                     </td>
                 </tr>
                 <tr>
                     <td>Surface Finish
                     </td>
-                    <td>{{data[0].ops_mode}}</td>
+                    <td>{{LT65Data[0].ops_mode}}</td>
                     <td>micrometres
                     </td>
                 </tr>
                 <tr>
                     <td>Tool Path Strategy
                     </td>
-                    <td>{{data[0].ops_mode}}</td>
+                    <td>{{LT65Data[0].ops_mode}}</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Coolant
                     </td>
-                    <td>{{data[0].ops_mode}}</td>
+                    <td>{{LT65Data[0].ops_mode}}</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Program</td>
-                    <td>{{data[0].ops_mode}}</td>
+                    <td>{{LT65Data[0].ops_mode}}</td>
                     <td></td>
                 </tr>
 
@@ -100,34 +125,7 @@
             </table>
         </div>
 
-        <div class="chart_container">
-
-                <!--                           
-                <div class="selection">
-                  <label>
-                    <input type="checkbox" [(ngModel)]="showPieChart" /> Show Pie Chart
-                  </label>
-                  <label>
-                    <input type="checkbox" [(ngModel)]="showBarChart" /> Show Bar Chart
-                  </label>
-                  <label>
-                    <input type="checkbox" [(ngModel)]="showLineChart" /> Show Line Chart
-                  </label>
-                </div> -->
-                 <p class="pie_chart_title chart_title">Machine Status Percentage</p>
-                  <div *ngIf="showPieChart" class="chart pie_chart">
-                    <!-- Add your pie chart component here -->
-
-              
-                    
-                  </div>
-              
-                    
-            
-               
-              
-
-        </div>
+        
     </div>
 </div>
 
