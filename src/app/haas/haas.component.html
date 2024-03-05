@@ -1,21 +1,25 @@
 <div class="container">
-    <div class="header-container" routerLink="/">
-        DMG MORI
-    </div>
-
     <p class="dashboard_name">HAAS VF-2-SE</p>
-    <div class="prog_nums">
-        <img class="prog_num" *ngIf="data[0].prog_num === 101 && data[0].machine_status.toString() !== ' ALARM ON'" src="assets/image/Green status.png" alt="Default Light">
-        <img class="prog_num"   *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Grey_status.png" alt="Yellow Light">
-        <img class="prog_num"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Purple.png" alt="Yellow Light">
-    </div>
+  
     <div class="machines">
 
         <div class="rounded-rectangle">
+            <div class="prog_nums">
+                <img class="prog_num"   *ngIf="data[0].prog_num !== 101 && data[0].prog_num !== 102 && data[0].prog_num !== 103" src="assets/image/m1.png" alt="Program 101">
+                <img class="prog_num"   *ngIf="data[0].prog_num === 101" src="assets/image/m1.png" alt="Program 101">
+                <img class="prog_num"   *ngIf="data[0].prog_num === 102" src="assets/image/m2.png" alt="Program 102">
+                <img class="prog_num"   *ngIf="data[0].prog_num === 103" src="assets/image/m3.png" alt="Program 103">
+            </div>
             <div class="lights">
                 <img class="light" *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON'" src="assets/image/Green status.png" alt="Default Light">
                 <img class="light"   *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Grey_status.png" alt="Yellow Light">
                 <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Purple.png" alt="Yellow Light">
+            </div>
+            <div class="parts">
+                <img class="part" *ngIf="data[0].prog_num !== 101 && data[0].prog_num !== 102 && data[0].prog_num !== 103" src="assets/image/m4.png" alt="Part 1">
+                <img class="part" *ngIf="data[0].prog_num === 101" src="assets/image/m4.png" alt="Part 1">
+                <img class="part" *ngIf="data[0].prog_num === 102" src="assets/image/m5.png" alt="Part 2">
+                <img class="part" *ngIf="data[0].prog_num === 103" src="assets/image/m6.png" alt="Part 3">
             </div>
             <img src="../../assets/image/HAAS.png" alt="HAAS" class="HAAS pictures">
             <p class="machine_name">HAAS</p>
@@ -38,10 +42,10 @@
 
             <!-- <p class="pie_chart_title chart_title">Machine Status Percentage</p> -->
             <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData"
-                [chartLabel]="pTotalTimeList" ></app-charts>
+               [chartLabel]="pTotalTimeList" [chartOptionsLine]="chartOptionsLine" [dataLine] = "dataLine"></app-charts>
 
             <!-- <p class="line_chart_title chart_title">Spindle Speed</p> -->
-            <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"></app-charts>
+            <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList" [dataBar]="dataBar" [chartOptionsBar]="chartOptionsBar"></app-charts>
 
         </div>
        <!-- <div>{{data|json}}</div> -->
@@ -56,9 +60,15 @@
         <div>{{haasPowermeterData[1]|json}}</div>
         <div>            {{partTimeData | json}}        </div>
         <div>{{partList|json}}</div> -->
-        
+        <!-- <div>{{barChartData|json}}</div> -->
         
         <div class="rounded-rectangle ">
+            <div class="p_total"> 
+                <h4>Power Consumption</h4> 
+                <h1>{{haasPowermeterData[1]}}</h1>
+                <h4> kWh</h4>
+
+            </div>
             <table class="table p_table">
                 <tr>
                     <th>Parameter</th>

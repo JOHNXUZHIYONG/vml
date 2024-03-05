@@ -6,6 +6,17 @@
   position: relative;
 }
 
+.dashboard_name {
+  position: absolute;
+  /* 使用固定定位 */
+  top: 3%;
+  /* 距离页面顶部的距离，根据需要进行调整 */
+  left: 15%;
+  /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
+  transform: translate(-50%, -50%);
+  /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
+}
+
 .machines {
   display: flex;
   justify-content: center;

@@ -6,15 +6,29 @@
     position: relative;
 }
 
+.dashboard_name {
+    position: absolute;
+    /* 使用固定定位 */
+    top: 0%;
+    /* 距离页面顶部的距离，根据需要进行调整 */
+    left: 8%;
+    /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
+    transform: translate(-50%, -50%);
+    /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
+}
+
+
+
 .machines {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
     /* 间距，根据需要调整 */
-    height: 100vh;
+    height: 85%;
     /* 设置容器高度为视窗高度，可以根据需要调整 */
     flex-direction: row;
+    /* border: red 2px solid; */
 }
 
 .rounded-rectangle {
@@ -29,6 +43,7 @@
     /* border: red 2px solid; */
 
     position: relative;
+    top: 0%;
 }
 
 .lights {
@@ -45,11 +60,43 @@
     /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
 }
 
-.light {
+.light, .prog_num, .part{
     max-width: 100%;
     /* 图像最大宽度为容器宽度 */
     max-height: 100%;
     /* 图像最大高度为容器高度 */
+}
+.prog_nums{ 
+    width: 60px;
+    height: 50px;
+
+    position: absolute;
+    /* 使用固定定位 */
+    top: 12%;
+    /* 距离页面顶部的距离，根据需要进行调整 */
+    left: 25%;
+    /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
+    transform: translate(-50%, -50%);
+    /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
+    /* background-color: #04130f; */
+
+}
+
+
+.parts{ 
+    width: 60px;
+    height: 50px;
+
+    position: absolute;
+    /* 使用固定定位 */
+    top: 12%;
+    /* 距离页面顶部的距离，根据需要进行调整 */
+    left: 75%;
+    /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
+    transform: translate(-50%, -50%);
+    /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
+    /* background-color: #04130f; */
+
 }
 
 .pictures,
@@ -138,13 +185,35 @@ th {
     width: 200px;
 }
 
-
+.p_total{
+    height: 20%;
+    width: 80%;
+    background-color: white;
+    position: absolute;
+    /* 使用固定定位 */
+    top: 15%;
+    /* 距离页面顶部的距离，根据需要进行调整 */
+    left: 50%;
+    /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
+    transform: translate(-50%, -50%);
+    /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 2px; */
+    /* 间距，根据需要调整 */
+  
+    /* 设置容器高度为视窗高度，可以根据需要调整 */
+    flex-direction: column;
+    /* border: red 2px solid; */
+}
+h1,h4{border: #04130f; margin: 0%;}
 
 .p_table {
     width: 280px;
     position: absolute;
     /* 使用固定定位 */
-    top: 50%;
+    top: 60%;
     /* 距离页面顶部的距离，根据需要进行调整 */
     left: 50%;
     /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
