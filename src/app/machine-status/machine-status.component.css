@@ -1,4 +1,4 @@
-.container{
+.container {
   width: auto;
   height: 785px;
   /* border: red 2px solid; */
@@ -8,163 +8,91 @@
 
 .dashboard_name {
   position: absolute;
-  /* 使用固定定位 */
-  top: 3%;
-  /* 距离页面顶部的距离，根据需要进行调整 */
-  left: 15%;
-  /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
+  top: 0%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
 }
 
-.machines {
+.rounded-rectangles {
+  height: 85%;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px; /* 间距，根据需要调整 */
-  height: 100vh; /* 设置容器高度为视窗高度，可以根据需要调整 */
   flex-direction: row;
+  gap: 80px;
+
+  /* border: red 2px solid; */
 }
 
+
 .rounded-rectangle {
-  width: 300px; /* 定义矩形宽度 */
-  height: 500px; /* 定义矩形高度 */
-  background-color: #204339; /* 定义矩形背景颜色 */
-  border-radius: 30px; /* 定义圆角半径 */
+  width: 300px;
+  height: 500px;
+  background-color: #204339;
+  border-radius: 30px;
   /* border: red 2px solid; */
 
   position: relative;
 }
 
-.lights{
-  width:40px;
+.lights {
+  width: 40px;
   height: 50px;
 
   position: absolute;
-  /* 使用固定定位 */
   top: 10%;
-  /* 距离页面顶部的距离，根据需要进行调整 */
   left: 50%;
-  /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
   transform: translate(-50%, -50%);
-  /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
 }
+
 .light {
-  max-width: 100%; /* 图像最大宽度为容器宽度 */
-  max-height: 100%; /* 图像最大高度为容器高度 */
+  max-width: 100%;
+  max-height: 100%;
 }
 
-  .pictures{
-    width: 250px; /* 设置容器的宽度 */
-    height: 150px; /* 设置容器的高度 */
-    /* border: red 2px solid; */
-    background-color: #e4f5f5;
+.pictures {
+  width: 250px;
+  height: 150px;
+  background-color: #e4f5f5;
 
-    position: absolute; /* 使用固定定位 */
-    top: 35%; /* 距离页面顶部的距离，根据需要进行调整 */
-    left: 50%; /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
-    transform: translate(-50%, -50%); /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
-  }
- 
-  .machine_name{
-    color: aqua;
-    font-size: 25px;
-    font-weight: 5px;
-
-    position: absolute; /* 使用固定定位 */
-    top: 50%; /* 距离页面顶部的距离，根据需要进行调整 */
-    left: 50%; /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
-    transform: translate(-50%, -50%); /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
-  }
-
-  .table{
-
-    width: 250px;
-    height: 100px;
-    /* border: red 2px solid; */
-    border-collapse: collapse;
-    background: transparent; /* 背景透明 */
-    border: #04130f;
-
-    position: absolute; /* 使用固定定位 */
-    top: 75%; /* 距离页面顶部的距离，根据需要进行调整 */
-    left: 50%; /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
-    transform: translate(-50%, -50%); /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
-
-    font-size: 15px;
-    color: aliceblue;
- 
-
-  }
-  th, td {
-    border: 2px solid #e4f5f5; /* 设置边框为1像素实线，颜色为黑色 */
-    padding: 2px; /* 设置单元格内边距 */
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* border: red 2px solid; */
 }
 
-  .traffic-lights-container {
-    
-    width: 1000px; /* 设置容器的宽度 */
-    height: 600px; /* 设置容器的高度 */
-    border: red 2px solid;
+.machine_name {
+  color: aqua;
+  font-size: 25px;
+  font-weight: 5px;
 
-    left: 400px;
-    
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-    position: relative;
-    z-index: 12;
-  }
+.table {
 
-  .hpl_image {
-    
-    width: 1100px; /* 图像宽度，根据需要进行调整 */
-    height: auto; /* 高度自适应，保持宽高比 */
-    /* border: red 2px solid; */
+  width: 250px;
+  height: 100px;
+  border-collapse: collapse;
+  background: transparent;
 
-    position: absolute; /* 使用固定定位 */
-    top: 50px; /* 距离页面顶部的距离，根据需要进行调整 */
-    left: -40px; /* 距离页面右侧的距离，根据需要进行调整 */
 
-    z-index: 10; /* 图层叠加顺序，根据需要进行调整 */
-  }
-  
-  .traffic-light {
-    width: 50px; /* 设置灯的宽度 */
-    height: 80px; /* 设置灯的高度 */
-    /* border: red 2px solid; */
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-    position: absolute;
-    left: 0px;
+  font-size: 15px;
+  color: aliceblue;
+}
 
-    z-index: 12; /* 添加边框样式，可选 */
-  }
-  
-  .light-label {
-    position: absolute;
-    top: -30px; /* 调整标签在灯的上方的垂直位置 */
-    left: -55px; /* 如果需要水平调整，请更改left值 */
-    background-color: black; /* 设置标签背景颜色 */
-    padding: 2px 4px; /* 调整标签的内边距 */
-    font-size: 16px; /* 设置字体大小 */
-    font-weight: bold; /* 设置字体加粗 */
-    color: white;
-    width: 150px;
-    z-index: 11;
-    text-align: center;
-  }
-  
-  .hpl_name {
 
-    position: absolute; /* 或者 position: relative; */
-    bottom: 40px; /* 根据需要进行调整 */
-    left: 20px; /* 根据需要进行调整 */
-
-    color: white;
-    font-size: 30px;
-  }
-
-  .haha{position: absolute; /* 或者 position: relative; */
-    bottom: 40px; /* 根据需要进行调整 */
-    left: 20px; /* 根据需要进行调整 */
-    
-    color: red;
-    font-size: 30px;}
+td {
+  border: 2px solid #e4f5f5;
+  padding: 2px;
+}

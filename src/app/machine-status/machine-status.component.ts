@@ -9,19 +9,7 @@ import { interval, switchMap } from 'rxjs';
   styleUrls: ['./machine-status.component.css']
 })
 export class MachineStatusComponent {
-//static mock data
-  lights: { status: string, top: number, left: number, label: string }[] = [
-    { status: 'green', top: 40, left: 250, label: 'Powder filling' },
-    { status: 'yellow', top: 70, left: 570, label: 'Liquid filling' },
-    { status: 'green', top: 300, left: 220, label: 'Label printer' },
-    { status: 'red', top: 330, left: 350, label: 'Pouch magazine' },
-    { status: 'green', top: 270, left: 680, label: 'Check weigher' },
-    { status: 'green', top: 200, left: 780, label: 'Pouch inspection' },
-    { status: 'green', top: 440, left: 700, label: 'Tote filling and transfer' }
-  ];
-  
-  
-//http to get real data
+
   data: any;
 
   constructor(private dataService: DataService) { }
@@ -38,7 +26,7 @@ export class MachineStatusComponent {
         this.data = result;
       },
       (error) => {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching haas data:', error);
       }
     );
   }
@@ -49,33 +37,9 @@ export class MachineStatusComponent {
         this.data = result;
       },
       (error) => {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching haas data:', error);
       }
     );
-  }
-
-
-
-
-
-
-//just for future use
-  toggleTrafficLights() {
-    for (let i = 0; i < this.lights.length; i++) {
-      switch (this.lights[i].status) {
-        case 'red':
-          this.lights[i].status = 'yellow';
-          break;
-        case 'yellow':
-          this.lights[i].status = 'green';
-          break;
-        case 'green':
-          this.lights[i].status = 'red';
-          break;
-        default:
-          this.lights[i].status = 'green';
-      }
-    }
   }
 
 }

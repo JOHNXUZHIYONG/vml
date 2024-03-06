@@ -17,8 +17,10 @@ export class ChartsComponent implements OnChanges {
   @Input() pTotalTimeList: any[] = [];
   @Input() chartOptionsBar: any;
   @Input() chartOptionsLine: any;
+  @Input() chartOptionsPie: any;
   @Input() dataBar: any;
   @Input() dataLine: any;
+  @Input() dataPie: any;
 
   @ViewChild(BaseChartDirective) chart!: BaseChartDirective; // 使用非空断言
 

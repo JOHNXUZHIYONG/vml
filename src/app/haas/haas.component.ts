@@ -13,18 +13,18 @@ import { ChartData, ChartOptions } from 'chart.js';
 export class HaasComponent {
   dataLine: ChartData<'line'> = {
     labels: ["55-60", "50-55", "45-50", "40-45", "35-40", "30-35", "25-30", "20-25", "15-20", "10-15",
-    "5-10", "0-5"],
+      "5-10", "0-5"],
 
-    datasets:  [ { "label": "P_total", "data": [ 80, 77.15, 94.86, 80, 94.86, 94.86, 80, 94.86, 71.15, 80, 80, 90 ], "tension": 0.5, "borderColor": "green", "backgroundColor": "lightgreen" }],
-    
+    datasets: [{ "label": "P_total", "data": [80, 77.15, 94.86, 80, 94.86, 94.86, 80, 94.86, 71.15, 80, 80, 90], "tension": 0.5, "borderColor": "green", "backgroundColor": "lightgreen" }],
+
 
   };
 
 
   dataBar: ChartData<'bar'> = {
 
-    labels: [1,2,3,4,5,6,7,8,9,10],
-    datasets: [ { "label": "Part Prodction Time /s", "data": [ 5, 5, 6, 6, 5, 6, 6, 5, 5, 6 ], "borderColor": "blue", "backgroundColor": "aqua" } ],
+    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    datasets: [{ "label": "Part Prodction Time /s", "data": [5, 5, 6, 6, 5, 6, 6, 5, 5, 6], "borderColor": "blue", "backgroundColor": "aqua" }],
 
   };
 
@@ -34,12 +34,12 @@ export class HaasComponent {
 
   lineChartData: any[] = [];
   pTotalTimeList: string[] = ["55-60", "50-55", "45-50", "40-45", "35-40", "30-35", "25-30", "20-25", "15-20", "10-15",
-  "5-10", "0-5"];
+    "5-10", "0-5"];
 
   barChartData: any[] = [];
   partList: number[] = [];
 
- 
+
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
@@ -83,8 +83,8 @@ export class HaasComponent {
         // 仅在两个列表都有数据时更新 lineChartData
         this.barChartData = chartData1;
         // this.partList = this.partTimeData[0];
-        this.dataBar.datasets=chartData1;
-        // this.dataBar.labels=this.partTimeData[0];
+        this.dataBar.datasets = chartData1;
+        this.dataBar.labels = this.partTimeData[0];
       },
       (error) => {
         console.error('Error fetching part time data:', error);
@@ -157,12 +157,12 @@ export class HaasComponent {
         },
         ticks: {
           color: 'white', // 设置 x 轴刻度文字颜色
-          
+
         },
         grid: {
           color: 'rgba(255, 255, 255, 0.2)' // 设置 x 轴网格线颜色
         }
-        
+
       },
       y: {
         title: {
@@ -186,7 +186,7 @@ export class HaasComponent {
       }
     }
   };
-  
+
   chartOptionsBar: ChartOptions = {
     responsive: true,
 
@@ -209,31 +209,35 @@ export class HaasComponent {
 
     },
     scales: {
-      x: { ticks: { color: 'white',  }, title: {
-        display: true,
-        text: 'Part Number',
-        color: 'white', // 设置 x 轴标题文字颜色
-        font: {
-          size: 14,
-          weight: 'bold',
-          family: 'Arial, sans-serif',
-        }
-      },},   // 设置 x 轴刻度文字颜色
-      y: {ticks: {  color: 'white', }, 
-      title: {
-        display: true,
-        text: 'Production Time / s',
-        color: 'white', // 设置 y 轴标题文字颜色
-        font: {
-          size: 14,
-          weight: 'bold',
-          family: 'Arial, sans-serif',
-        }
-      },     // 设置 y 轴刻度文字颜色   
-      grid: { color: 'rgba(255, 255, 255, 0.2)'}} // 设置 x 轴网格线颜色
+      x: {
+        ticks: { color: 'white', }, title: {
+          display: true,
+          text: 'Part Number',
+          color: 'white', // 设置 x 轴标题文字颜色
+          font: {
+            size: 14,
+            weight: 'bold',
+            family: 'Arial, sans-serif',
+          }
+        },
+      },   // 设置 x 轴刻度文字颜色
+      y: {
+        ticks: { color: 'white', },
+        title: {
+          display: true,
+          text: 'Production Time / s',
+          color: 'white', // 设置 y 轴标题文字颜色
+          font: {
+            size: 14,
+            weight: 'bold',
+            family: 'Arial, sans-serif',
+          }
+        },     // 设置 y 轴刻度文字颜色   
+        grid: { color: 'rgba(255, 255, 255, 0.2)' }
+      } // 设置 x 轴网格线颜色
     }
   };
-  
+
 
 }
 
