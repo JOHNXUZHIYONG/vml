@@ -122,7 +122,7 @@ export class HaasComponent {
     plugins: {
       title: {
         display: true,
-        text: 'HAAS Power Consumption (Past 1 Hour)',
+        text: 'Power Consumption (Past 1 Hour)',
         color: 'green', // 设置字体颜色
         font: {
           size: 16, // 设置字体大小

@@ -46,19 +46,19 @@
     <div routerLink="/haas" class="rounded-rectangle">
       <div class="lights">
         <img class="light"
-          *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON' && data[0].machine_status.toString() !== ' FEED HOLD'&& data[0].machine_status.toString() !== 'RUNNING'"
-          src="assets/image/Green_status.png" alt="Default Light">
-        <img class="light" *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Purple_status.png"
-          alt="Purple Light">
-        <img class="light" *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Red_status.png"
-          alt="Red Light">
-        <img class="light" *ngIf="data[0].machine_status.toString() === ' FEED HOLD'" src="assets/image/Grey_status.png"
-          alt="Grey Light">
-        <img class="light" *ngIf="data[0].machine_status.toString() === 'RUNNING'" src="assets/image/Green_status.png"
-          alt="Green Light">
-      </div>
+            *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON' && data[0].machine_status.toString() !== ' FEED HOLD'&& data[0].machine_status.toString() !== 'RUNNING'"
+            src="assets/image/Green.png" alt="Default Light">
+        <img class="light" *ngIf="data[0].machine_status.toString() === ' IDLE'"
+            src="assets/image/Yellow.png" alt="Yellow Light">
+        <img class="light" *ngIf="data[0].machine_status.toString() === ' ALARM ON'"
+            src="assets/image/Red.png" alt="Red Light">
+        <img class="light" *ngIf="data[0].machine_status.toString() === ' FEED HOLD'"
+            src="assets/image/Blue.png" alt="Blue Light">
+        <img class="light" *ngIf="data[0].machine_status.toString() === 'RUNNING'"
+            src="assets/image/Green.png" alt="Green Light">
+    </div>
       <img src="../../assets/image/HAAS.png" alt="HAAS" class="HAAS pictures">
-      <p class="machine_name">HAAS</p>
+      <p class="machine_name">3 Axis Milling</p>
       <table class="table">
         <tr>
           <td>Program</td>
