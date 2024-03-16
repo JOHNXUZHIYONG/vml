@@ -178,6 +178,7 @@ h4 {
 }
 
 .tool {
+    width: 250px;
     position: absolute;
     top: 5%;
     left: 50%;
@@ -222,33 +223,28 @@ h4 {
     background-color: #e4f5f5;
 }
 
+.mt{
+   
+    top: 10%;
+    left: 50%;
+   
+}
 
 .table {
-    width: 200px;
+    width: 250px;
     border-collapse: collapse;
     /* background: transparent; */
     background-color: rgb(38, 46, 43);
 
     position: absolute;
-    top: 41%;
-    left: 58%;
+    top: 55%;
+    left: 50%;
     transform: translate(-50%, -50%);
 
     font-size: 13px;
     color: aliceblue;
 }
 
-.ABC{
-    width: 240px;
-    height: 130px;
-    background-color: rgb(86, 119, 107);
-    
-    position: absolute;
-    top: 66%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-}
 
 .table td {
 

@@ -1,262 +1,356 @@
+import { Data_10cells } from './../../../../Saesl/src/app/mock-data';
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { catchError, interval, of, startWith, switchMap } from 'rxjs';
 import * as moment from 'moment';
+// import { Chart, ChartData } from 'chart.js';
+import * as Chart from 'chart.js';
+import 'chartjs-plugin-datalabels'; // 导入插件
+import { ChartData, ChartOptions } from 'chart.js';
 
-interface HaasPowermeterEntry {
-  time: string;
-  P_total: string;
-  // 其他可能的属性...
-}
-interface HaasPartTimeEntry {
-  time: string;
-  part_number: string;
-  // 其他可能的属性...
-}
 
 @Component({
   selector: 'app-lt65',
   templateUrl: './lt65.component.html',
   styleUrls: ['./lt65.component.css']
 })
-export class Lt65Component {
-  LT65Data: any;
- //http to get real data
- lineChartData: any[] = [  ];
- barChartData: any[] = [ ];
- data: any;
- haasPowermeterData: any;
- pTotalList: number[] = [];
- pTotalTimeList: string[] = [];
+export class Lt65Component  {
+  dataP: number[] = [30, 50, 100, 100];
+  dataD: number[] = [30, 50, 100, 100];
+  total: number = 0;
+ 
 
- partTimeData: any;
- partList: number[] = [];
- partTimeList: string[] = [];
- // 初始化一个空数组，用于存放时间差值
- timeDifferences: number[] = [];
+  chartOptionsPie: any = {
+    responsive: true,
+    plugins: {
+    title: {
+      display: true,
+      text: 'Machine Status',
+      color: 'green', // 设置字体颜色
+        font: {
+          size: 16, // 设置字体大小
+          weight: 'bold', // 设置字体粗细，可以是 'normal' 或 'bold'
+          family: 'Arial, sans-serif', // 设置字体族
 
- constructor(private dataService: DataService) { }
+        }
 
- ngOnInit() {
-   // 初始获取一次数据
-   this.getLT65Data();
-   // 每秒刷新一次数据
-   interval(1000).pipe(
-    switchMap(() => this.dataService.getLT65Data())
-  ).subscribe(
-    (result) => {
-      this.LT65Data = result;
     },
-    (error) => {
-      console.error('Error fetching data:', error);
-    }
-  );
 
-   
-   this.getPartTimeData();
-   this.getHAASPowermeterData();
-   
-
-
-
-   interval(5000).pipe(
-     switchMap(() => this.dataService.getHAASPowermeterData().pipe(
-       catchError((error) => {
-         console.error('Error fetching HAAS Powermeter data:', error);
-         throw error;  // 抛出错误，而不是返回默认值
-         // 返回一个包含默认值的 Observable
-         // return of(this.dataService.getDefaultHAASPowermeterData());
-       })
-     )),
-     startWith(this.dataService.getDefaultHAASPowermeterData()) // 使用 startWith 发送默认值
-   ).subscribe(
-     (result) => {
-       if (result !== null) {
-         this.haasPowermeterData = result;
-
-         // // 提取P_total的值用于pTotalList
-         this.pTotalList = this.haasPowermeterData.map((entry: HaasPowermeterEntry) => parseFloat(entry.P_total)).reverse();
-         console.log(this.pTotalList);
-
-         // 使用 moment.js 解析并格式化时间字符串
-         this.pTotalTimeList = this.haasPowermeterData.map((entry: HaasPowermeterEntry) => {
-           const date = moment(entry.time, 'M/D/YYYY, h:mm:ss A.SSS');
-           if (date.isValid()) {
-             return date.format('HH:mm:ss'); // 格式化为24小时制的时分秒
-           } else {
-             return 'Invalid Date';
-           }
-         }).reverse();
-
-
-         const chartData = [{
-           label: 'P_total',
-           data: this.pTotalList,
-           tension: 0.5,
-           borderColor: 'green',
-           backgroundColor: 'lightgreen',
-         }];
-
-         // 仅在两个列表都有数据时更新 lineChartData
-         this.lineChartData = chartData;
-       }
-     },
-     (error) => {
-       // 在这里处理错误，可以根据实际需求进行处理，比如报错或者更新 UI 提示用户有错误发生
-       console.error('Error in HAAS Powermeter data subscription:', error);
-     }
-   );
-
-
-
-
-   interval(5000).pipe(
-     switchMap(() => this.dataService.getPartTimeData().pipe(
-       catchError((error) => {
-         console.error('Error fetching HAAS partTime data:', error);
-         throw error;  // 抛出错误，而不是返回默认值
-         // 返回一个包含默认值的 Observable
-         // return of(this.dataService.getDefaultHAASPowermeterData());
-       })
-     )),
-     startWith(this.dataService.getDefaultHAASPartTimeData()) // 使用 startWith 发送默认值
-   ).subscribe(
-     (result) => {
-       if (result !== null) {
-         this.partTimeData = result;
-         // 移除partTimeData列表中的第一个值
-         this.partTimeData.shift();
-
-         // // 提取P_total的值用于pTotalList
-         this.partList = this.partTimeData.map((entry: HaasPartTimeEntry) => entry.part_number.toString()).reverse();
-
-         this.partList.pop();
-
-         // 使用 moment.js 解析并格式化时间字符串
-         this.partTimeList = this.partTimeData.map((entry: HaasPartTimeEntry) => {
-           const date = moment(entry.time, 'M/D/YYYY, h:mm:ss A.SSS');
-           if (date.isValid()) {
-             return date.format('HH:mm:ss'); // 格式化为24小时制的时分秒
-           } else {
-             return 'Invalid Date';
-           }
-         }).reverse();
-
-
-
-         // 遍历 partTimeList 数组，计算相邻两个时间的时间差
-         for (let i = 1; i < this.partTimeList.length; i++) {
-           // 将时间字符串转换为 moment 对象
-           const currentTime = moment(this.partTimeList[i], 'HH:mm:ss');
-           const prevTime = moment(this.partTimeList[i - 1], 'HH:mm:ss');
-
-           // 计算相邻两个时间的时间差，单位为秒
-           let timeDiff = currentTime.diff(prevTime, 'seconds');
-
-           // 确保时间差为正数
-           if (timeDiff < 0) {
-             // 如果时间差为负数，则取其绝对值
-             timeDiff = Math.abs(timeDiff);
-           }
-           // 将时间差值添加到数组中
-           this.timeDifferences.push(timeDiff);
-         }
-
-
-         const chartData1 = [{
-           label: 'Part Prodction Time /s',
-           data: this.timeDifferences,
-
-           borderColor: 'blue',
-           backgroundColor: 'aqua',
-         }];
-
-         // 仅在两个列表都有数据时更新 lineChartData
-         this.barChartData = chartData1;
-         this.timeDifferences = [];
-       }
-     },
-     (error) => {
-       // 在这里处理错误，可以根据实际需求进行处理，比如报错或者更新 UI 提示用户有错误发生
-       console.error('Error in HAAS Powermeter data subscription:', error);
-     }
-   );
-
-
-
- }
-
-
-
-
- getPartTimeData() {
-   this.dataService.getPartTimeData().subscribe(
-     (result) => {
-       this.partTimeData = result;
-     },
-     (error) => {
-       console.error('Error fetching data:', error);
-     }
-   );
- }
-
- getHAASPowermeterData() {
-   this.dataService.getHAASPowermeterData().subscribe(
-     (result) => {
-       this.haasPowermeterData = result;
-     },
-     (error) => {
-       console.error('Error fetching data:', error);
-     }
-   );
- }
-
- getLT65Data() {
-  this.dataService.getLT65Data().subscribe(
-    (result) => {
-      this.LT65Data = result;
+    legend: {
+      display: true, // 是否显示图例
+      position: 'right', // 图例位置，可选项包括 top, bottom, left, right
+      labels: {
+        color: 'white', // 设置 x 轴标题文字颜色
+        font: {
+          size: 10,
+          // weight: 'bold',
+          family: 'Arial, sans-serif',
+        }
+      }
     },
-    (error) => {
-      console.error('Error fetching data:', error);
+
+    
+  }
+    // other options...
+  };
+
+  chartOptionsDoughnut: any = {
+    responsive: true,
+    plugins: {
+    title: {
+      display: true,
+      text: 'Machine Status',
+      color: 'green', // 设置字体颜色
+        font: {
+          size: 16, // 设置字体大小
+          weight: 'bold', // 设置字体粗细，可以是 'normal' 或 'bold'
+          family: 'Arial, sans-serif', // 设置字体族
+
+        }
+
+    },
+
+    legend: {
+      display: true, // 是否显示图例
+      position: 'right', // 图例位置，可选项包括 top, bottom, left, right
+      labels: {
+        color: 'white', // 设置 x 轴标题文字颜色
+        font: {
+          size: 10,
+          // weight: 'bold',
+          family: 'Arial, sans-serif',
+        }
+      }
+    },
+
+    
+  }
+    // other options...
+  };
+
+  
+  dataPie: any = {
+    labels: ['Alarm On', 'Idle', 'Feed Hold','Running'],
+    datasets: [{
+      data: this.dataP,
+      backgroundColor: [
+        'red',
+        'blue',
+        'yellow',
+        'green'
+      ],
+      // other dataset options...
+    }]
+  };
+  
+  dataDoughnut: any = {
+    labels: ['Alarm On', 'Idle', 'Feed Hold','Running'],
+    datasets: [{
+      data: this.dataD,
+      backgroundColor: [
+        'red',
+        'blue',
+        'yellow',
+        'green'
+      ],
+      // other dataset options...
+    }]
+  };
+
+
+  // dataLine: ChartData<'line'> = {
+  //   labels: ["55-60", "50-55", "45-50", "40-45", "35-40", "30-35", "25-30", "20-25", "15-20", "10-15",
+  //     "5-10", "0-5"],
+
+  //   datasets: [{ "label": "P_total", "data": [80, 77.15, 94.86, 80, 94.86, 94.86, 80, 94.86, 71.15, 80, 80, 90], "tension": 0.5, "borderColor": "green", "backgroundColor": "lightgreen" }],
+
+
+  // };
+
+
+  dataBar: ChartData<'bar'> = {
+
+    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    datasets: [{ "label": "Part Prodction Time /s", "data": [5, 5, 6, 6, 5, 6, 6, 5, 5, 6], "borderColor": "blue", "backgroundColor": "aqua" }],
+
+  };
+
+  data: any;
+  haasPowermeterData: any;
+  partTimeData: any;
+
+  // lineChartData: any[] = [];
+  // pTotalTimeList: string[] = ["55-60", "50-55", "45-50", "40-45", "35-40", "30-35", "25-30", "20-25", "15-20", "10-15",
+  //   "5-10", "0-5"];
+
+  barChartData: any[] = [];
+  partList: number[] = [];
+
+
+  constructor(private dataService: DataService) { }
+
+  ngOnInit() {
+    // 初始获取一次数据
+    this.getData();
+    this.getPartTimeData();
+    // this.getHAASPowermeterData();
+
+    // Refresh data and charts every 3 seconds
+    interval(3000).subscribe(() => {
+      // this.getHAASPowermeterData();
+      this.getData();
+      this.getPartTimeData();
+    });
+
+  }
+
+  getData() {
+    this.dataService.getData().subscribe(
+      (result) => {
+        this.data = result;
+      },
+      (error) => {
+        console.error('Error fetching haas data:', error);
+      }
+    );
+  }
+
+  getPartTimeData() {
+    this.dataService.getPartTimeData().subscribe(
+      (result) => {
+        this.partTimeData = result;
+        let chartData1 = [{
+          label: 'Part Prodction Time /s',
+          data: this.partTimeData[1],
+
+          borderColor: 'blue',
+          backgroundColor: 'aqua',
+        }];
+
+        // 仅在两个列表都有数据时更新 lineChartData
+        this.barChartData = chartData1;
+        // this.partList = this.partTimeData[0];
+        this.dataBar.datasets = chartData1;
+        this.dataBar.labels = this.partTimeData[0];
+      },
+      (error) => {
+        console.error('Error fetching part time data:', error);
+      }
+    );
+  }
+
+  // getHAASPowermeterData() {
+  //   this.dataService.getHAASPowermeterData().subscribe(
+  //     (result) => {
+  //       this.haasPowermeterData = result;
+
+  //       let chartData2 = [{
+  //         label: 'P_total',
+  //         data: this.haasPowermeterData[0],
+  //         tension: 0.5,
+  //         borderColor: 'green',
+  //         backgroundColor: 'lightgreen',
+  //       }];
+
+  //       this.lineChartData = chartData2;
+  //       this.dataLine.datasets = chartData2;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching Powermeter data:', error);
+  //     }
+  //   );
+  // }
+
+  // chartOptionsLine: ChartOptions = {
+  //   responsive: true,
+  //   // maintainAspectRatio: false, // 禁用纵横比维持
+  //   //   aspectRatio: 1.5, // 设置宽高比例，只在 maintainAspectRatio 为 false 时生效
+
+  //   plugins: {
+  //     title: {
+  //       display: true,
+  //       text: 'Power Consumption (Past 1 Hour)',
+  //       color: 'green', // 设置字体颜色
+  //       font: {
+  //         size: 16, // 设置字体大小
+  //         weight: 'bold', // 设置字体粗细，可以是 'normal' 或 'bold'
+  //         family: 'Arial, sans-serif', // 设置字体族
+
+  //       }
+
+
+  //     },
+  //     legend: {
+  //       display: false, // 设置为 false 取消图例
+  //       position: "bottom"
+  //     },
+  //     tooltip: {
+  //       mode: 'index',
+  //       intersect: false,
+  //     },
+
+  //   },
+  //   scales: {
+  //     x: {
+  //       title: {
+  //         display: true,
+  //         text: 'Time Interval / Per 5 Minutes',
+  //         color: 'white', // 设置 x 轴标题文字颜色
+  //         font: {
+  //           size: 14,
+  //           weight: 'bold',
+  //           family: 'Arial, sans-serif',
+  //         }
+  //       },
+  //       ticks: {
+  //         color: 'white', // 设置 x 轴刻度文字颜色
+
+  //       },
+  //       grid: {
+  //         color: 'rgba(255, 255, 255, 0.2)' // 设置 x 轴网格线颜色
+  //       }
+
+  //     },
+  //     y: {
+  //       title: {
+  //         display: true,
+  //         text: 'Energy Usage / kWh',
+  //         color: 'white', // 设置 y 轴标题文字颜色
+  //         font: {
+  //           size: 14,
+  //           weight: 'bold',
+  //           family: 'Arial, sans-serif',
+  //         }
+  //       },
+  //       ticks: {
+  //         color: 'white', // 设置 y 轴刻度文字颜色
+  //       },
+  //       grid: {
+  //         color: 'rgba(255, 255, 255, 0.2)' // 设置 x 轴网格线颜色
+  //       },
+  //       // suggestedMin: 0.322, // 设置 y 轴的最小值
+  //       // suggestedMax: 0.325, // 设置 y 轴的最大值
+  //     }
+  //   }
+  // };
+
+  chartOptionsBar: ChartOptions = {
+    responsive: true,
+
+    plugins: {
+      title: {
+        display: true,
+        text: 'Part Production Cycle Time',
+        color: 'green', // 设置字体颜色
+        font: {
+          size: 16, // 设置字体大小
+          weight: 'bold', // 设置字体粗细，可以是 'normal' 或 'bold'
+          family: 'Arial, sans-serif', // 设置字体族
+
+        }
+      },
+      legend: {
+        display: false, // 设置为 false 取消图例
+        position: "bottom"
+      },
+
+    },
+    scales: {
+      x: {
+        ticks: { color: 'white', }, title: {
+          display: true,
+          text: 'Part Number',
+          color: 'white', // 设置 x 轴标题文字颜色
+          font: {
+            size: 14,
+            weight: 'bold',
+            family: 'Arial, sans-serif',
+          }
+        },
+      },   // 设置 x 轴刻度文字颜色
+      y: {
+        ticks: { color: 'white', },
+        title: {
+          display: true,
+          text: 'Production Time / s',
+          color: 'white', // 设置 y 轴标题文字颜色
+          font: {
+            size: 14,
+            weight: 'bold',
+            family: 'Arial, sans-serif',
+          }
+        },     // 设置 y 轴刻度文字颜色   
+        grid: { color: 'rgba(255, 255, 255, 0.2)' }
+      } // 设置 x 轴网格线颜色
     }
-  );
-}
+  };
+
+
+ }
 
 
 
 
- //static mock data
- // lights: { status: string, top: number, left: number, label: string }[] = [
- //   { status: 'green', top: 40, left: 250, label: 'Powder filling' },
- //   { status: 'yellow', top: 70, left: 570, label: 'Liquid filling' },
- //   { status: 'green', top: 300, left: 220, label: 'Label printer' },
- //   { status: 'red', top: 330, left: 350, label: 'Pouch magazine' },
- //   { status: 'green', top: 270, left: 680, label: 'Check weigher' },
- //   { status: 'green', top: 200, left: 780, label: 'Pouch inspection' },
- //   { status: 'green', top: 440, left: 700, label: 'Tote filling and transfer' }
- // ];
+ 
 
- //just for future use
- // toggleTrafficLights() {
- //   for (let i = 0; i < this.lights.length; i++) {
- //     switch (this.lights[i].status) {
- //       case 'red':
- //         this.lights[i].status = 'yellow';
- //         break;
- //       case 'yellow':
- //         this.lights[i].status = 'green';
- //         break;
- //       case 'green':
- //         this.lights[i].status = 'red';
- //         break;
- //       default:
- //         this.lights[i].status = 'green';
- //     }
- //   }
- // }
-
-
-
-
-}
 

@@ -1,133 +1,155 @@
+<!-- <div class="rounded-rectangle chart_container">
+    <app-charts
+    [chartTitle]="'Pie Chart Title'"
+    [chartType]="'pie'"
+    [chartOptionsPie]="chartOptionsPie"
+    [dataPie]="dataPie" >
+    
+    
+  </app-charts>
+</div> -->
+
 <div class="container">
+  <p class="dashboard_name">LT65</p>
 
-    <p class="dashboard_name">Lasertec 65     </p>
-    <div class="machines">
+  <div class="rounded-rectangles">
 
-        <div class="rounded-rectangle">
-            <!-- <div class="lights">
-                <img class="light" *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON'" src="assets/image/Green status.png" alt="Default Light">
-                <img class="light"   *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Grey_status.png" alt="Yellow Light">
-                <img class="light"   *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Purple.png" alt="Yellow Light">
+      <div class="rounded-rectangle">
+          <!-- <DIV>{{data[0].machine_status |json}}</DIV> -->
+          <div class="lights">
+              <img class="light"
+                  *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON' && data[0].machine_status.toString() !== ' FEED HOLD'&& data[0].machine_status.toString() !== 'RUNNING'"
+                  src="assets/image/Green.png" alt="Default Light">
+              <img class="light" *ngIf="data[0].machine_status.toString() === ' IDLE'"
+                  src="assets/image/Yellow.png" alt="Yellow Light">
+              <img class="light" *ngIf="data[0].machine_status.toString() === ' ALARM ON'"
+                  src="assets/image/Red.png" alt="Red Light">
+              <img class="light" *ngIf="data[0].machine_status.toString() === ' FEED HOLD'"
+                  src="assets/image/Blue.png" alt="Blue Light">
+              <img class="light" *ngIf="data[0].machine_status.toString() === 'RUNNING'"
+                  src="assets/image/Green.png" alt="Green Light">
+          </div>
+          <img src="../../assets/image/LT65.webp" alt="LT65" class="HAAS">
+          <h4 class="title">Current Program: {{data[0].prog_num}}</h4>
+          <div class="prog_nums">
+              <img class="prog_num"
+                  *ngIf="data[0].prog_num !== 101 && data[0].prog_num !== 102 && data[0].prog_num !== 103"
+                  src="assets/image/m1.png" alt="Program 101">
+              <img class="prog_num" *ngIf="data[0].prog_num === 101" src="assets/image/m1.png" alt="Program 101">
+              <img class="prog_num" *ngIf="data[0].prog_num === 102" src="assets/image/m2.png" alt="Program 102">
+              <img class="prog_num" *ngIf="data[0].prog_num === 103" src="assets/image/m3.png" alt="Program 103">
+          </div>
+          <div class="total_part_count cycle_time">
+              <h4>Total Part Count</h4>
+              <h1>{{data[0].part_count}}</h1>
+              <!-- <h4> Seconds</h4> -->
+          </div>
+      </div>
+
+      <div class="rounded-rectangle chart_container">
+
+          <!-- <p class="pie_chart_title chart_title">Machine Status Percentage</p> -->
+          <!-- <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData"
+              [chartLabel]="pTotalTimeList" [dataLine]="dataLine" [chartOptionsLine]="chartOptionsLine"></app-charts> -->
+
+          <!-- <p class="line_chart_title chart_title">Spindle Speed</p> -->
+          <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"
+              [dataBar]="dataBar" [chartOptionsBar]="chartOptionsBar"></app-charts>
+
+          
+                <app-charts class="pie_chart"
+               
+                [chartType]="'pie'"
+                [chartOptionsPie]="chartOptionsPie"
+                [dataPie]="dataPie" >
                 
-            </div> -->
-            <img src="../../assets/image/LT65.webp" alt="Lasertec 65" class="LT65 pictures">
-            <p class="machine_name">Lasertec 65</p>
-            <table class="table">
-                <tr>
-                    <td>Program</td>
-                    <td>{{LT65Data[0].prog_name}}</td>
-                </tr>
-                <tr>
-                    <td>Machine Status</td>
-                    <td>{{LT65Data[0].run_state}}</td>
-                </tr>
-                <tr>
-                    <td>Complete No.</td>
-                    <td>{{LT65Data[0].time}}</td>
-                </tr>
-            </table>
-        </div>
-        <div class="chart_container">
+                
+              </app-charts>
+              <app-charts class="doughnut_chart"
+               
+              [chartType]="'doughnut'"
+              [chartOptionsDoughnut]="chartOptionsDoughnut"
+              [dataDoughnut]="dataDoughnut" >
+              
+              
+            </app-charts>
 
-            <!-- <p class="pie_chart_title chart_title">Machine Status Percentage</p> -->
-            <!-- <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData"
-                [chartLabel]="pTotalTimeList" [pTotalTimeList]="pTotalTimeList"></app-charts> -->
-
-            <!-- <p class="line_chart_title chart_title">Spindle Speed</p> -->
-            <!-- <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"></app-charts> -->
-
-        </div>
-        <!-- <div>{{LT65Data|json}}</div> -->
-        
-                <!-- <div>
-            {{partTimeData | json}}
-        </div> -->
-        <!-- <div>{{partTimeList|json}}</div>
-        <div>{{partList|json}}</div>
-        <div>{{pTotalTimeList |json}}</div>
-        <div>{{barChartData|json}}</div>
-        <div>{{lineChartData|json}}</div> -->
-        <div class="rounded-rectangle">
-            <table class="table p_table">
-                <tr>
-                    <th>Parameter</th>
-                    <th>Value</th>
-                    <th>Unit</th>
-                </tr>
-                <tr>
-                    <td>prog_name
-                    </td>
-                    <td>{{LT65Data[0].prog_name}}</td>
-                    <td>m/min</td>
-                </tr>
-                <tr>
-                    <td>run_state
-                    </td>
-                    <td>{{LT65Data[0].run_state}}</td>
-                    <td>mm/min
-                    </td>
-                </tr>
-                <tr>
-                    <td>abort_state 
-                    </td>
-                    <td>{{LT65Data[0].abort_state}}</td>
-                    <td>RPM
-                    </td>
-                </tr>
-                <tr>
-                    <td>ops_mode
-                    </td>
-                    <td>{{LT65Data[0].ops_mode}}</td>
-                    <td>RPM
-                    </td>
-                </tr>
-                <tr>
-                    <td>Cool Level (D)
-                    </td>
-                    <td>{{LT65Data[0].ops_mode}}</td>
-                    <td>mm
-                    </td>
-                </tr>
-                <tr>
-                    <td>Tolerances</td>
-                    <td>{{LT65Data[0].ops_mode}}</td>
-                    <td>mm
-                    </td>
-                </tr>
-                <tr>
-                    <td>Surface Finish
-                    </td>
-                    <td>{{LT65Data[0].ops_mode}}</td>
-                    <td>micrometres
-                    </td>
-                </tr>
-                <tr>
-                    <td>Tool Path Strategy
-                    </td>
-                    <td>{{LT65Data[0].ops_mode}}</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Coolant
-                    </td>
-                    <td>{{LT65Data[0].ops_mode}}</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Program</td>
-                    <td>{{LT65Data[0].ops_mode}}</td>
-                    <td></td>
-                </tr>
+      </div>
 
 
-            </table>
-        </div>
+      <div class="rounded-rectangle ">
 
-        
-    </div>
-</div>
+          <!-- <div class="p_total">
+              <h4>Power Consumption (1h)</h4>
+              <h1>{{haasPowermeterData[1]}}</h1>
+              <h4> kWh</h4>
+
+          </div> -->
+          <h4 class="title tool">Current Tool Number: {{data[0].current_tool_number}}</h4>
+          <div class="parts">
+              <img class="part"
+                  *ngIf="data[0].prog_num !== 101 && data[0].prog_num !== 102 && data[0].prog_num !== 103"
+                  src="assets/image/m4.png" alt="Part 1">
+              <img class="part" *ngIf="data[0].prog_num === 101" src="assets/image/m4.png" alt="Part 1">
+              <img class="part" *ngIf="data[0].prog_num === 102" src="assets/image/m5.png" alt="Part 2">
+              <img class="part" *ngIf="data[0].prog_num === 103" src="assets/image/m6.png" alt="Part 3">
+          </div>
+          <table class="table">
+
+              <tr>
+                  <td>Spindle Load</td>
+                  <td>{{data[0].spindle_load}}</td>
+
+              </tr>
+              <tr>
+                  <td>Spindle Speed</td>
+                  <td>{{data[0].spindle_speed | number: '1.0-1'}}</td>
+
+              </tr>
 
 
+              <tr>
+                  <td>X</td>
+                  <td>{{data[0].x | number: '1.0-1'}}</td>
+
+              </tr>
+              <tr>
+                  <td>Y</td>
+                  <td>{{data[0].y | number: '1.0-1'}}</td>
+
+              </tr>
+              <tr>
+                  <td>Z</td>
+                  <td>{{data[0].z | number: '1.0-1'}}</td>
+
+              </tr>
+              <tr>
+                <td>A</td>
+                <td>{{data[0].z | number: '1.0-1'}}</td>
+
+            </tr>
+            <!-- <tr>
+              <td>B</td>
+              <td>{{data[0].z | number: '1.0-1'}}</td>
+
+          </tr> -->
+          <tr>
+            <td>C</td>
+            <td>{{data[0].z | number: '1.0-1'}}</td>
+
+        </tr>
 
 
+          </table>
 
+
+          <div class="cycle_time">
+              <h4>Current Part Cycle Time</h4>
+              <h1>{{dataBar.datasets[0].data[dataBar.datasets[0].data.length-1] }} s</h1>
+              <!-- <div>{{dataBar.datasets[0].data[dataBar.datasets[0].data.length-1] }} </div> -->
+              <!-- <h4> Seconds</h4> -->
+
+          </div>
+
+      </div>
+  </div>

@@ -6,214 +6,236 @@
     position: relative;
 }
 
-.machines {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    /* 间距，根据需要调整 */
-    height: 100vh;
-    /* 设置容器高度为视窗高度，可以根据需要调整 */
-    flex-direction: row;
-}
-
-.rounded-rectangle {
-    width: 300px;
-    /* 定义矩形宽度 */
-    height: 530px;
-    /* 定义矩形高度 */
-    background-color: #204339;
-    /* 定义矩形背景颜色 */
-    border-radius: 30px;
-    /* 定义圆角半径 */
-    /* border: red 2px solid; */
-
-    position: relative;
-}
-
-.lights {
-    width: 40px;
-    height: 50px;
-
-    position: absolute;
-    /* 使用固定定位 */
-    top: 12%;
-    /* 距离页面顶部的距离，根据需要进行调整 */
-    left: 50%;
-    /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
-    transform: translate(-50%, -50%);
-    /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
-}
-
-.light {
-    max-width: 100%;
-    /* 图像最大宽度为容器宽度 */
-    max-height: 100%;
-    /* 图像最大高度为容器高度 */
-}
-
-.pictures,
-.p1 {
-    width: 250px;
-    /* 设置容器的宽度 */
-    height: 150px;
-    /* 设置容器的高度 */
-    /* border: red 2px solid; */
-    background-color: #e4f5f5;
-
-    position: absolute;
-    /* 使用固定定位 */
-    top: 35%;
-    /* 距离页面顶部的距离，根据需要进行调整 */
-    left: 50%;
-    /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
-    transform: translate(-50%, -50%);
-    /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
-}
-
-.p2 {
-    position: absolute;
-    /* 使用固定定位 */
-    top: 65%;
-    /* 距离页面顶部的距离，根据需要进行调整 */
-    left: 50%;
-    /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
-    transform: translate(-50%, -50%);
-    /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
-}
-
-.machine_name {
-    color: aqua;
-    font-size: 25px;
-    font-weight: 5px;
-
-    position: absolute;
-    /* 使用固定定位 */
-    top: 50%;
-    /* 距离页面顶部的距离，根据需要进行调整 */
-    left: 50%;
-    /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
-    transform: translate(-50%, -50%);
-    /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
-}
-
-.table {
-
-    width: 230px;
-    height: 100px;
-    /* border: red 2px solid; */
-    border-collapse: collapse;
-    background: transparent;
-    /* 背景透明 */
-    border: #04130f;
-
-    position: absolute;
-    /* 使用固定定位 */
-    top: 75%;
-    /* 距离页面顶部的距离，根据需要进行调整 */
-    left: 50%;
-    /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
-    transform: translate(-50%, -50%);
-    /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
-
-    font-size: 15px;
-    color: aliceblue;
-
-
-}
-
-
-th,
-td {
-    border: 2px solid #e4f5f5;
-    /* 设置边框为1像素实线，颜色为黑色 */
-    padding: 2px;
-    /* 设置单元格内边距 */
-
-    height: 20px;
-}
-
-th {
-    background-color: rgb(4, 111, 111);
-    width: 200px;
-}
-
-
-
-.p_table {
-    width: 280px;
-    position: absolute;
-    /* 使用固定定位 */
-    top: 50%;
-    /* 距离页面顶部的距离，根据需要进行调整 */
-    left: 50%;
-    /* 设置 left 为 50%，使元素左边缘处于父容器的中心位置 */
-    transform: translate(-50%, -50%);
-    /* 使用 transform 平移，将元素自身的中心对准 left: 50% 处 */
-}
-
-.chart_container {
-
-    width: 600px;
-
-    height: 550px;
-
-    background-color: #204339;
-
-    border-radius: 30px;
-
-    /* border: red 2px solid;  */
-
-    position: relative;
-
-}
-
-.pie_chart_title {
-    color: #e4f5f5;
+.dashboard_name {
     position: absolute;
     top: 0%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.line_chart_title {
-    color: #e4f5f5;
+
+.rounded-rectangles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 30px;
+    /* 间距，根据需要调整 */
+    height: 85%;
+    /* 设置容器高度为视窗高度，可以根据需要调整 */
+
+    /* border: red 2px solid; */
+
+}
+
+.rounded-rectangle {
+    width: 300px;
+    height: 530px;
+    background-color: #204339;
+    border-radius: 30px;
+    /* border: red 2px solid; */
+    position: relative;
+    top: 0%;
+
+}
+
+.chart_container {
+    width: 600px;
+    height: 550px;
+    position: relative;
+}
+
+.lights {
+    width: 40px;
+    height: 50px;
+    /* border: red 2px solid; */
+
     position: absolute;
-    top: 48%;
+    top: 8%;
     left: 50%;
     transform: translate(-50%, -50%);
 
 }
 
 
-.chart {
-    /* width: 80%;
-    height: 40%; */
 
-    margin-right: 20px;
-    margin-bottom: 20px;
-
-
-
+.light,
+.prog_num,
+.part {
+    width: 90%;
+    max-width: 100%;
+    /* 图像最大宽度为容器宽度 */
+    max-height: 100%;
+    /* 图像最大高度为容器高度 */
 }
 
-.bar_chart {
-    width: 85%;
+.HAAS {
+    width: 250px;
+    height: 150px;
+    background-color: #e4f5f5;
 
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* border: red 2px solid; */
+}
+
+.title {
+    width: 60%;
+    color: aqua;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.prog_nums {
+    width: 200px;
+    height: 150px;
+
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: #e4f5f5; */
+}
+
+.total_part_count,
+.cycle_time {
+    height: 15%;
+    width: 80%;
+    background-color: white;
+    position: absolute;
+    top: 88%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 2px; */
+    flex-direction: column;
+    /* border: red 2px solid; */
+}
+
+h1,
+h4 {
+    border: #04130f;
+    margin: 0%;
+}
+
+
+
+
+
+
+
+
+
+
+/* below is for chart container */
+
+.bar_chart,
+.line_chart
+ {
+    width: 85%;
 
     position: absolute;
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 .line_chart {
-    /* border: rgb(11, 27, 176) 2px solid;  */
-    width: 85%;
+    top: 25%;
+}
+
+.pie_chart, .doughnut_chart{
+    display: inline-block;
+    width: 50%;
+    height: 50%;
+
+  
+    position: absolute;
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    
+}
+
+.pie_chart{
+    display: none;
+    left: 5%;
+}
+
+
+
+
+
+
+
+/* below is for last retangualr container */
+.p_total {
+    height: 16%;
+    width: 80%;
+    background-color: white;
+
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* gap: 2px; */
+    /* border: red 2px solid; */
+}
+
+.tool {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.parts {
+    width: 180px;
+    height: 130px;
+
     position: absolute;
     top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* background-color: #04130f; */
 
+}
+
+
+.table {
+    width: 230px;
+    border-collapse: collapse;
+    /* background: transparent; */
+    background-color: rgb(38, 46, 43);
+
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 13px;
+    color: aliceblue;
+}
+
+.table td {
+
+    padding: 5px;
+    border: none;
+    border-bottom: none;
 }

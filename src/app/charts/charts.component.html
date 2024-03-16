@@ -17,5 +17,20 @@
       <!-- <div>{{dataBar|json}}</div> -->
    </ng-container>
 
+   <ng-container *ngIf="chartType === 'pie'">
+      <div>
+         <canvas baseChart [data]="dataPie" [type]="'pie'" [options]="chartOptionsPie" [labels]="chartLabel"></canvas>
+      </div>
+      <!-- <div>{{dataPie|json}}</div>
+      <div>{{chartOptionsPie|json}}</div> -->
+   </ng-container>
+
+   <ng-container *ngIf="chartType === 'doughnut'">
+      <div>
+         <canvas baseChart [data]="dataDoughnut" [type]="'doughnut'" [options]="chartOptionsDoughnut" [labels]="chartLabel"></canvas>
+      </div>
+      <!-- <div>{{dataPie|json}}</div>
+      <div>{{chartOptionsPie|json}}</div> -->
+   </ng-container>
    
 </div>

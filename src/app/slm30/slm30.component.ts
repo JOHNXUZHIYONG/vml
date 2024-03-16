@@ -1,26 +1,15 @@
 import { Component } from '@angular/core';
+
 import { DataService } from '../data.service';
 import { interval, switchMap } from 'rxjs';
 import { ChartData, ChartOptions } from 'chart.js';
-interface HaasPowermeterEntry {
-  time: string;
-  P_total: string;
-  // 其他可能的属性...
-}
-interface HaasPartTimeEntry {
-  time: string;
-  part_number: string;
-  // 其他可能的属性...
-}
-
 
 @Component({
-  selector: 'app-ntx500',
-  templateUrl: './ntx500.component.html',
-  styleUrls: ['./ntx500.component.css']
+  selector: 'app-slm30',
+  templateUrl: './slm30.component.html',
+  styleUrls: ['./slm30.component.css']
 })
-export class Ntx500Component {
-
+export class Slm30Component {
 
   dataLine: ChartData<'line'> = {
     labels: ["55-60", "50-55", "45-50", "40-45", "35-40", "30-35", "25-30", "20-25", "15-20", "10-15",

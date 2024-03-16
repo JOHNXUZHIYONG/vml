@@ -97,7 +97,7 @@ export class HaasComponent {
       (result) => {
         this.haasPowermeterData = result;
 
-        let chartData = [{
+        let chartData2 = [{
           label: 'P_total',
           data: this.haasPowermeterData[0],
           tension: 0.5,
@@ -105,8 +105,8 @@ export class HaasComponent {
           backgroundColor: 'lightgreen',
         }];
 
-        this.lineChartData = chartData;
-        this.dataLine.datasets = chartData;
+        this.lineChartData = chartData2;
+        this.dataLine.datasets = chartData2;
       },
       (error) => {
         console.error('Error fetching Powermeter data:', error);

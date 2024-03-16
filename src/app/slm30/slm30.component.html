@@ -1,25 +1,25 @@
 <div class="container">
-    <p class="dashboard_name">NTX500</p>
-  
+    <p class="dashboard_name">Lasertec 30 SLM</p>
+
     <div class="rounded-rectangles">
-  
+
         <div class="rounded-rectangle">
             <!-- <DIV>{{data[0].machine_status |json}}</DIV> -->
             <div class="lights">
                 <img class="light"
                     *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON' && data[0].machine_status.toString() !== ' FEED HOLD'&& data[0].machine_status.toString() !== 'RUNNING'"
                     src="assets/image/Green.png" alt="Default Light">
-                <img class="light" *ngIf="data[0].machine_status.toString() === ' IDLE'"
-                    src="assets/image/Yellow.png" alt="Yellow Light">
-                <img class="light" *ngIf="data[0].machine_status.toString() === ' ALARM ON'"
-                    src="assets/image/Red.png" alt="Red Light">
+                <img class="light" *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Yellow.png"
+                    alt="Yellow Light">
+                <img class="light" *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Red.png"
+                    alt="Red Light">
                 <img class="light" *ngIf="data[0].machine_status.toString() === ' FEED HOLD'"
                     src="assets/image/Blue.png" alt="Blue Light">
-                <img class="light" *ngIf="data[0].machine_status.toString() === 'RUNNING'"
-                    src="assets/image/Green.png" alt="Green Light">
+                <img class="light" *ngIf="data[0].machine_status.toString() === 'RUNNING'" src="assets/image/Green.png"
+                    alt="Green Light">
             </div>
-            <img src="../../assets/image/NTX500.webp" alt="NTX500" class="HAAS">
-            <h4 class="title">Current Program: {{data[0].prog_num}}</h4>
+            <img src="../../assets/image/SLM30.png" alt="SLM30" class="HAAS">
+            <!-- <h4 class="title">Current Program: {{data[0].prog_num}}</h4>
             <div class="prog_nums">
                 <img class="prog_num"
                     *ngIf="data[0].prog_num !== 101 && data[0].prog_num !== 102 && data[0].prog_num !== 103"
@@ -31,33 +31,34 @@
             <div class="total_part_count cycle_time">
                 <h4>Total Part Count</h4>
                 <h1>{{data[0].part_count}}</h1>
-                <!-- <h4> Seconds</h4> -->
-            </div>
+                
+            </div> -->
         </div>
-  
+
         <div class="rounded-rectangle chart_container">
-  
-            <!-- <p class="pie_chart_title chart_title">Machine Status Percentage</p> -->
+
+            <!-- <p class="pie_chart_title chart_title">Machine Status Percentage</p>
             <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData"
                 [chartLabel]="pTotalTimeList" [dataLine]="dataLine" [chartOptionsLine]="chartOptionsLine"></app-charts>
   
-            <!-- <p class="line_chart_title chart_title">Spindle Speed</p> -->
+            <p class="line_chart_title chart_title">Spindle Speed</p>
             <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"
-                [dataBar]="dataBar" [chartOptionsBar]="chartOptionsBar"></app-charts>
-  
+                [dataBar]="dataBar" [chartOptionsBar]="chartOptionsBar"></app-charts> -->
+
         </div>
-  
-  
+
+
         <div class="rounded-rectangle ">
-  
+
             <!-- <div class="p_total">
                 <h4>Power Consumption (1h)</h4>
                 <h1>{{haasPowermeterData[1]}}</h1>
                 <h4> kWh</h4>
   
             </div> -->
-            <h4 class="title tool">Current Tool Number: {{data[0].current_tool_number}}</h4>
-            <div class="parts">
+            <h4 class="title tool">Task Name: Medical parts demo</h4>
+            <h4 class="title mt">MTCONNECT</h4>
+            <!-- <div class="parts">
                 <img class="part"
                     *ngIf="data[0].prog_num !== 101 && data[0].prog_num !== 102 && data[0].prog_num !== 103"
                     src="assets/image/m4.png" alt="Part 1">
@@ -68,83 +69,85 @@
             <div class="spindles">
                 <img class="spindle"  src="assets/image/Vertical_spindle.png" alt="Vertical_spindle">
                 <img class="spindle"  src="assets/image/Horizontal_spindle.webp" alt="Horizontal_spindle">
-            </div>
+            </div> -->
             <table class="table">
-  
+
+                
                 <tr>
-                    <td>Spindle Load</td>
-                    <td>{{data[0].spindle_load}}</td>
-  
+                    <td>logic1</td>
+                    <td>NORMAL</td>
                 </tr>
                 <tr>
-                    <td>Spindle Speed</td>
-                    <td>{{data[0].spindle_speed | number: '1.0-1'}}</td>
-  
+                    <td>execution1</td>
+                    <td>ACTIVE</td>
                 </tr>
                 <tr>
-                    <td>Spindle Load</td>
-                    <td>{{data[0].spindle_load}}</td>
-  
+                    <td>program1</td>
+                    <td>Medical parts demo</td>
                 </tr>
                 <tr>
-                    <td>Spindle Speed</td>
-                    <td>{{data[0].spindle_speed | number: '1.0-1'}}</td>
-  
+                    <td>operationTime</td>
+                    <td>00:00:06.9340004</td>
                 </tr>
-  
-  
-                   
-  
-  
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:04:49.9730003</td>
+                </tr>
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:06:30.7259998</td>
+                </tr>
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:08:12.8490004</td>
+                </tr>
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:09:52.7820001</td>
+                </tr>
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:11:32.6520001</td>
+                </tr>
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:13:12.9380005</td>
+                </tr>
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:14:52.6360001</td>
+                </tr>
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:16:33.3608533</td>
+                </tr>
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:18:13.9688528</td>
+                </tr>
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:19:53.9668528</td>
+                </tr>
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:21:34.2318936</td>
+                </tr>
+                <tr>
+                    <td>operationTime</td>
+                    <td>00:23:14.3618938</td>
+                </tr>
+             
+
             </table>
 
-            <table class="table ABC">
-  
-                
-  
-                <tr>
-                    <td>X</td>
-                    <td>{{data[0].spindle_speed | number: '1.0-1'}}</td>
-  
-                </tr>
-                <tr>
-                    <td>Y</td>
-                    <td>{{data[0].y | number: '1.0-1'}}</td>
-  
-                </tr>
-                <tr>
-                    <td>Z</td>
-                    <td>{{data[0].z | number: '1.0-1'}}</td>
-  
-                </tr>
-                <tr>
-                  <td>A</td>
-                  <td>{{data[0].z | number: '1.0-1'}}</td>
-  
-              </tr>
-              <tr>
-                <td>B</td>
-                <td>{{data[0].z | number: '1.0-1'}}</td>
-  
-            </tr>
-            <tr>
-              <td>C</td>
-              <td>{{data[0].z | number: '1.0-1'}}</td>
-  
-          </tr>
-  
-  
-            </table>
-  
-  
-  
-            <div class="cycle_time">
-                <h4>Current Part Cycle Time</h4>
-                <h1>{{dataBar.datasets[0].data[dataBar.datasets[0].data.length-1] }} s</h1>
-                <!-- <div>{{dataBar.datasets[0].data[dataBar.datasets[0].data.length-1] }} </div> -->
-                <!-- <h4> Seconds</h4> -->
-  
-            </div>
-  
+
+
+
+
+
+
+          
+
         </div>
     </div>

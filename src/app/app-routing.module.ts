@@ -10,6 +10,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { HaasComponent } from './haas/haas.component';
 import { Lt65Component } from './lt65/lt65.component';
 import { Ntx500Component } from './ntx500/ntx500.component';
+import { Slm30Component } from './slm30/slm30.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/machine_status', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'haas', component: HaasComponent },
       { path: 'lt65', component: Lt65Component }, 
       { path: 'ntx500', component: Ntx500Component },
+      { path: 'slm30', component: Slm30Component },
 
 
     ]

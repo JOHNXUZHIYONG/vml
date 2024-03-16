@@ -13,14 +13,16 @@ export class ChartsComponent implements OnChanges {
   @Input() chartTitle: string = ''; // 折线图标题
   @Input() chartData: any[] = []; // 折线图数据
   @Input() chartLabel: any[] = []; // 折线图数据
-  @Input() chartType: 'line' | 'bar' = 'line';
+  @Input() chartType: 'line' | 'bar' | 'pie' | 'doughnut' = 'line';
   @Input() pTotalTimeList: any[] = [];
   @Input() chartOptionsBar: any;
   @Input() chartOptionsLine: any;
   @Input() chartOptionsPie: any;
+  @Input() chartOptionsDoughnut: any;
   @Input() dataBar: any;
   @Input() dataLine: any;
   @Input() dataPie: any;
+  @Input() dataDoughnut: any;
 
   @ViewChild(BaseChartDirective) chart!: BaseChartDirective; // 使用非空断言
 
