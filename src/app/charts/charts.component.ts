@@ -12,8 +12,8 @@ import { BaseChartDirective } from 'ng2-charts';
 export class ChartsComponent implements OnChanges {
   // @Input() chartTitle: string = ''; 
   @Input() chartData: any[] = []; // 没有用到，但没有图标就不自动刷新了
-  @Input() chartLabel: any[] = []; 
-  @Input() chartType: 'line' | 'bar' | 'pie' | 'doughnut' = 'line';
+  @Input() chartLabel: any[] = [];
+  @Input() chartType: 'line' | 'bar' | 'pie' | 'doughnut' | 'barMulti' = 'line';
   // @Input() pTotalTimeList: any[] = [];
   // @Input() chartOptionsBar: any;
   // @Input() chartOptionsLine: any;
@@ -23,68 +23,141 @@ export class ChartsComponent implements OnChanges {
   @Input() dataLine: any;
   @Input() dataPie: any;
   @Input() dataDoughnut: any;
+  @Input() dataBarMulti: any;
+
   @Input() titlePie !: string;
   @Input() titleDoughnut !: string;
+
   @Input() titleBar !: string;
   @Input() xTitleBar !: string;
   @Input() yTitleBar !: string;
+
+  @Input() titleBarMulti !: string;
+  @Input() xTitleBarMulti !: string;
+  @Input() yTitleBarMulti !: string;
+
   @Input() titleLine !: string;
   @Input() xTitleLine !: string;
   @Input() yTitleLine !: string;
+  
 
   @ViewChild(BaseChartDirective) chart!: BaseChartDirective; // 使用非空断言
- 
+
   chartOptionsLine: any;
   chartOptionsBar: any;
   chartOptionsPie: any;
   chartOptionsDoughnut: any;
-  
+  chartOptionsBarMulti: any;
+
 
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    
+
     this.chart.update(); // 手动触发图表更新
 
   }
 
   ngOnInit(): void {
+    //########## BarMulti Chart options#########
+    this.chartOptionsBarMulti = {
+      responsive: true,
+      plugins: {
+        
+        // datalabels: {
+        //   color: '#000000',
+        //   display: function(context) {
+        //     return context.dataset.data[context.dataIndex] !== 0;
+        //   },
+        //   formatter: function(value, context) {
+        //     return Math.round(value * 100) / 100;
+        //   },
+        //   anchor: 'start',
+        //   align: 'end',
+        //   offset: 4, 
+        // }
+        title: {
+          display: true,
+          text: this.titleBarMulti,
+          color: 'green',
+          font: {
+            size: 16,
+            weight: 'bold',
+            family: 'Arial, sans-serif',
+
+          }
+        },
+        legend: {
+          display: true,
+          position: "top"
+        },
+      },
+      scales: {
+        x: {stacked: true, //控制堆叠
+          ticks: { color: 'white', }, title: {
+            display: true,
+            text: this.xTitleBarMulti,
+            color: 'white',
+            font: {
+              size: 14,
+              weight: 'bold',
+              family: 'Arial, sans-serif',
+            }
+          },
+        },
+        y: {stacked: true, //控制堆叠
+          ticks: { color: 'white', },
+          title: {
+            display: true,
+            text: this.yTitleBarMulti,
+            color: 'white',
+            font: {
+              size: 14,
+              weight: 'bold',
+              family: 'Arial, sans-serif',
+            }
+          },
+          grid: { color: 'rgba(255, 255, 255, 0.2)' }
+        }
+      }
+    };
+
     //###### Line Options ################################
     this.chartOptionsLine = {
       responsive: true,
       // maintainAspectRatio: false, // 禁用纵横比维持
       //   aspectRatio: 1.5, // 设置宽高比例，只在 maintainAspectRatio 为 false 时生效
-  
+
       plugins: {
         title: {
           display: true,
           text: this.titleLine,
-          color: 'green', 
+          color: 'green',
           font: {
-            size: 16, 
-            weight: 'bold', 
-            family: 'Arial, sans-serif', 
-  
+            size: 16,
+            weight: 'bold',
+            family: 'Arial, sans-serif',
+
           }
-  
-  
+
+
         },
         legend: {
-          display: false, 
+          display: false,
           position: "bottom"
         },
         tooltip: {
           mode: 'index',
           intersect: false,
         },
-  
+
       },
       scales: {
         x: {
           title: {
             display: true,
             text: this.xTitleLine,
-            color: 'white', 
+            color: 'white',
             font: {
               size: 14,
               weight: 'bold',
@@ -92,19 +165,19 @@ export class ChartsComponent implements OnChanges {
             }
           },
           ticks: {
-            color: 'white', 
-  
+            color: 'white',
+
           },
           grid: {
             color: 'rgba(255, 255, 255, 0.2)'
           }
-  
+
         },
         y: {
           title: {
             display: true,
             text: this.yTitleLine,
-            color: 'white', 
+            color: 'white',
             font: {
               size: 14,
               weight: 'bold',
@@ -112,10 +185,10 @@ export class ChartsComponent implements OnChanges {
             }
           },
           ticks: {
-            color: 'white', 
+            color: 'white',
           },
           grid: {
-            color: 'rgba(255, 255, 255, 0.2)' 
+            color: 'rgba(255, 255, 255, 0.2)'
           },
           // suggestedMin: 0.322, // 设置 y 轴的最小值
           // suggestedMax: 0.325, // 设置 y 轴的最大值
@@ -129,52 +202,52 @@ export class ChartsComponent implements OnChanges {
     //###### Bar Options ################################
     this.chartOptionsBar = {
       responsive: true,
-  
+
       plugins: {
         title: {
           display: true,
           text: this.titleBar,
-          color: 'green', 
+          color: 'green',
           font: {
-            size: 16, 
-            weight: 'bold', 
-            family: 'Arial, sans-serif', 
-  
+            size: 16,
+            weight: 'bold',
+            family: 'Arial, sans-serif',
+
           }
         },
         legend: {
-          display: false, 
+          display: false,
           position: "bottom"
         },
-  
+
       },
       scales: {
         x: {
           ticks: { color: 'white', }, title: {
             display: true,
             text: this.xTitleBar,
-            color: 'white', 
+            color: 'white',
             font: {
               size: 14,
               weight: 'bold',
               family: 'Arial, sans-serif',
             }
           },
-        },   
+        },
         y: {
           ticks: { color: 'white', },
           title: {
             display: true,
             text: this.yTitleBar,
-            color: 'white', 
+            color: 'white',
             font: {
               size: 14,
               weight: 'bold',
               family: 'Arial, sans-serif',
             }
-          },       
+          },
           grid: { color: 'rgba(255, 255, 255, 0.2)' }
-        } 
+        }
       }
     };
 
@@ -239,6 +312,10 @@ export class ChartsComponent implements OnChanges {
         },
       }
     };
+
+
+
+
 
   }
 }

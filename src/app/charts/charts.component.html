@@ -5,14 +5,14 @@
    
    <ng-container *ngIf="chartType === 'line'">
       <div>
-         <canvas baseChart [data]="dataLine" [type]="'line'" [options]="chartOptionsLine"  ></canvas>
+         <canvas baseChart [data]="dataLine" [type]="'line'" [options]="chartOptionsLine" [labels]="chartLabel" ></canvas>
       </div>
       <!-- <div>{{dataLine|json}}</div> -->
    </ng-container>
 
    <ng-container *ngIf="chartType === 'bar'">
       <div>
-         <canvas baseChart [data]="dataBar"  [type]="'bar'" [options]="chartOptionsBar" ></canvas>
+         <canvas baseChart [data]="dataBar"  [type]="'bar'" [options]="chartOptionsBar" [labels]="chartLabel"></canvas>
       </div>
       <!-- <div>{{dataBar|json}}</div> -->
    </ng-container>
@@ -32,6 +32,13 @@
       <!-- <div>{{dataPie|json}}</div>
       <div>{{chartOptionsPie|json}}</div> -->
       
+   </ng-container>
+
+   <ng-container *ngIf="chartType === 'barMulti'">
+      <div>
+         <canvas baseChart [data]="dataBarMulti"  [type]="'bar'" [options]="chartOptionsBarMulti" [labels]="chartLabel"></canvas>
+      </div>
+      <!-- <div>{{dataBar|json}}</div> -->
    </ng-container>
    
    

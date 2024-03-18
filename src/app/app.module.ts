@@ -1,4 +1,5 @@
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgChartsModule } from 'ng2-charts';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -15,8 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HaasComponent } from './haas/haas.component';
 import { Lt65Component } from './lt65/lt65.component';
 import { Ntx500Component } from './ntx500/ntx500.component';
-import { NgChartsModule } from 'ng2-charts';
-import { Slm30Component } from './slm30/slm30.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import { Slm30Component } from './slm30/slm30.component';
     LayoutComponent,
     HaasComponent,
     Lt65Component,
-    Ntx500Component,
-    Slm30Component
+    Ntx500Component
   ],
   imports: [
     BrowserModule,
@@ -38,7 +36,7 @@ import { Slm30Component } from './slm30/slm30.component';
     FormsModule,
     NgxChartsModule,
     HttpClientModule,
-    NgChartsModule,
+    NgChartsModule
 
   ],
   providers: [],

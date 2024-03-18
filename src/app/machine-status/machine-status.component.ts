@@ -11,24 +11,22 @@ import { interval, switchMap } from 'rxjs';
 export class MachineStatusComponent {
 
   data: any;
+  NTX500data: any;
+  LT65data: any;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
     // 初始获取一次数据
     this.getData();
+    this.getNTX500Data();
+    this.getLT65Data();
 
-    // 每秒刷新一次数据
-    interval(1000).pipe(
-      switchMap(() => this.dataService.getData())
-    ).subscribe(
-      (result) => {
-        this.data = result;
-      },
-      (error) => {
-        console.error('Error fetching haas data:', error);
-      }
-    );
+    interval(1000).subscribe(() => {
+      this.getData();
+      this.getNTX500Data();
+      this.getLT65Data();
+    });
   }
 
   getData() {
@@ -41,5 +39,29 @@ export class MachineStatusComponent {
       }
     );
   }
+
+  getNTX500Data() {
+    this.dataService.getNTX500Data().subscribe(
+      (result) => {
+        this.NTX500data = result;
+      },
+      (error) => {
+        console.error('Error fetching NTX500 data:', error);
+      }
+    );
+  }
+
+  getLT65Data() {
+    this.dataService.getLT65Data().subscribe(
+      (result) => {
+        this.LT65data = result;
+      },
+      (error) => {
+        console.error('Error fetching LT65 data:', error);
+      }
+    );
+  }
+
+
 
 }

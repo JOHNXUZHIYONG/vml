@@ -4,20 +4,33 @@
   <div class="rounded-rectangles">
 
     <div routerLink="/ntx500" class="rounded-rectangle">
+      <div class="lights">
+        <img class="light"
+            *ngIf="NTX500data[0].machine_status.toString() !== ' IDLE' && NTX500data[0].machine_status.toString() !== ' ALARM ON' && data[0].machine_status.toString() !== ' FEED HOLD'&& data[0].machine_status.toString() !== 'RUNNING'"
+            src="assets/image/Green.png" alt="Default Light">
+        <img class="light" *ngIf="NTX500data[0].machine_status.toString() === ' IDLE'"
+            src="assets/image/Yellow.png" alt="Yellow Light">
+        <img class="light" *ngIf="NTX500data[0].machine_status.toString() === ' ALARM ON'"
+            src="assets/image/Red.png" alt="Red Light">
+        <img class="light" *ngIf="NTX500data[0].machine_status.toString() === ' FEED HOLD'"
+            src="assets/image/Blue.png" alt="Blue Light">
+        <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'RUNNING'"
+            src="assets/image/Green.png" alt="Green Light">
+    </div>
       <img src="../../assets/image/NTX500.webp" alt="NTX500" class="NTX500 pictures">
       <p class="machine_name">NTX500</p>
       <table class="table">
         <tr>
           <td>Program</td>
-          <td>Row 1, Cell 2</td>
+          <td>{{NTX500data[0].prog_num}}</td>
         </tr>
         <tr>
           <td>Machine Status</td>
-          <td>Row 2, Cell 2</td>
+          <td>{{NTX500data[0].machine_status}}</td>
         </tr>
         <tr>
-          <td>Complete No.</td>
-          <td>Row 3, Cell 2</td>
+          <td>Complete Part No.</td>
+          <td>{{NTX500data[0].part_count}}</td>
         </tr>
       </table>
     </div>
@@ -59,39 +72,65 @@
     </div>
 
     <div routerLink="/slm30" class="rounded-rectangle">
+      <div class="lights">
+        <img class="light"
+            *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON' && data[0].machine_status.toString() !== ' FEED HOLD'&& data[0].machine_status.toString() !== 'RUNNING'"
+            src="assets/image/Green.png" alt="Default Light">
+        <img class="light" *ngIf="data[0].machine_status.toString() === ' IDLE'"
+            src="assets/image/Yellow.png" alt="Yellow Light">
+        <img class="light" *ngIf="data[0].machine_status.toString() === ' ALARM ON'"
+            src="assets/image/Red.png" alt="Red Light">
+        <img class="light" *ngIf="data[0].machine_status.toString() === ' FEED HOLD'"
+            src="assets/image/Blue.png" alt="Blue Light">
+        <img class="light" *ngIf="data[0].machine_status.toString() === 'RUNNING'"
+            src="assets/image/Green.png" alt="Green Light">
+    </div>
       <img src="../../assets/image/SLM30.png" alt="slm30" class="slm30 pictures">
       <p class="machine_name">SLM30</p>
       <table class="table">
         <tr>
           <td>Program</td>
-          <td>Row 1, Cell 2</td>
+          <td>{{data[0].prog_num}}</td>
         </tr>
         <tr>
           <td>Machine Status</td>
-          <td>Row 2, Cell 2</td>
+          <td>{{data[0].machine_status}}</td>
         </tr>
         <tr>
-          <td>Complete No.</td>
-          <td>Row 3, Cell 2</td>
+          <td>Complete Part No.</td>
+          <td>{{data[0].part_count}}</td>
         </tr>
       </table>
     </div>
 
     <div routerLink="/lt65" class="rounded-rectangle">
+      <div class="lights">
+        <img class="light"
+            *ngIf="LT65data[0].machine_status.toString() !== ' IDLE' && LT65data[0].machine_status.toString() !== ' ALARM ON' && data[0].machine_status.toString() !== ' FEED HOLD'&& data[0].machine_status.toString() !== 'RUNNING'"
+            src="assets/image/Green.png" alt="Default Light">
+        <img class="light" *ngIf="LT65data[0].machine_status.toString() === ' IDLE'"
+            src="assets/image/Yellow.png" alt="Yellow Light">
+        <img class="light" *ngIf="LT65data[0].machine_status.toString() === ' ALARM ON'"
+            src="assets/image/Red.png" alt="Red Light">
+        <img class="light" *ngIf="LT65data[0].machine_status.toString() === ' FEED HOLD'"
+            src="assets/image/Blue.png" alt="Blue Light">
+        <img class="light" *ngIf="LT65data[0].machine_status.toString() === 'RUNNING'"
+            src="assets/image/Green.png" alt="Green Light">
+    </div>
       <img src="../../assets/image/LT65.webp" alt="LT65" class="LT65 pictures">
       <p class="machine_name">LT65</p>
       <table class="table">
         <tr>
           <td>Program</td>
-          <td>Row 1, Cell 2</td>
+          <td>{{LT65data[0].prog_num}}</td>
         </tr>
         <tr>
           <td>Machine Status</td>
-          <td>Row 2, Cell 2</td>
+          <td>{{LT65data[0].machine_status}}</td>
         </tr>
         <tr>
-          <td>Complete No.</td>
-          <td>Row 3, Cell 2</td>
+          <td>Complete Part No.</td>
+          <td>{{LT65data[0].part_count}}</td>
         </tr>
       </table>
     </div>

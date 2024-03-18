@@ -36,14 +36,15 @@
         </div>
   
         <div class="rounded-rectangle chart_container">
+            <app-charts class="bar_chart" [chartType]="'barMulti'" [dataBarMulti]="dataBarMulti" [titleBarMulti]="titleBarMulti" [xTitleBarMulti]="xTitleBarMulti" [yTitleBarMulti]="yTitleBarMulti"></app-charts>
   
             <!-- <p class="pie_chart_title chart_title">Machine Status Percentage</p> -->
-            <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData"
+            <!-- <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData"
                 [chartLabel]="pTotalTimeList" [dataLine]="dataLine" ></app-charts>
-  
+   -->
             <!-- <p class="line_chart_title chart_title">Spindle Speed</p> -->
-            <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"
-                [dataBar]="dataBar" ></app-charts>
+            <!-- <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"
+                [dataBar]="dataBar" ></app-charts> -->
   
         </div>
   

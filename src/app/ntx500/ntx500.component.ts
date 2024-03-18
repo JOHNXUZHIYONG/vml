@@ -21,6 +21,21 @@ interface HaasPartTimeEntry {
 })
 export class Ntx500Component {
 
+  titleBarMulti: string = 'Part Production Cycle Time';
+  xTitleBarMulti: string = 'Part Number';
+  yTitleBarMulti: string = 'Production Time / s';
+  
+ dataBarMulti: any = {
+  labels: ['Part 1','Part 2','Part 3','Part 4','Part 5'],
+  datasets: [
+    { data: [3600, 1800, 600, 300], label: 'RUNNING', backgroundColor: 'green' },
+    { data: [5400, 1200, 900, 150], label: 'IDLE', backgroundColor: 'blue' },
+    { data: [3600, 1800, 600, 300], label: 'ALARM ON', backgroundColor: 'red' },
+    { data: [5400, 1200, 900, 150], label: 'FEED HOLD', backgroundColor: 'yellow' }
+    ]
+  };
+
+ chartType: string = 'barMulti' ;
 
   dataLine: ChartData<'line'> = {
     labels: ["55-60", "50-55", "45-50", "40-45", "35-40", "30-35", "25-30", "20-25", "15-20", "10-15",

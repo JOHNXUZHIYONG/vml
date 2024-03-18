@@ -25,7 +25,7 @@ export class DataService {
 
   getPartTimeData(): Observable<any> {
     return this.http.get<any>(this.partTime).pipe(
-      catchError(() => of([[1,2,3,4,5,6,7,8,9,10],[5,5,5,5,5,6,6,6,6,6]]))
+      catchError(() => of([[1,2,3,4,5,6,7,8,9,10],[5,5,5,5,5,6,6,6,6,7]]))
     );
   }
   
@@ -37,11 +37,17 @@ export class DataService {
   }
 
   getNTX500Data(): Observable<any> {
-    return this.http.get<any>(this.NTX500Url);
+    return this.http.get<any>(this.NTX500Url).pipe(
+      catchError(() => of([{"time": "12:00:00", "prog_num": "DMG001", "machine_status": "run", "complete_number": "1000",
+      "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "total_tool_change": "5", "cool_level": "6"}]))
+    );
   }
 
   getLT65Data(): Observable<any> {
-    return this.http.get<any>(this.LT65Url);
+    return this.http.get<any>(this.LT65Url).pipe(
+      catchError(() => of([{"time": "12:00:00", "prog_num": "DMG001", "machine_status": "run", "complete_number": "1000",
+      "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "total_tool_change": "5", "cool_level": "6"}]))
+    );
   }
 
   getDefaultHAASPowermeterData(): any {
