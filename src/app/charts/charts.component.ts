@@ -10,66 +10,237 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrls: ['./charts.component.css']
 })
 export class ChartsComponent implements OnChanges {
-  @Input() chartTitle: string = ''; // 折线图标题
-  @Input() chartData: any[] = []; // 折线图数据
-  @Input() chartLabel: any[] = []; // 折线图数据
+  // @Input() chartTitle: string = ''; 
+  @Input() chartData: any[] = []; // 没有用到，但没有图标就不自动刷新了
+  @Input() chartLabel: any[] = []; 
   @Input() chartType: 'line' | 'bar' | 'pie' | 'doughnut' = 'line';
-  @Input() pTotalTimeList: any[] = [];
-  @Input() chartOptionsBar: any;
-  @Input() chartOptionsLine: any;
-  @Input() chartOptionsPie: any;
-  @Input() chartOptionsDoughnut: any;
+  // @Input() pTotalTimeList: any[] = [];
+  // @Input() chartOptionsBar: any;
+  // @Input() chartOptionsLine: any;
+  // @Input() chartOptionsPie: any;
+  // @Input() chartOptionsDoughnut: any;
   @Input() dataBar: any;
   @Input() dataLine: any;
   @Input() dataPie: any;
   @Input() dataDoughnut: any;
+  @Input() titlePie !: string;
+  @Input() titleDoughnut !: string;
+  @Input() titleBar !: string;
+  @Input() xTitleBar !: string;
+  @Input() yTitleBar !: string;
+  @Input() titleLine !: string;
+  @Input() xTitleLine !: string;
+  @Input() yTitleLine !: string;
 
   @ViewChild(BaseChartDirective) chart!: BaseChartDirective; // 使用非空断言
+ 
+  chartOptionsLine: any;
+  chartOptionsBar: any;
+  chartOptionsPie: any;
+  chartOptionsDoughnut: any;
+  
 
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // if (true) {
-    //   // this.updateChartData();
-      this.chart.update(); // 手动触发图表更新
-    // }
+    
+    this.chart.update(); // 手动触发图表更新
+
   }
 
+  ngOnInit(): void {
+    //###### Line Options ################################
+    this.chartOptionsLine = {
+      responsive: true,
+      // maintainAspectRatio: false, // 禁用纵横比维持
+      //   aspectRatio: 1.5, // 设置宽高比例，只在 maintainAspectRatio 为 false 时生效
+  
+      plugins: {
+        title: {
+          display: true,
+          text: this.titleLine,
+          color: 'green', 
+          font: {
+            size: 16, 
+            weight: 'bold', 
+            family: 'Arial, sans-serif', 
+  
+          }
+  
+  
+        },
+        legend: {
+          display: false, 
+          position: "bottom"
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+        },
+  
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: this.xTitleLine,
+            color: 'white', 
+            font: {
+              size: 14,
+              weight: 'bold',
+              family: 'Arial, sans-serif',
+            }
+          },
+          ticks: {
+            color: 'white', 
+  
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.2)'
+          }
+  
+        },
+        y: {
+          title: {
+            display: true,
+            text: this.yTitleLine,
+            color: 'white', 
+            font: {
+              size: 14,
+              weight: 'bold',
+              family: 'Arial, sans-serif',
+            }
+          },
+          ticks: {
+            color: 'white', 
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.2)' 
+          },
+          // suggestedMin: 0.322, // 设置 y 轴的最小值
+          // suggestedMax: 0.325, // 设置 y 轴的最大值
+        }
+      }
+    };
 
- 
-  // dataBar: ChartData<'bar'> = {
-
-  //   labels: [],
-  //   datasets: [],
-
-  // };
-
-
-  // dataLine: ChartData<'line'> = {
-  //   labels: ["55-60", "50-55", "45-50", "40-45", "35-40", "30-35", "25-30", "20-25", "15-20", "10-15",
-  //   "5-10", "0-5"],
-
-  //   datasets:  [ { "label": "P_total", "data": [ 80, 77.15, 94.86, 80, 94.86, 94.86, 80, 94.86, 71.15, 80, 80, 90 ], "tension": 0.5, "borderColor": "green", "backgroundColor": "lightgreen" }],
-    
-
-  // };
 
 
 
-  // 在组件类中定义一个方法，用于更新数据
-  // private updateChartData(): void {
-    
-  //   if (this.dataBar || this.dataLine) {
-  //     // this.dataLine.datasets = this.chartData;
-  //     // this.dataLine.labels = this.chartLabel;
-  //     // 假设chartData的结构与初始数据相同
-  //     // this.dataBar.datasets = this.chartData;
-  //     // this.dataBar.labels = this.chartLabel;
-  //     this.dataBar = this.dataBar;
-  //     this.dataLine=this.dataLine;
+    //###### Bar Options ################################
+    this.chartOptionsBar = {
+      responsive: true,
+  
+      plugins: {
+        title: {
+          display: true,
+          text: this.titleBar,
+          color: 'green', 
+          font: {
+            size: 16, 
+            weight: 'bold', 
+            family: 'Arial, sans-serif', 
+  
+          }
+        },
+        legend: {
+          display: false, 
+          position: "bottom"
+        },
+  
+      },
+      scales: {
+        x: {
+          ticks: { color: 'white', }, title: {
+            display: true,
+            text: this.xTitleBar,
+            color: 'white', 
+            font: {
+              size: 14,
+              weight: 'bold',
+              family: 'Arial, sans-serif',
+            }
+          },
+        },   
+        y: {
+          ticks: { color: 'white', },
+          title: {
+            display: true,
+            text: this.yTitleBar,
+            color: 'white', 
+            font: {
+              size: 14,
+              weight: 'bold',
+              family: 'Arial, sans-serif',
+            }
+          },       
+          grid: { color: 'rgba(255, 255, 255, 0.2)' }
+        } 
+      }
+    };
 
-  //   }
-  // }
+    //###### pie Options ################################
+    this.chartOptionsPie = {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: this.titlePie,
+          color: 'green',
+          font: {
+            size: 16,
+            weight: 'bold',
+            family: 'Arial, sans-serif',
+          }
+        },
+
+        legend: {
+          display: true,
+          position: 'right',
+          labels: {
+            color: 'white',
+            font: {
+              size: 10,
+              // weight: 'bold',
+              family: 'Arial, sans-serif',
+            }
+          }
+        },
+      }
+    };
+
+    //doughnut Options################################
+    this.chartOptionsDoughnut = {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: this.titleDoughnut,
+          color: 'green',
+          font: {
+            size: 16,
+            weight: 'bold',
+            family: 'Arial, sans-serif',
+
+          }
+
+        },
+
+        legend: {
+          display: true,
+          position: 'right',
+          labels: {
+            color: 'white',
+            font: {
+              size: 10,
+              // weight: 'bold',
+              family: 'Arial, sans-serif',
+            }
+          }
+        },
+      }
+    };
+
+  }
 }
 
 

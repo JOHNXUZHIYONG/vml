@@ -1,25 +1,25 @@
 
 <!-- chart.component.html -->
 <div class="chart">
-   <h2>{{ chartTitle }}</h2>
-
+   <!-- <h2>{{ chartTitle}}</h2> -->
+   
    <ng-container *ngIf="chartType === 'line'">
       <div>
-         <canvas baseChart [data]="dataLine" [type]="'line'" [options]="chartOptionsLine" [labels]="chartLabel" ></canvas>
+         <canvas baseChart [data]="dataLine" [type]="'line'" [options]="chartOptionsLine"  ></canvas>
       </div>
       <!-- <div>{{dataLine|json}}</div> -->
    </ng-container>
 
    <ng-container *ngIf="chartType === 'bar'">
       <div>
-         <canvas baseChart [data]="dataBar"  [type]="'bar'" [options]="chartOptionsBar" [labels]="chartLabel"></canvas>
+         <canvas baseChart [data]="dataBar"  [type]="'bar'" [options]="chartOptionsBar" ></canvas>
       </div>
       <!-- <div>{{dataBar|json}}</div> -->
    </ng-container>
 
    <ng-container *ngIf="chartType === 'pie'">
       <div>
-         <canvas baseChart [data]="dataPie" [type]="'pie'" [options]="chartOptionsPie" [labels]="chartLabel"></canvas>
+         <canvas baseChart [data]="dataPie" [type]="'pie'" [options]="chartOptionsPie" [labels]="chartLabel" ></canvas>
       </div>
       <!-- <div>{{dataPie|json}}</div>
       <div>{{chartOptionsPie|json}}</div> -->
@@ -31,6 +31,8 @@
       </div>
       <!-- <div>{{dataPie|json}}</div>
       <div>{{chartOptionsPie|json}}</div> -->
+      
    </ng-container>
+   
    
 </div>

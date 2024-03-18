@@ -34,16 +34,16 @@
                 <!-- <h4> Seconds</h4> -->
             </div>
         </div>
-
+q
         <div class="rounded-rectangle chart_container">
 
             <!-- <p class="pie_chart_title chart_title">Machine Status Percentage</p> -->
-            <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData"
-                [chartLabel]="pTotalTimeList" [dataLine]="dataLine" [chartOptionsLine]="chartOptionsLine"></app-charts>
+            <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData" 
+                 [dataLine]="dataLine" [titleLine]="titleLine" [xTitleLine] = "xTitleLine" [yTitleLine] = "yTitleLine"></app-charts>
 
             <!-- <p class="line_chart_title chart_title">Spindle Speed</p> -->
-            <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"
-                [dataBar]="dataBar" [chartOptionsBar]="chartOptionsBar"></app-charts>
+            <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" 
+                [dataBar]="dataBar" [titleBar]="titleBar" [xTitleBar] = "xTitleBar" [yTitleBar] = "yTitleBar"></app-charts>
 
         </div>
 
