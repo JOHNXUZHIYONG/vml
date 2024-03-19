@@ -17,7 +17,8 @@ import { ChartData, ChartOptions } from 'chart.js';
 export class Lt65Component {
 
   data: any;//LT65 real time data
-
+  machineStatusData: any;
+  machineStatusLabels: any = ['Alarm On', 'Idle', 'Feed Hold', 'Running'];
   //Pie chart inputs
   dataP: number[] = [30, 50, 100, 100];
   titlePie: string = 'LT65 Machine Status';
@@ -59,24 +60,27 @@ export class Lt65Component {
 
   ngOnInit() {
     // 初始获取一次数据
-    this.getData();
+    this.getLT65Data();
     this.getPartTimeData();
+    this.getLT65MachineStatusData();
 
     // Refresh data and charts every 3 seconds
     interval(3000).subscribe(() => {
-      this.getData();
+      this.getLT65Data();
       this.getPartTimeData();
+      this.getLT65MachineStatusData();
+      
     });
 
   }
 
-  getData() {
-    this.dataService.getData().subscribe(
+  getLT65Data() {
+    this.dataService.getLT65Data().subscribe(
       (result) => {
         this.data = result;
       },
       (error) => {
-        console.error('Error fetching haas data:', error);
+        console.error('Error fetching getLT65Data:', error);
       }
     );
   }
@@ -105,10 +109,28 @@ export class Lt65Component {
     );
   }
 
+  
+  getLT65MachineStatusData() {
+    this.dataService.getLT65MachineStatusData().subscribe(
+      (result) => {
+        // this.machineStatusData = result;
+        this.dataD = result;
+        let chartDataD = [{
+          data: this.dataD,
+          backgroundColor: ['red', 'blue', 'yellow', 'green'],
+        }];
 
+        // this.partList = this.partTimeData[0];
+        this.dataDoughnut.datasets = chartDataD;
+        this.dataDoughnut.labels = this.machineStatusLabels;
+      },
+      (error) => {
+        console.error('Error fetching LT65 Machine Status data:', error);
+      }
+    );
+  }
 
-
-
+ 
 
 }
 

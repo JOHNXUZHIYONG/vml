@@ -31,6 +31,7 @@
             <div class="total_part_count cycle_time">
                 <h4>Total Part Count</h4>
                 <h1>{{data[0].part_count}}</h1>
+                <!-- <h1>{{dataDoughnut|json}}</h1> -->
                 <!-- <h4> Seconds</h4> -->
             </div>
         </div>
@@ -46,7 +47,7 @@
 
 
             </app-charts>
-            <app-charts class="doughnut_chart" [chartType]="'doughnut'" 
+            <app-charts class="doughnut_chart" [chartType]="'doughnut'" [chartData]="dataD"
                 [dataDoughnut]="dataDoughnut" [titleDoughnut] = "titleDoughnut">
 
 
