@@ -15,15 +15,17 @@ import { ChartData, ChartOptions } from 'chart.js';
   styleUrls: ['./lt65.component.css']
 })
 export class Lt65Component {
+  //############# LT65 real time data ############
+  data: any;
 
-  data: any;//LT65 real time data
+
+  //############## Pie chart inputs ############
   machineStatusData: any;
   machineStatusLabels: any = ['Alarm On', 'Idle', 'Feed Hold', 'Running'];
-  //Pie chart inputs
   dataP: number[] = [30, 50, 100, 100];
   titlePie: string = 'LT65 Machine Status';
   dataPie: any = {
-    labels: ['Alarm On', 'Idle', 'Feed Hold', 'Running'],
+    labels: this.machineStatusLabels,
     datasets: [{
       data: this.dataP,
       backgroundColor: ['red', 'blue', 'yellow', 'green'],

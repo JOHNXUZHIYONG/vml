@@ -10,12 +10,13 @@ import { ChartData, ChartOptions } from 'chart.js';
   styleUrls: ['./ntx500.component.css']
 })
 export class Ntx500Component {
+  //########## Machine real time Data #############
   NTX500data: any;
+
+  //############# BarMulti chart inputs data ################
   currentPartCycleTime: any;
-  
   partTimeData: any;
- 
-  barChartData: any[] = [];
+  barChartData: any[] = []; 
 
   chartType: string = 'barMulti' ;
   titleBarMulti: string = 'Part Production Cycle Time';
@@ -33,12 +34,27 @@ export class Ntx500Component {
   };
 
 
+//Pie chart inputs
+machineStatusLabels: any = ['INTERRUPTED', 'READY', 'ACTIVE'];
+dataP: number[] = [30, 50, 100];
+titlePie: string = 'NTX500 Machine Status';
+dataPie: any = {
+  labels: this.machineStatusLabels,
+  datasets: [{
+    data: this.dataP,
+    backgroundColor: ['red', 'yellow', 'green'],
+    // other dataset options...
+  }]
+};
+
+
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
     // 初始获取一次数据
     this.getNTX500Data();
     this.getNTX500PartTimeData();
+    this.getNTX500MachineStatusData();
 
 
     // Refresh data and charts every 3 seconds
@@ -46,6 +62,7 @@ export class Ntx500Component {
 
       this.getNTX500Data();
       this.getNTX500PartTimeData();
+      this.getNTX500MachineStatusData();
     });
 
   }
@@ -77,7 +94,26 @@ export class Ntx500Component {
     );
   }
 
-  
+  getNTX500MachineStatusData() {
+    this.dataService.getNTX500MachineStatusData().subscribe(
+      (result) => {
+        // this.machineStatusData = result;
+        this.dataP = [result['ALARM ON'], result.IDLE, result.RUNNING];
+        let chartDataP = [{
+          data: this.dataP,
+          backgroundColor: ['red', 'yellow', 'green'],
+        }];
 
+        // this.partList = this.partTimeData[0];
+        this.dataPie.datasets = chartDataP;
+        this.dataPie.labels = this.machineStatusLabels;
+      },
+      (error) => {
+        console.error('Error fetching LT65 Machine Status data:', error);
+      }
+    );
+  }
+
+  
 }
 

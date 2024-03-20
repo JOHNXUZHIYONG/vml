@@ -1,62 +1,59 @@
 <div class="container">
     <p class="dashboard_name">NTX500</p>
-  
+
     <div class="rounded-rectangles">
-  
+
         <div class="rounded-rectangle">
             <!-- <DIV>{{data[0].machine_status |json}}</DIV> -->
             <div class="lights">
-                <img class="light"
-                    *ngIf="NTX500data[0].machine_status.toString() !== ' IDLE' && NTX500data[0].machine_status.toString() !== ' ALARM ON' && NTX500data[0].machine_status.toString() !== ' FEED HOLD'&& NTX500data[0].machine_status.toString() !== 'RUNNING'"
-                    src="assets/image/Green.png" alt="Default Light">
-                <img class="light" *ngIf="NTX500data[0].machine_status.toString() === ' IDLE'"
+                <!-- <img class="light"
+                    *ngIf="NTX500data[0].machine_status.toString() !== ' IDLE' && NTX500data[0].machine_status.toString() !== ' ALARM ON' && NTX500data[0].machine_status.toString() !== ' FEED HOLD'&& NTX500data[0].machine_status.toString() !== 'ACTIVE'"
+                    src="assets/image/Green.png" alt="Default Light"> -->
+                <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'READY'"
                     src="assets/image/Yellow.png" alt="Yellow Light">
-                <img class="light" *ngIf="NTX500data[0].machine_status.toString() === ' ALARM ON'"
+                <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'INTERRUPTED'"
                     src="assets/image/Red.png" alt="Red Light">
-                <img class="light" *ngIf="NTX500data[0].machine_status.toString() === ' FEED HOLD'"
-                    src="assets/image/Blue.png" alt="Blue Light">
-                <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'RUNNING'"
+                <!-- <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'INTERRUPTED'"
+                    src="assets/image/Blue.png" alt="Blue Light"> -->
+                <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'ACTIVE'"
                     src="assets/image/Green.png" alt="Green Light">
             </div>
+
             <img src="../../assets/image/NTX500.webp" alt="NTX500" class="HAAS">
+
             <h4 class="title">Current Program: {{NTX500data[0].prog_num}}</h4>
             <div class="prog_nums">
                 <img class="prog_num"
                     *ngIf="NTX500data[0].prog_num !== 101 && NTX500data[0].prog_num !== 102 && NTX500data[0].prog_num !== 103"
                     src="assets/image/m1.png" alt="Program 101">
-                <img class="prog_num" *ngIf="NTX500data[0].prog_num === 101" src="assets/image/m1.png" alt="Program 101">
-                <img class="prog_num" *ngIf="NTX500data[0].prog_num === 102" src="assets/image/m2.png" alt="Program 102">
-                <img class="prog_num" *ngIf="NTX500data[0].prog_num === 103" src="assets/image/m3.png" alt="Program 103">
+                <img class="prog_num" *ngIf="NTX500data[0].prog_num === 101" src="assets/image/m1.png"
+                    alt="Program 101">
+                <img class="prog_num" *ngIf="NTX500data[0].prog_num === 102" src="assets/image/m2.png"
+                    alt="Program 102">
+                <img class="prog_num" *ngIf="NTX500data[0].prog_num === 103" src="assets/image/m3.png"
+                    alt="Program 103">
             </div>
+            
             <div class="total_part_count cycle_time">
                 <h4>Total Part Count</h4>
-                <h1>{{NTX500data[0].part_count}}</h1>
+                <!-- <h1>{{NTX500data|json}}</h1> -->
                 <!-- <h4> Seconds</h4> -->
             </div>
         </div>
-  
+
         <div class="rounded-rectangle chart_container">
-            <app-charts class="bar_chart" [chartType]="'barMulti'" [chartData]="barChartData"  [dataBarMulti]="dataBarMulti" [titleBarMulti]="titleBarMulti" [xTitleBarMulti]="xTitleBarMulti" [yTitleBarMulti]="yTitleBarMulti"></app-charts>
-  
-            <!-- <p class="pie_chart_title chart_title">Machine Status Percentage</p> -->
-            <!-- <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData"
-                [chartLabel]="pTotalTimeList" [dataLine]="dataLine" ></app-charts>
-   -->
-            <!-- <p class="line_chart_title chart_title">Spindle Speed</p> -->
-            <!-- <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"
-                [dataBar]="dataBar" ></app-charts> -->
-  
+
+            <app-charts class="pie_chart" [chartType]="'pie'" [dataPie]="dataPie" [titlePie]="titlePie"
+                [chartData]="dataP"></app-charts>
+            
+            <app-charts class="bar_chart" [chartType]="'barMulti'" [chartData]="barChartData"
+                [dataBarMulti]="dataBarMulti" [titleBarMulti]="titleBarMulti" [xTitleBarMulti]="xTitleBarMulti"
+                [yTitleBarMulti]="yTitleBarMulti"></app-charts>
+                
         </div>
-  
-  
+        
         <div class="rounded-rectangle ">
-  
-            <!-- <div class="p_total">
-                <h4>Power Consumption (1h)</h4>
-                <h1>{{haasPowermeterData[1]}}</h1>
-                <h4> kWh</h4>
-  
-            </div> -->
+
             <h4 class="title tool">Current Tool Number: {{NTX500data[0].current_tool_number}}</h4>
             <div class="parts">
                 <img class="part"
@@ -67,85 +64,71 @@
                 <img class="part" *ngIf="NTX500data[0].prog_num === 103" src="assets/image/m6.png" alt="Part 3">
             </div>
             <div class="spindles">
-                <img class="spindle"  src="assets/image/Vertical_spindle.png" alt="Vertical_spindle">
-                <img class="spindle"  src="assets/image/Horizontal_spindle.webp" alt="Horizontal_spindle">
+                <img class="spindle" src="assets/image/Vertical_spindle.png" alt="Vertical_spindle">
+                <img class="spindle" src="assets/image/Horizontal_spindle.webp" alt="Horizontal_spindle">
             </div>
             <table class="table">
-  
+
                 <tr>
                     <td>Spindle Load</td>
                     <td>{{NTX500data[0].spindle_load}}</td>
-  
+
                 </tr>
                 <tr>
                     <td>Spindle Speed</td>
                     <td>{{NTX500data[0].spindle_speed | number: '1.0-1'}}</td>
-  
+
                 </tr>
                 <tr>
                     <td>Spindle Load</td>
-                    <td>{{NTX500data[0].spindle_load}}</td>
-  
+                    <td>{{NTX500data[0].spindle_load_2}}</td>
+
                 </tr>
                 <tr>
                     <td>Spindle Speed</td>
-                    <td>{{NTX500data[0].spindle_speed | number: '1.0-1'}}</td>
-  
+                    <td>{{NTX500data[0].spindle_speed_2 | number: '1.0-1'}}</td>
+
                 </tr>
-  
-  
-                   
-  
-  
+
             </table>
 
             <table class="table ABC">
-  
-                
-  
                 <tr>
                     <td>X</td>
                     <td>{{NTX500data[0].x | number: '1.0-1'}}</td>
-  
+
                 </tr>
                 <tr>
                     <td>Y</td>
                     <td>{{NTX500data[0].y | number: '1.0-1'}}</td>
-  
+
                 </tr>
                 <tr>
                     <td>Z</td>
                     <td>{{NTX500data[0].z | number: '1.0-1'}}</td>
-  
+
                 </tr>
                 <tr>
-                  <td>A</td>
-                  <td>{{NTX500data[0].a | number: '1.0-1'}}</td>
-  
-              </tr>
-              <tr>
-                <td>B</td>
-                <td>{{NTX500data[0].b | number: '1.0-1'}}</td>
-  
-            </tr>
-            <tr>
-              <td>C</td>
-              <td>{{NTX500data[0].c | number: '1.0-1'}}</td>
-  
-          </tr>
-  
-  
+                    <td>A</td>
+                    <td>{{NTX500data[0].a }}</td>
+
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>{{NTX500data[0].b | number: '1.0-1'}}</td>
+
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>{{NTX500data[0].c | number: '1.0-1'}}</td>
+
+                </tr>
             </table>
-  
-  
-  
+
             <div class="cycle_time">
                 <h4>Current Part Cycle Time</h4>
                 <h1>{{currentPartCycleTime }} s</h1>
-                <!-- <div>{{dataBar.datasets[0].data[dataBar.datasets[0].data.length-1] }} </div> -->
-                <!-- <h4> Seconds</h4> -->
-  
+                
             </div>
-  
         </div>
     </div>

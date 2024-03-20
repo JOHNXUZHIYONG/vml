@@ -11,7 +11,8 @@ import { ChartData, ChartOptions } from 'chart.js';
   styleUrls: ['./haas.component.css']
 })
 export class HaasComponent {
-  data: any; //HAAS real time data
+  //HAAS real time data
+  data: any; 
 
   //HAAS line chart inputs
   lineChartData: any[] = []; 
@@ -19,11 +20,10 @@ export class HaasComponent {
   titleLine: string = 'Power Consumption (Past 1 Hour)';
   xTitleLine: string = 'Time Interval / Per 5 Minutes';
   yTitleLine: string = 'Energy Usage / kWh';
-  // xLables: string[] = ["55-60", "50-55", "45-50", "40-45", "35-40", "30-35", "25-30", "20-25", "15-20", "10-15",
-  // "5-10", "0-55"];
+  xLables: string[] = ["55-60", "50-55", "45-50", "40-45", "35-40", "30-35", "25-30", "20-25", "15-20", "10-15",
+  "5-10", "0-5"];
   dataLine: ChartData<'line'> = {
-    labels: ["55-60", "50-55", "45-50", "40-45", "35-40", "30-35", "25-30", "20-25", "15-20", "10-15",
-      "5-10", "0-5"],
+    labels: this.xLables,
     datasets: [{ "label": "P_total", "data": [80, 77.15, 94.86, 80, 94.86, 94.86, 80, 94.86, 71.15, 80, 80, 90], "tension": 0.5, "borderColor": "green", "backgroundColor": "lightgreen" }],
   };
 

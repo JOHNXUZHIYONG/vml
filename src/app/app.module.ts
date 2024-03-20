@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HaasComponent } from './haas/haas.component';
 import { Lt65Component } from './lt65/lt65.component';
 import { Ntx500Component } from './ntx500/ntx500.component';
+import { Slm30Component } from './slm30/slm30.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { Ntx500Component } from './ntx500/ntx500.component';
     LayoutComponent,
     HaasComponent,
     Lt65Component,
-    Ntx500Component
+    Ntx500Component,
+    Slm30Component,
+
   ],
   imports: [
     BrowserModule,

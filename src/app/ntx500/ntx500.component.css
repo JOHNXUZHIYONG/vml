@@ -151,6 +151,20 @@ h4 {
     top: 25%;
 }
 
+.pie_chart, .doughnut_chart{
+    display: inline-block;
+    width: 50%;
+    height: 50%;
+
+  
+    position: absolute;
+    top: 24%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+}
+
+
 
 
 

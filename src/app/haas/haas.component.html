@@ -18,7 +18,9 @@
                 <img class="light" *ngIf="data[0].machine_status.toString() === 'RUNNING'"
                     src="assets/image/Green.png" alt="Green Light">
             </div>
+
             <img src="../../assets/image/HAAS.png" alt="HAAS" class="HAAS">
+
             <h4 class="title">Current Program: {{data[0].prog_num}}</h4>
             <div class="prog_nums">
                 <img class="prog_num"
@@ -49,7 +51,6 @@ q
 
 
         <div class="rounded-rectangle ">
-
             <div class="p_total">
                 <h4>Power Consumption (1h)</h4>
                 <h1>{{haasPowermeterData[1]}}</h1>
@@ -70,32 +71,23 @@ q
                 <tr>
                     <td>Spindle Load</td>
                     <td>{{data[0].spindle_load}}</td>
-
                 </tr>
                 <tr>
                     <td>Spindle Speed</td>
                     <td>{{data[0].spindle_speed | number: '1.0-1'}}</td>
-
                 </tr>
-
-
                 <tr>
                     <td>X</td>
                     <td>{{data[0].x | number: '1.0-1'}}</td>
-
                 </tr>
                 <tr>
                     <td>Y</td>
                     <td>{{data[0].y | number: '1.0-1'}}</td>
-
                 </tr>
                 <tr>
                     <td>Z</td>
                     <td>{{data[0].z | number: '1.0-1'}}</td>
-
                 </tr>
-
-
             </table>
 
 
@@ -104,7 +96,6 @@ q
                 <h1>{{dataBar.datasets[0].data[dataBar.datasets[0].data.length-1] }} s</h1>
                 <!-- <div>{{dataBar.datasets[0].data[dataBar.datasets[0].data.length-1] }} </div> -->
                 <!-- <h4> Seconds</h4> -->
-
             </div>
 
         </div>

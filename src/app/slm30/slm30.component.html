@@ -36,21 +36,15 @@
         </div>
 
         <div class="rounded-rectangle chart_container">
+            <app-charts class="line_chart " [chartType]="'line'" [chartData]="lineChartData" 
+            [dataLine]="dataLine" [titleLine]="titleLine" [xTitleLine] = "xTitleLine" [yTitleLine] = "yTitleLine" ></app-charts>
 
-            <!-- <p class="pie_chart_title chart_title">Machine Status Percentage</p>
-            <app-charts class="line_chart" [chartType]="'line'" [chartData]="lineChartData"
-                [chartLabel]="pTotalTimeList" [dataLine]="dataLine" [chartOptionsLine]="chartOptionsLine"></app-charts>
-  
-            <p class="line_chart_title chart_title">Spindle Speed</p>
-            <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"
-                [dataBar]="dataBar" [chartOptionsBar]="chartOptionsBar"></app-charts> -->
-                <!-- <app-charts class="bar_chart" [chartType]="'bar'" [chartData]="barChartData" [chartLabel]="partList"
-                [dataBar]="dataBar" ></app-charts> -->
-                <!-- <app-charts class="bar_chart" [chartType]="'barMulti'" [chartData]="dataBarMulti" 
-                [dataBar]="dataBarMulti" ></app-charts> -->
-                        
+            <app-charts class="line_chart Oxygen" [chartType]="'line'" [chartData]="lineChartDataO" 
+            [dataLine]="dataLineO" [titleLine]="titleLineO" [xTitleLine] = "xTitleLineO" [yTitleLine] = "yTitleLineO" ></app-charts>
+               
+            
         </div>
-
+    
 
         <div class="rounded-rectangle ">
 

@@ -139,6 +139,7 @@ h4 {
 
 .bar_chart,
 .line_chart {
+    display: inline-block;
     width: 85%;
 
     position: absolute;
@@ -149,6 +150,11 @@ h4 {
 
 .line_chart {
     top: 25%;
+}
+.Oxygen{
+    top: 75%;
+   
+
 }
 
 

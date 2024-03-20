@@ -15,6 +15,10 @@ export class DataService {
   private LT65UrlMachineStatus = 'http://localhost:1880/LT65M';
   private NTX500Url = 'http://localhost:1880/NTX500';
   private NTX500UrlPartTime = 'http://localhost:1880/NTX500P';
+  private NTX500UrlMachineStatus = 'http://localhost:1880/NTX500M1';
+  private SLM30Url = 'http://localhost:1880/SLM30';
+  private SLM30UrlPower = 'http://localhost:1880/SLM30P';
+  private SLM30UrlOxygen = 'http://localhost:1880/SLM30O';
 
 
   constructor(private http: HttpClient) { }
@@ -65,6 +69,12 @@ export class DataService {
     );
   }
 
+  getNTX500MachineStatusData(): Observable<any> {
+    return this.http.get<any>(this.NTX500UrlMachineStatus).pipe(
+      catchError(() => of([300, 50, 100, 100]))
+    );
+  }
+
   getLT65Data(): Observable<any> {
     return this.http.get<any>(this.LT65Url).pipe(
       catchError(() => of([{
@@ -94,6 +104,19 @@ export class DataService {
       catchError(() => of([300, 50, 100, 100]))
     );
   }
+
+  getSLM30UrlPowerData(): Observable<any> {
+    return this.http.get<any>(this.SLM30UrlPower).pipe(
+      catchError(() => of([[94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 57.28], 1100.69]))
+    );
+  }
+
+  getSLM30UrlOxygenData(): Observable<any> {
+    return this.http.get<any>(this.SLM30UrlOxygen).pipe(
+      catchError(() => of([[94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 57.28], 1100.69]))
+    );
+  }
+
 
 
 
