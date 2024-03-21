@@ -6,9 +6,9 @@
         <div class="rounded-rectangle">
             <!-- <DIV>{{data[0].machine_status |json}}</DIV> -->
             <div class="lights">
-                <!-- <img class="light"
-                    *ngIf="NTX500data[0].machine_status.toString() !== ' IDLE' && NTX500data[0].machine_status.toString() !== ' ALARM ON' && NTX500data[0].machine_status.toString() !== ' FEED HOLD'&& NTX500data[0].machine_status.toString() !== 'ACTIVE'"
-                    src="assets/image/Green.png" alt="Default Light"> -->
+                <img class="light"
+                    *ngIf="NTX500data[0].machine_status.toString() !== 'READY' && NTX500data[0].machine_status.toString() !== 'INTERRUPTED' && NTX500data[0].machine_status.toString() !== 'ACTIVE'"
+                    src="assets/image/Green.png" alt="Default Light">
                 <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'READY'"
                     src="assets/image/Yellow.png" alt="Yellow Light">
                 <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'INTERRUPTED'"

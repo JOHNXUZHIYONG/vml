@@ -12,7 +12,7 @@ import { ChartsComponent } from '../charts/charts.component';
   
 })
 export class Slm30Component {
-  data: any;
+  // data: any;
    //HAAS line chart inputs
    lineChartData: any[] = []; 
    SLM30PowerData: any;
@@ -29,7 +29,7 @@ export class Slm30Component {
    //HAAS line chart inputs
    lineChartDataO: any[] = []; 
    SLM30OxygenData: any;
-   titleLineO: string = 'Oxygen Concntration (Past 1 Hour)';
+   titleLineO: string = 'Oxygen Concentration (Past 1 Hour)';
    xTitleLineO: string = 'Time Interval / Per 5 Minutes';
    yTitleLineO: string = 'Oxygen Concntration %';
    xLablesO: string[] = ["55-60", "50-55", "45-50", "40-45", "35-40", "30-35", "25-30", "20-25", "15-20", "10-15",
@@ -43,29 +43,29 @@ export class Slm30Component {
 
    ngOnInit() {
     // 初始获取一次数据
-    this.getData();
+    // this.getData();
     this.getSLM30UrlPowerData();
     this.getSLM30UrlOxygenData();
 
     // Refresh data and charts every 3 seconds
     interval(3000).subscribe(() => {
-      this.getData();
+      // this.getData();
       this.getSLM30UrlPowerData();
       this.getSLM30UrlOxygenData();
     });
 
   }
 
-  getData() {
-    this.dataService.getData().subscribe(
-      (result) => {
-        this.data = result;
-      },
-      (error) => {
-        console.error('Error fetching haas data:', error);
-      }
-    );
-  }
+  // getData() {
+  //   this.dataService.getData().subscribe(
+  //     (result) => {
+  //       this.data = result;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching haas data:', error);
+  //     }
+  //   );
+  // }
 
   getSLM30UrlPowerData() {
     this.dataService.getSLM30UrlPowerData().subscribe(

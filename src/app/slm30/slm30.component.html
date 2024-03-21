@@ -6,7 +6,7 @@
         <div class="rounded-rectangle">
             <!-- <DIV>{{data[0].machine_status |json}}</DIV> -->
             <div class="lights">
-                <img class="light"
+                <!-- <img class="light"
                     *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON' && data[0].machine_status.toString() !== ' FEED HOLD'&& data[0].machine_status.toString() !== 'RUNNING'"
                     src="assets/image/Green.png" alt="Default Light">
                 <img class="light" *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Yellow.png"
@@ -16,23 +16,26 @@
                 <img class="light" *ngIf="data[0].machine_status.toString() === ' FEED HOLD'"
                     src="assets/image/Blue.png" alt="Blue Light">
                 <img class="light" *ngIf="data[0].machine_status.toString() === 'RUNNING'" src="assets/image/Green.png"
+                    alt="Green Light"> -->
+                    <img class="light"  src="assets/image/Green.png"
                     alt="Green Light">
             </div>
             <img src="../../assets/image/SLM30.png" alt="SLM30" class="HAAS">
-            <!-- <h4 class="title">Current Program: {{data[0].prog_num}}</h4>
+            <h4 class="title">Current Program: S-101</h4>
             <div class="prog_nums">
-                <img class="prog_num"
+                <!-- <img class="prog_num"
                     *ngIf="data[0].prog_num !== 101 && data[0].prog_num !== 102 && data[0].prog_num !== 103"
                     src="assets/image/m1.png" alt="Program 101">
                 <img class="prog_num" *ngIf="data[0].prog_num === 101" src="assets/image/m1.png" alt="Program 101">
                 <img class="prog_num" *ngIf="data[0].prog_num === 102" src="assets/image/m2.png" alt="Program 102">
-                <img class="prog_num" *ngIf="data[0].prog_num === 103" src="assets/image/m3.png" alt="Program 103">
+                <img class="prog_num" *ngIf="data[0].prog_num === 103" src="assets/image/m3.png" alt="Program 103"> -->
+                <img class="prog_num"  src="assets/image/m1.png" alt="Program 101">
             </div>
             <div class="total_part_count cycle_time">
                 <h4>Total Part Count</h4>
-                <h1>{{data[0].part_count}}</h1>
+                <h1>268</h1>
                 
-            </div> -->
+            </div>
         </div>
 
         <div class="rounded-rectangle chart_container">
@@ -54,7 +57,7 @@
                 <h4> kWh</h4>
   
             </div> -->
-            <h4 class="title tool">Task Name: Medical parts demo</h4>
+            <h4 class="title tool">Task Name: Medical Parts </h4>
             <h4 class="title mt">MTCONNECT</h4>
             <!-- <div class="parts">
                 <img class="part"
@@ -81,7 +84,7 @@
                 </tr>
                 <tr>
                     <td>program1</td>
-                    <td>Medical parts demo</td>
+                    <td>Medical Parts</td>
                 </tr>
                 <tr>
                     <td>operationTime</td>
@@ -135,17 +138,8 @@
                     <td>operationTime</td>
                     <td>00:23:14.3618938</td>
                 </tr>
-             
-
+            
             </table>
-
-
-
-
-
-
-
-          
 
         </div>
     </div>

@@ -6,18 +6,20 @@
     <div routerLink="/ntx500" class="rounded-rectangle">
       <div class="lights">
         <img class="light"
-            *ngIf="NTX500data[0].machine_status.toString() !== ' IDLE' && NTX500data[0].machine_status.toString() !== ' ALARM ON' && data[0].machine_status.toString() !== ' FEED HOLD'&& data[0].machine_status.toString() !== 'RUNNING'"
+            *ngIf="NTX500data[0].machine_status.toString() !== 'READY' && NTX500data[0].machine_status.toString() !== 'INTERRUPTED' && NTX500data[0].machine_status.toString() !== 'ACTIVE'"
             src="assets/image/Green.png" alt="Default Light">
-        <img class="light" *ngIf="NTX500data[0].machine_status.toString() === ' IDLE'"
+        <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'READY'"
             src="assets/image/Yellow.png" alt="Yellow Light">
-        <img class="light" *ngIf="NTX500data[0].machine_status.toString() === ' ALARM ON'"
+        <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'INTERRUPTED'"
             src="assets/image/Red.png" alt="Red Light">
-        <img class="light" *ngIf="NTX500data[0].machine_status.toString() === ' FEED HOLD'"
-            src="assets/image/Blue.png" alt="Blue Light">
-        <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'RUNNING'"
+        <!-- <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'INTERRUPTED'"
+            src="assets/image/Blue.png" alt="Blue Light"> -->
+        <img class="light" *ngIf="NTX500data[0].machine_status.toString() === 'ACTIVE'"
             src="assets/image/Green.png" alt="Green Light">
     </div>
+
       <img src="../../assets/image/NTX500.webp" alt="NTX500" class="NTX500 pictures">
+      
       <p class="machine_name">NTX500</p>
       <table class="table">
         <tr>
@@ -73,7 +75,7 @@
 
     <div routerLink="/slm30" class="rounded-rectangle">
       <div class="lights">
-        <img class="light"
+        <!-- <img class="light"
             *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON' && data[0].machine_status.toString() !== ' FEED HOLD'&& data[0].machine_status.toString() !== 'RUNNING'"
             src="assets/image/Green.png" alt="Default Light">
         <img class="light" *ngIf="data[0].machine_status.toString() === ' IDLE'"
@@ -83,6 +85,8 @@
         <img class="light" *ngIf="data[0].machine_status.toString() === ' FEED HOLD'"
             src="assets/image/Blue.png" alt="Blue Light">
         <img class="light" *ngIf="data[0].machine_status.toString() === 'RUNNING'"
+            src="assets/image/Green.png" alt="Green Light"> -->
+            <img class="light" 
             src="assets/image/Green.png" alt="Green Light">
     </div>
       <img src="../../assets/image/SLM30.png" alt="slm30" class="slm30 pictures">
@@ -90,15 +94,15 @@
       <table class="table">
         <tr>
           <td>Program</td>
-          <td>{{data[0].prog_num}}</td>
+          <td>S-101</td>
         </tr>
         <tr>
           <td>Machine Status</td>
-          <td>{{data[0].machine_status}}</td>
+          <td>Running</td>
         </tr>
         <tr>
           <td>Complete Part No.</td>
-          <td>{{data[0].part_count}}</td>
+          <td>268</td>
         </tr>
       </table>
     </div>

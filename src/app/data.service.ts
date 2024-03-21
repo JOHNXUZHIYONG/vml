@@ -15,7 +15,7 @@ export class DataService {
   private LT65UrlMachineStatus = 'http://localhost:1880/LT65M';
   private NTX500Url = 'http://localhost:1880/NTX500';
   private NTX500UrlPartTime = 'http://localhost:1880/NTX500P';
-  private NTX500UrlMachineStatus = 'http://localhost:1880/NTX500M1';
+  private NTX500UrlMachineStatus = 'http://localhost:1880/NTX500M';
   private SLM30Url = 'http://localhost:1880/SLM30';
   private SLM30UrlPower = 'http://localhost:1880/SLM30P';
   private SLM30UrlOxygen = 'http://localhost:1880/SLM30O';

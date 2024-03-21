@@ -82,12 +82,12 @@
 }
 
 .title {
-    width: 60%;
+    width: 80%;
     color: aqua;
 
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 60%;
     transform: translate(-50%, -50%);
 }
 
@@ -183,14 +183,15 @@ h4 {
     /* border: red 2px solid; */
 }
 
-.tool {
-    width: 250px;
+.tool, .mt {
+    width: 80%;
     position: absolute;
     top: 5%;
-    left: 50%;
+    left: 60%;
     transform: translate(-50%, -50%);
 }
-
+.mt{left: 70%;
+    top: 12%;}
 
 .parts {
     width: 180px;
@@ -229,12 +230,7 @@ h4 {
     background-color: #e4f5f5;
 }
 
-.mt{
-   
-    top: 10%;
-    left: 50%;
-   
-}
+
 
 .table {
     width: 250px;
