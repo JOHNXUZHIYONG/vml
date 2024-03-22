@@ -23,15 +23,14 @@
 
             <h4 class="title">Current Program: {{NTX500data[0].prog_num}}</h4>
             <div class="prog_nums">
-                <img class="prog_num"
-                    *ngIf="NTX500data[0].prog_num !== 101 && NTX500data[0].prog_num !== 102 && NTX500data[0].prog_num !== 103"
+                <!-- <img class="prog_num"
+                    *ngIf="NTX500data[0].prog_num !== 'O100' && NTX500data[0].prog_num !== 'O203'"
                     src="assets/image/m1.png" alt="Program 101">
-                <img class="prog_num" *ngIf="NTX500data[0].prog_num === 101" src="assets/image/m1.png"
+                <img class="prog_num" *ngIf="NTX500data[0].prog_num === 'O100'" src="assets/image/m1.png"
                     alt="Program 101">
-                <img class="prog_num" *ngIf="NTX500data[0].prog_num === 102" src="assets/image/m2.png"
-                    alt="Program 102">
-                <img class="prog_num" *ngIf="NTX500data[0].prog_num === 103" src="assets/image/m3.png"
-                    alt="Program 103">
+                <img class="prog_num" *ngIf="NTX500data[0].prog_num === 'O203'" src="assets/image/m2.png"
+                    alt="Program 102"> -->
+                <img class="prog_num"  src="assets/image/NTX500_Part.jpg" alt="Program 103">
             </div>
             
             <div class="total_part_count cycle_time">
@@ -60,15 +59,17 @@
             <h4 class="title tool">Current Tool Number: {{NTX500data[0].current_tool_number}}</h4>
             <div class="parts">
                 <img class="part"
-                    *ngIf="NTX500data[0].prog_num !== 101 && NTX500data[0].prog_num !== 102 && NTX500data[0].prog_num !== 103"
-                    src="assets/image/m4.png" alt="Part 1">
-                <img class="part" *ngIf="NTX500data[0].prog_num === 101" src="assets/image/m4.png" alt="Part 1">
-                <img class="part" *ngIf="NTX500data[0].prog_num === 102" src="assets/image/m5.png" alt="Part 2">
-                <img class="part" *ngIf="NTX500data[0].prog_num === 103" src="assets/image/m6.png" alt="Part 3">
+                    *ngIf="NTX500data[0].current_tool_number !== '10015' && NTX500data[0].current_tool_number !== '10012'"
+                    src="assets/image/10012.jpg" alt="Part 1">
+                <img class="part" *ngIf="NTX500data[0].current_tool_number === '10012'" src="assets/image/10012.jpg" alt="Part 1">
+                <img class="part" *ngIf="NTX500data[0].current_tool_number === '10015'" src="assets/image/10015.jpg" alt="Part 2">
+                
             </div>
             <div class="spindles">
-                <img class="spindle" src="assets/image/Vertical_spindle.png" alt="Vertical_spindle">
-                <img class="spindle" src="assets/image/Horizontal_spindle.webp" alt="Horizontal_spindle">
+                <img class="spindle" *ngIf="NTX500data[0].spindle_speed === '0'" src="assets/image/Vertical_spindle.png" alt="Vertical_spindle">
+                <img class="spindle" *ngIf="NTX500data[0].spindle_speed !== '0'" src="assets/image/Vertical_spindle_run.png" alt="Vertical_spindle_run">
+                <img class="spindle" *ngIf="NTX500data[0].spindle_speed === '0'" src="assets/image/Horizontal_spindle.png" alt="Horizontal_spindle">
+                <img class="spindle" *ngIf="NTX500data[0].spindle_speed !== '0'" src="assets/image/Horizontal_spindle_run.png" alt="Horizontal_spindle_run">
             </div>
             <table class="table">
 

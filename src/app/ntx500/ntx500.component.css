@@ -69,6 +69,14 @@
     /* 图像最大高度为容器高度 */
 }
 
+.prog_num{
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .HAAS {
     width: 250px;
     height: 150px;
@@ -89,6 +97,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    text-align: center;
 }
 
 .prog_nums {
@@ -196,6 +206,7 @@ h4 {
     top: 5%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 
@@ -255,7 +266,7 @@ h4 {
 .ABC{
     width: 240px;
     height: 130px;
-    background-color: rgb(86, 119, 107);
+    background-color: rgb(30, 54, 45);
     
     position: absolute;
     top: 66%;

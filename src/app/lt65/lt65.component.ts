@@ -1,11 +1,11 @@
-import { Data_10cells } from './../../../../Saesl/src/app/mock-data';
+
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { catchError, interval, of, startWith, switchMap } from 'rxjs';
 import * as moment from 'moment';
 // import { Chart, ChartData } from 'chart.js';
 import * as Chart from 'chart.js';
-import 'chartjs-plugin-datalabels'; // 导入插件
+// import 'chartjs-plugin-datalabels'; // 导入插件
 import { ChartData, ChartOptions } from 'chart.js';
 
 

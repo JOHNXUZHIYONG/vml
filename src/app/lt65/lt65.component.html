@@ -7,16 +7,16 @@
             <!-- <DIV>{{data[0].machine_status |json}}</DIV> -->
             <div class="lights">
                 <img class="light"
-                    *ngIf="data[0].machine_status.toString() !== ' IDLE' && data[0].machine_status.toString() !== ' ALARM ON' && data[0].machine_status.toString() !== ' FEED HOLD'&& data[0].machine_status.toString() !== 'RUNNING'"
+                    *ngIf="data[0].yellow.toString() !== '1' && data[0].red.toString() !== '1' && data[0].blue.toString() !== '1'&& data[0].green.toString() !== '1'"
                     src="assets/image/Green.png" alt="Default Light">
-                <img class="light" *ngIf="data[0].machine_status.toString() === ' IDLE'" src="assets/image/Yellow.png"
+                <img class="light" *ngIf="data[0].yellow.toString() === '1'" src="assets/image/Yellow.png"
                     alt="Yellow Light">
-                <img class="light" *ngIf="data[0].machine_status.toString() === ' ALARM ON'" src="assets/image/Red.png"
+                <img class="light" *ngIf="data[0].red.toString() === '1'" src="assets/image/Red.png"
                     alt="Red Light">
-                <img class="light" *ngIf="data[0].machine_status.toString() === ' FEED HOLD'"
+                <img class="light" *ngIf="data[0].blue.toString() === '1'"
                     src="assets/image/Blue.png" alt="Blue Light">
-                <img class="light" *ngIf="data[0].machine_status.toString() === 'RUNNING'" src="assets/image/Green.png"
-                    alt="Green Light">
+                <!-- <img class="light" *ngIf="data[0].green.toString() === '1'" src="assets/image/Green.png"
+                    alt="Green Light"> -->
             </div>
 
             <img src="../../assets/image/LT65.webp" alt="LT65" class="HAAS">
