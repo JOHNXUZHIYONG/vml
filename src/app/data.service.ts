@@ -26,30 +26,30 @@ export class DataService {
   getData(): Observable<any> {
     return this.http.get<any>(this.apiUrl).pipe(
       catchError(() => of([{
-        "time": "12:00:00", "prog_num": "DMG001", "machine_status": "run", "complete_number": "1000",
-        "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "total_tool_change": "5", "cool_level": "6"
+        "time": "12:00:00", "prog_num": "DMG101", "machine_status": "Running", "part_count": "100", "complete_number": "1000",
+        "current_tool_number": "2", "spindle_load": "H1", "spindle_speed": "260", "total_tool_change": "5", "cool_level": "6", "x": "65", "y": "56", "z": "38"
       }]))
     );
   }
 
   getPartTimeData(): Observable<any> {
     return this.http.get<any>(this.partTime).pipe(
-      catchError(() => of([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [5, 5, 5, 5, 5, 6, 6, 6, 6, 7]]))
+      catchError(() => of([[91, 92, 93, 94, 95, 96, 97, 98, 99, 100], [5, 5, 5, 5, 5, 6, 6, 6, 6, 7]]))
     );
   }
 
 
   getHAASPowermeterData(): Observable<any> {
     return this.http.get<any>(this.haasPowermeterUrl).pipe(
-      catchError(() => of([[94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 94.86, 57.28], 1100.69]))
+      catchError(() => of([[94.86, 96.86, 94.86, 95.86, 94.86, 94.86, 96.86, 95.86, 94.86, 96.86, 94.86, 97.28], 1100.69]))
     );
   }
 
   getNTX500Data(): Observable<any> {
     return this.http.get<any>(this.NTX500Url).pipe(
       catchError(() => of([{
-        "time": "12:00:00", "prog_num": "102", "machine_status": "run", "complete_number": "1000",
-        "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "total_tool_change": "5", "cool_level": "6", "a": "1", "b": "2", "c": "3"
+        "time": "12:00:00", "prog_num": "102", "machine_status": "run", "part_count": "4", "complete_number": "1000",
+        "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "spindle_load_2": "S2", "spindle_speed_2": "100", "total_tool_change": "5", "cool_level": "6", "a": "1", "b": "2", "c": "3", "x": "61", "y": "32", "z": "30"
       }]))
     );
   }
@@ -59,27 +59,27 @@ export class DataService {
       catchError(() => of({
         labels: ['Part 1', 'Part 2', 'Part 3', 'Part 4'],
         datasets: [
-          { data: [3600, 1800, 600, 300], label: 'RUNNING', backgroundColor: 'green' },
-          { data: [5400, 1200, 900, 150], label: 'IDLE', backgroundColor: 'blue' },
-          { data: [3600, 1800, 600, 300], label: 'ALARM ON', backgroundColor: 'red' },
-          { data: [5400, 1200, 900, 150], label: 'FEED HOLD', backgroundColor: 'yellow' }
+          { data: [36, 30, 40, 30], label: 'RUNNING', backgroundColor: 'green' },
+          { data: [54, 50, 50, 55], label: 'IDLE', backgroundColor: 'blue' },
+          { data: [36, 30, 40, 30], label: 'ALARM ON', backgroundColor: 'red' },
+          { data: [54, 60, 50, 55], label: 'FEED HOLD', backgroundColor: 'yellow' }
         ],
-        currentPartCycleTime: 20,
+        currentPartCycleTime: 170,
       }))
     );
   }
 
   getNTX500MachineStatusData(): Observable<any> {
     return this.http.get<any>(this.NTX500UrlMachineStatus).pipe(
-      catchError(() => of([300, 50, 100, 100]))
+      catchError(() => of({"ALARM ON":100, "IDLE": 50, "RUNNING":300}))
     );
   }
 
   getLT65Data(): Observable<any> {
     return this.http.get<any>(this.LT65Url).pipe(
       catchError(() => of([{
-        "time": "12:00:00", "prog_num": "DMG001", "machine_status": "run", "complete_number": "1000",
-        "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "total_tool_change": "5", "cool_level": "6"
+        "time": "12:00:00", "prog_num": "L-101", "machine_status": "Running", "part_count": "10", "complete_number": "1000",
+        "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "total_tool_change": "5", "cool_level": "6", "a": "41", "b": "2", "c": "53", "x": "51", "y": "42", "z": "36"
       }]))
     );
   }

@@ -36,14 +36,17 @@
             
             <div class="total_part_count cycle_time">
                 <h4>Total Part Count</h4>
-                <!-- <h1>{{NTX500data|json}}</h1> -->
+                <h1>{{NTX500data[0].part_count}}</h1>
                 <!-- <h4> Seconds</h4> -->
             </div>
         </div>
 
         <div class="rounded-rectangle chart_container">
 
-            <app-charts class="pie_chart" [chartType]="'pie'" [dataPie]="dataPie" [titlePie]="titlePie"
+            <!-- <app-charts class="pie_chart" [chartType]="'pie'" [dataPie]="dataPie" [titlePie]="titlePie"
+                [chartData]="dataP"></app-charts> -->
+
+                <app-charts class="pie_chart" [chartType]="'doughnut'" [dataDoughnut]="dataPie" [titleDoughnut]="titlePie"
                 [chartData]="dataP"></app-charts>
             
             <app-charts class="bar_chart" [chartType]="'barMulti'" [chartData]="barChartData"
