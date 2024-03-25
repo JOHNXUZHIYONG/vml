@@ -63,13 +63,13 @@ export class Lt65Component {
   ngOnInit() {
     // 初始获取一次数据
     this.getLT65Data();
-    this.getPartTimeData();
+    this.getLT65PartTimeData();
     this.getLT65MachineStatusData();
 
     // Refresh data and charts every 3 seconds
     interval(3000).subscribe(() => {
       this.getLT65Data();
-      this.getPartTimeData();
+      this.getLT65PartTimeData();
       this.getLT65MachineStatusData();
       
     });
@@ -87,8 +87,8 @@ export class Lt65Component {
     );
   }
 
-  getPartTimeData() {
-    this.dataService.getPartTimeData().subscribe(
+  getLT65PartTimeData() {
+    this.dataService.getLT65PartTimeData().subscribe(
       (result) => {
         this.partTimeData = result;
         let chartData1 = [{

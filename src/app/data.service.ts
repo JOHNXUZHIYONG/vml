@@ -78,26 +78,33 @@ export class DataService {
   getLT65Data(): Observable<any> {
     return this.http.get<any>(this.LT65Url).pipe(
       catchError(() => of([{
-        "time": "12:00:00", "prog_num": "L-101", "machine_status": "Running", "part_count": "100", "complete_number": "1000", "red": "0", "blue": "0", "yellow": "0", "green": "1",
+        "time": "12:00:00", "prog_num": "L-101", "machine_status": "Running", "part_count": "90", "complete_number": "1000", "red": "0", "blue": "0", "yellow": "0", "green": "1",
         "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "total_tool_change": "5", "cool_level": "6", "a": "41", "b": "2", "c": "53", "x": "51", "y": "42", "z": "36"
       }]))
     );
   }
 
+  // getLT65PartTimeData(): Observable<any> {
+  //   return this.http.get<any>(this.LT65UrlPartTime).pipe(
+  //     catchError(() => of({
+  //       labels: ['Part 31', 'Part 32', 'Part 33', 'Part 34', 'Part 35'],
+  //       datasets: [
+  //         { data: [3600, 1800, 600, 300], label: 'RUNNING', backgroundColor: 'green' },
+  //         { data: [5400, 1200, 900, 150], label: 'IDLE', backgroundColor: 'blue' },
+  //         { data: [3600, 1800, 600, 300], label: 'ALARM ON', backgroundColor: 'red' },
+  //         { data: [5400, 1200, 900, 150], label: 'FEED HOLD', backgroundColor: 'yellow' }
+  //       ],
+  //       currentPartCycleTime: 20,
+  //     }))
+  //   );
+  // }
+
   getLT65PartTimeData(): Observable<any> {
-    return this.http.get<any>(this.LT65UrlPartTime).pipe(
-      catchError(() => of({
-        labels: ['Part 31', 'Part 32', 'Part 33', 'Part 34', 'Part 35'],
-        datasets: [
-          { data: [3600, 1800, 600, 300], label: 'RUNNING', backgroundColor: 'green' },
-          { data: [5400, 1200, 900, 150], label: 'IDLE', backgroundColor: 'blue' },
-          { data: [3600, 1800, 600, 300], label: 'ALARM ON', backgroundColor: 'red' },
-          { data: [5400, 1200, 900, 150], label: 'FEED HOLD', backgroundColor: 'yellow' }
-        ],
-        currentPartCycleTime: 20,
-      }))
+    return this.http.get<any>(this.partTime).pipe(
+      catchError(() => of([[81, 82, 83, 84, 85, 86, 87, 88, 89, 90], [25, 25, 24, 25, 25, 26, 24, 26, 26, 25]]))
     );
   }
+
 
   getLT65MachineStatusData(): Observable<any> {
     return this.http.get<any>(this.LT65UrlMachineStatus).pipe(
