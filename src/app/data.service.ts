@@ -41,14 +41,14 @@ export class DataService {
 
   getHAASPowermeterData(): Observable<any> {
     return this.http.get<any>(this.haasPowermeterUrl).pipe(
-      catchError(() => of([[94.86, 96.86, 94.86, 95.86, 94.86, 94.86, 96.86, 95.86, 94.86, 96.86, 94.86, 97.28], 1100.69]))
+      catchError(() => of([[0.9486, 0.9686, 0.9486, 0.9586, 0.9486, 0.9486, 0.9686, 0.9586, 0.9486, 0.9686, 0.9486, 0.9728], 11.0069]))
     );
   }
 
   getNTX500Data(): Observable<any> {
     return this.http.get<any>(this.NTX500Url).pipe(
       catchError(() => of([{
-        "time": "12:00:00", "prog_num": "102", "machine_status": "run", "part_count": "4", "complete_number": "1000",
+        "time": "12:00:00", "prog_num": "102", "machine_status": "run", "part_count": "54", "complete_number": "1000",
         "current_tool_number": "10012", "spindle_load": "S1", "spindle_speed": "200", "spindle_load_2": "S2", "spindle_speed_2": "100", "total_tool_change": "5", "cool_level": "6", "a": "1", "b": "2", "c": "3", "x": "61", "y": "32", "z": "30"
       }]))
     );
@@ -57,7 +57,7 @@ export class DataService {
   getNTX500PartTimeData(): Observable<any> {
     return this.http.get<any>(this.NTX500UrlPartTime).pipe(
       catchError(() => of({
-        labels: ['Part 1', 'Part 2', 'Part 3', 'Part 4'],
+        labels: ['Part 51', 'Part 52', 'Part 53', 'Part 54'],
         datasets: [
           { data: [36, 30, 40, 30], label: 'RUNNING', backgroundColor: 'green' },
           { data: [54, 50, 50, 55], label: 'IDLE', backgroundColor: 'blue' },
@@ -78,7 +78,7 @@ export class DataService {
   getLT65Data(): Observable<any> {
     return this.http.get<any>(this.LT65Url).pipe(
       catchError(() => of([{
-        "time": "12:00:00", "prog_num": "L-101", "machine_status": "Running", "part_count": "10", "complete_number": "1000", "red": "0", "blue": "0", "yellow": "1", "green": "0",
+        "time": "12:00:00", "prog_num": "L-101", "machine_status": "Running", "part_count": "100", "complete_number": "1000", "red": "0", "blue": "0", "yellow": "0", "green": "1",
         "current_tool_number": "2", "spindle_load": "S1", "spindle_speed": "200", "total_tool_change": "5", "cool_level": "6", "a": "41", "b": "2", "c": "53", "x": "51", "y": "42", "z": "36"
       }]))
     );
@@ -87,7 +87,7 @@ export class DataService {
   getLT65PartTimeData(): Observable<any> {
     return this.http.get<any>(this.LT65UrlPartTime).pipe(
       catchError(() => of({
-        labels: ['Part 1', 'Part 2', 'Part 3', 'Part 4', 'Part 5'],
+        labels: ['Part 31', 'Part 32', 'Part 33', 'Part 34', 'Part 35'],
         datasets: [
           { data: [3600, 1800, 600, 300], label: 'RUNNING', backgroundColor: 'green' },
           { data: [5400, 1200, 900, 150], label: 'IDLE', backgroundColor: 'blue' },
@@ -107,13 +107,13 @@ export class DataService {
 
   getSLM30UrlPowerData(): Observable<any> {
     return this.http.get<any>(this.SLM30UrlPower).pipe(
-      catchError(() => of([[92.23, 93.45, 94.67, 98.76, 94.34, 92.56, 99.87, 96.78, 95.32, 97.54, 100.00, 95.67], 1100.69]))
+      catchError(() => of([[94.23, 93.45, 94.67, 98.76, 94.34, 95.56, 99.87, 96.78, 95.32, 97.54, 100.00, 95.67], 1100.69]))
     );
   }
 
   getSLM30UrlOxygenData(): Observable<any> {
     return this.http.get<any>(this.SLM30UrlOxygen).pipe(
-      catchError(() => of([[50, 65, 63, 59, 66, 56, 58, 57, 60, 65, 63, 58], 730]))
+      catchError(() => of([[58, 65, 63, 59, 66, 56, 58, 57, 60, 65, 63, 58], 730]))
     );
   }
 

@@ -24,7 +24,7 @@ export class Ntx500Component {
   yTitleBarMulti: string = 'Production Time / s';
   
  dataBarMulti: any = {
-  labels: ['Part 1','Part 2','Part 3','Part 4','Part 5'],
+  labels: ['Part 51','Part 52','Part 53','Part 54','Part 55'],
   datasets: [
     { data: [3600, 1800, 600, 300], label: 'RUNNING', backgroundColor: 'green' },
     { data: [5400, 1200, 900, 150], label: 'IDLE', backgroundColor: 'blue' },

@@ -7,7 +7,7 @@
             <!-- <DIV>{{data[0].machine_status |json}}</DIV> -->
             <div class="lights">
                 <img class="light"
-                    *ngIf="data[0].yellow.toString() !== '1' && data[0].red.toString() !== '1' && data[0].blue.toString() !== '1'&& data[0].green.toString() !== '1'"
+                    *ngIf="data[0].yellow.toString() !== '1' && data[0].red.toString() !== '1' && data[0].blue.toString() !== '1'"
                     src="assets/image/Green.png" alt="Default Light">
                 <img class="light" *ngIf="data[0].yellow.toString() === '1'" src="assets/image/Yellow.png"
                     alt="Yellow Light">
